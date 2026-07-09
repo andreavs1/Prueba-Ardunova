@@ -1,0 +1,548 @@
+/* ==========================================================================
+   ARDUNOVA - HOJA DE ESTILOS GENERAL UNIFICADA
+   ========================================================================== */
+
+:root {
+    /* Paleta cromática extraída de las capturas */
+    --azul-principal: #162B67;
+    --violeta-marca: #7209b7;
+    --cian-marca: #00b4d8;
+    --gris-borde: #dcdcdc;
+    --blanco-puro: #ffffff;
+    --gris-fondo-tarjeta: #f8f9fa;
+    --gris-texto: #4a5568;
+    --gris-texto-suave: #718096;
+    
+    /* Degradado corporativo exacto (Capturas 1000296485.jpg y 1000296486.jpg) */
+    --gradiente-corporativo: linear-gradient(135deg, #00b4d8 0%, #7209b7 100%);
+    
+    /* Componentes Visuales */
+    --sombra-tarjeta: 0 10px 25px rgba(22, 43, 103, 0.1);
+    --sombra-auth: 0 20px 40px rgba(0, 0, 0, 0.25);
+    --transicion: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --max-anchura: 1200px;
+}
+
+/* ==========================================================================
+   1. RESET Y CONFIGURACIONES BASE
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: var(--gris-texto);
+    background-color: var(--blanco-puro);
+    line-height: 1.5;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-top: 90px; /* Previene que el header fijo tape el contenido */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transicion);
+}
+
+/* Clases Utilitarias (Para mantener el HTML sin atributos style) */
+.text-center { text-align: center; }
+.w-100 { width: 100%; }
+.mt-1 { margin-top: 1.2rem; }
+
+/* ==========================================================================
+   2. ESTRUCTURA DE NAVEGACIÓN (HEADER) - Basado en 1000296483.jpg
+   ========================================================================== */
+.main-header {
+    background-color: var(--blanco-puro);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 90px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.02);
+}
+
+.header-container {
+    max-width: var(--max-anchura);
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo adaptado */
+.logo img {
+    height: 65px;
+    width: auto;
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: 2rem;
+}
+
+.main-nav a {
+    font-weight: 500;
+    color: var(--gris-texto);
+    font-size: 0.95rem;
+}
+
+.main-nav a:hover, 
+.main-nav .active-link {
+    color: var(--azul-principal);
+    font-weight: 600;
+}
+
+/* Botón Iniciar Sesión del Menú */
+.btn-header-login {
+    background: var(--gradiente-corporativo);
+    color: var(--blanco-puro) !important;
+    padding: 0.6rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.btn-header-login:hover {
+    opacity: 0.95;
+    transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   3. COMPONENTES REUTILIZABLES (BOTONES Y TARJETAS)
+   ========================================================================== */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.8rem;
+    border-radius: 8px; /* Cantos suavizados según las maquetas */
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: var(--transicion);
+    text-align: center;
+}
+
+/* Botón Principal Gradiente */
+.btn-gradient {
+    background: var(--gradiente-corporativo);
+    color: var(--blanco-puro);
+}
+
+.btn-gradient:hover {
+    box-shadow: 0 5px 15px rgba(114, 9, 183, 0.25);
+    transform: translateY(-2px);
+}
+
+/* Botón Secundario Esquema Cian */
+.btn-outline-cyan {
+    background-color: transparent;
+    border-color: var(--cian-marca);
+    color: var(--cian-marca);
+}
+
+.btn-outline-cyan:hover {
+    background-color: rgba(0, 180, 216, 0.05);
+    transform: translateY(-2px);
+}
+
+/* Sistema de Tarjetas (Cards) */
+.card {
+    background: var(--blanco-puro);
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.01);
+    transition: var(--transicion);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--sombra-tarjeta);
+}
+
+.card-body {
+    padding: 1.8rem;
+}
+/* Estilos para controlar las imágenes dentro de las tarjetas */
+.card-image {
+    width: 100%;
+    height: 180px; /* Altura fija para que todas las tarjetas midan lo mismo */
+    overflow: hidden; /* Corta lo que sobresalga si la imagen es muy grande */
+    background-color: #f0f0f0; /* Fondo gris suave por si la imagen tarda en cargar */
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Hace que la imagen se adapte al contenedor sin deformarse */
+    transition: var(--transicion);
+}
+
+/* Efecto opcional: cuando pases el mouse sobre la tarjeta, la imagen hace un zoom suave */
+.card:hover .card-image img {
+    transform: scale(1.05);
+}
+
+/* Etiquetas de Niveles Académicos */
+.tag-nivel {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+}
+.principiante { background-color: #e0f7fa; color: #006064; }
+.intermedio { background-color: #fff3e0; color: #e65100; }
+.avanzado { background-color: #ede7f6; color: #4a148c; }
+
+/* Contenedores de Secciones Estándar */
+.section-container {
+    max-width: var(--max-anchura);
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    color: var(--azul-principal);
+    margin-bottom: 2.5rem;
+    font-weight: 700;
+}
+
+/* Grilla Dinámica de Contenidos */
+.grid-dinamico {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* ==========================================================================
+   4. MAQUETACIÓN DE PÁGINAS ESPECÍFICAS
+   ========================================================================== */
+
+/* Hero de la página de Inicio (index.html) */
+.hero {
+    background-color: var(--blanco-puro);
+    padding: 5rem 0;
+}
+
+.hero-container {
+    max-width: var(--max-anchura);
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 4rem;
+}
+
+.hero-content h1 {
+    font-size: 3.4rem;
+    color: var(--azul-principal);
+    line-height: 1.15;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+}
+
+/* El bloque destacado detrás de la palabra Arduino */
+.hero-content h1 span.highlight {
+    background: var(--gradiente-corporativo);
+    color: var(--blanco-puro);
+    padding: 0 0.5rem;
+    display: inline-block;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    color: var(--gris-texto);
+    line-height: 1.7;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1.2rem;
+}
+
+.hero-image img {
+    width: 100%;
+}
+
+/* ==========================================================================
+   5. VISTAS DE AUTENTICACIÓN (Login y Registro) - 
+   ========================================================================== */
+.auth-page-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradiente-corporativo); /* Fondo completo degradado */
+    padding: 4rem 1.5rem;
+}
+
+/* Caja blanca central */
+.auth-card {
+    background-color: var(--blanco-puro);
+    padding: 3.5rem 2.5rem;
+    border-radius: 20px;
+    box-shadow: var(--sombra-auth);
+    width: 100%;
+    max-width: 440px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Logotipo dentro de la tarjeta de Login/Registro */
+.auth-card .auth-logo {
+    height: 75px;
+    width: auto;
+    margin-bottom: 1.5rem;
+}
+
+.auth-card h2 {
+    color: var(--azul-principal);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* Manejo de Inputs de los Formularios */
+.form-group {
+    width: 100%;
+    margin-bottom: 1.2rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.85rem 1.2rem;
+    border: 1px solid var(--gris-borde);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    outline: none;
+    color: var(--azul-principal);
+    transition: var(--transicion);
+}
+
+.form-control:focus {
+    border-color: var(--cian-marca);
+    box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.15);
+}
+
+/* Texto de navegación de abajo */
+.auth-footer-text {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--gris-texto);
+    text-align: center;
+}
+
+.auth-footer-text a {
+    color: var(--violeta-marca);
+    font-weight: 600;
+}
+
+/* Quita el espacio superior del header solo en las páginas de login/registro */
+body.auth-body {
+    padding-top: 0 !important;
+}
+
+/* ==========================================================================
+   6. PIE DE PÁGINA (FOOTER)
+   ==/* ==========================================================================
+   6. PIE DE PÁGINA (FOOTER) - ACTUALIZADO COLUMNAS Y REDES
+   ========================================================================== */
+.main-footer {
+    background-color: #0b132b;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 4rem 0 1.5rem 0;
+    margin-top: auto;
+}
+
+.footer-container {
+    max-width: var(--max-anchura);
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    /* Divide el espacio en 4 columnas simétricas si hay pantalla suficiente */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2.5rem;
+}
+
+.footer-column h3 {
+    color: var(--blanco-puro);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+    position: relative;
+}
+
+.footer-brand h2 {
+    color: var(--blanco-puro);
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.footer-description {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+/* Listados limpios dentro del Footer */
+.footer-links, .footer-social {
+    list-style: none;
+}
+
+.footer-links li {
+    font-size: 0.9rem;
+    margin-bottom: 0.6rem;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.footer-links a:hover {
+    color: var(--cian-marca);
+    padding-left: 4px; /* Pequeño efecto dinámico al pasar el mouse */
+}
+
+/* Redes Sociales con estilo de tags interactivos */
+.footer-social {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.footer-social a {
+    display: inline-block;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 500;
+}
+
+.footer-social a:hover {
+    color: var(--cian-marca);
+}
+
+/* Franja inferior */
+.footer-bottom {
+    max-width: var(--max-anchura);
+    margin: 3.5rem auto 0 auto;
+    padding: 1.5rem 2rem 0 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    text-align: center;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* Adaptación móvil del footer dentro de las queries */
+@media screen and (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr; /* Se apilan en una sola columna en celulares */
+        text-align: center;
+        gap: 2rem;
+    }
+    .footer-social {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1.5rem;
+    }
+}
+.main-footer {
+    background-color: #0b132b;
+    color: rgba(255, 255, 255, 0.65);
+    padding: 3rem 0 1.5rem;
+    margin-top: auto; /* Empuja el footer al fondo en pantallas vacías */
+}
+
+.footer-container {
+    max-width: var(--max-anchura);
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.footer-brand h2 {
+    color: var(--blanco-puro);
+    font-size: 1.4rem;
+}
+
+.footer-bottom {
+    max-width: var(--max-anchura);
+    margin: 2rem auto 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   7. SITEMA RESPONSIVE (Media Queries)
+   ========================================================================== */
+
+/* Tablets y Monitores Chicos */
+@media screen and (max-width: 992px) {
+    .hero-content h1 { font-size: 2.8rem; }
+}
+
+/* Celulares y Dispositivos Móviles */
+@media screen and (max-width: 768px) {
+    body { padding-top: 150px; }
+    
+    .header-container {
+        flex-direction: column;
+        padding: 1rem;
+        height: auto;
+        gap: 1rem;
+    }
+    
+    .main-header { height: auto; }
+    
+    .main-nav ul {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2.5rem;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+    
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+}

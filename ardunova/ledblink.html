@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto: Parpadeo de LED (Blink) - ARDUNOVA</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html"><img src="imagen/logo.jpg" alt="Logo de ARDUNOVA"></a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="tutoriales.html">Tutoriales</a></li>
+                    <li><a href="proyectos.html" class="active-link">Proyectos</a></li>
+                    <li><a href="recursos.html">Recursos</a></li>
+                    <li><a href="comunidad.html">Comunidad</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="login.html" class="btn-header-login">Iniciar sesión</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="section-container">
+        <div class="project-header">
+            <span class="tag-nivel principiante">Principiante</span>
+            <h1 class="section-title">Parpadeo de LED (Blink)</h1>
+            <p class="section-subtitle">El clásico "Hola Mundo" del hardware libre.</p>
+        </div>
+
+        <div class="grid-dinamico">
+            <div class="project-info">
+                <h2>Explicación</h2>
+                <p>Este proyecto sirve para aprender a controlar una salida digital de Arduino. El LED se enciende y se apaga automáticamente cada segundo.</p>
+                
+                <h3>Materiales</h3>
+                <ul>
+                    <li>Arduino UNO</li>
+                    <li>LED</li>
+                    <li>Resistencia de 220Ω</li>
+                    <li>Protoboard</li>
+                    <li>Cables</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="card-image">
+                    <img src="imagen/lcd.jpg" alt="Pantalla LCD">
+                </div>
+            </div>
+        </div>
+
+        <section class="code-section">
+            <h2>Código</h2>
+            <div class="card code-card">
+                <pre><code>void setup() {
+  // Se ejecuta una sola vez al iniciar Arduino
+  pinMode(13, OUTPUT); // Configura el pin 13 como salida
+}
+
+void loop() {
+  // Se repite continuamente
+  digitalWrite(13, HIGH); // Enciende el LED
+  delay(1000);            // Espera 1 segundo
+  digitalWrite(13, LOW);  // Apaga el LED
+  delay(1000);            // Espera 1 segundo
+}</code></pre>
+            </div>
+        </section>
+
+        <section class="steps-section">
+            <h2>Paso a paso</h2>
+            <div class="grid-dinamico">
+                <div class="card-body setup-step">
+                    <h4>Conexiones</h4>
+                    <p>1. Conectar la pata larga del LED al pin 13.<br>2. Conectar la pata corta a GND mediante una resistencia.</p>
+                </div>
+                <div class="card-body setup-step">
+                    <h4>Software</h4>
+                    <p>3. Abrir Arduino IDE.<br>4. Copiar el código.<br>5. Seleccionar la placa Arduino UNO.</p>
+                </div>
+                <div class="card-body setup-step">
+                    <h4>Carga</h4>
+                    <p>6. Cargar el programa.<br>7. Observar el LED.</p>
+                </div>
+            </div>
+
+            <div class="card result-card">
+                <h4>Resultado esperado</h4>
+                <p>El LED se prenderá y apagará cada segundo de forma continua.</p>
+            </div>
+
+            <div class="text-center button-container">
+                <a href="proyectos.html" class="btn btn-outline-cyan">← Volver a Proyectos</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-bottom">
+            <p>&copy; 2026 ARDUNOVA. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
