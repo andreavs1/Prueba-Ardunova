@@ -1,0 +1,67 @@
+ <?php
+ include 'conexion.php';
+
+ if($_SERVER["REQUEST_METHOD"]== "POST"){
+        $nombre= $_POST["nombre"];
+        $email= $_POST["email"];
+        $password=password_hash($_POST["password"], PASSWORD_DEFAULT) ;
+
+    $sql="insert into usuarios(nombre,email,password) values ('$nombre', '$email', '$password')";
+
+  if($conn->query($sql)){
+    header("Location: index.php");
+    exit();
+} else {
+    echo "Error al registrar el usuario.";
+}
+}
+ ?>
+
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse - ARDUNOVA</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-body">
+
+    <main class="auth-page-wrapper">
+        <article class="auth-card">
+            
+            <img src="imagen/logo.jpg" alt="Logo de ARDUNOVA" class="auth-logo">
+            
+            <h2>Crear cuenta</h2>
+            
+            <form method="POST" class="w-100">
+                <div class="form-group">
+                    <input type="text" name="nombre" class="form-control" placeholder="Nombre completo" required autocomplete="name">
+                </div>
+
+                <div class="form-group">
+                    <input type="email" name="email" class="form-control" placeholder="Correo electrónico" required autocomplete="email">
+                </div>
+
+                <div class="form-group">
+                    <input type="password" name="password" class="form-control" placeholder="Contraseña" required autocomplete="new-password">
+                </div>
+
+                <button type="submit" class="btn btn-gradient w-100 mt-1">Registrarse</button>
+                
+                <p class="auth-footer-text">
+                    ¿Ya tenés una cuenta? <a href="login.php">Iniciá sesión</a>
+                </p>
+            </form>
+            
+        </article>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-bottom">
+            <p>&copy; 2026 ARDUNOVA. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
