@@ -1,4 +1,4 @@
-conexion.php:<?php
+<?php
 
 $host = "localhost";
 $usuario = "root";
