@@ -1,4 +1,5 @@
-<?php
+ <?php
+
 session_start();
 include 'conexion.php';
 
@@ -12,19 +13,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($resultado->num_rows > 0) {
         $usuario = $resultado->fetch_assoc();
 
-        if (password_verify($password, $usuario['password'])) {
-            $_SESSION['usuario'] = $usuario['nombre'];
-            header("Location: index.html");
-            exit();
-        } else {
-            echo "Contraseña incorrecta";
-        }
-    } else {
-        echo "Usuario no encontrado";
-    }
+    if (password_verify($password, $usuario['password'])) {
+    $_SESSION['usuario'] = $usuario['nombre'];
+    header("Location: index.php");
+    exit();
+}
+}
 }
 ?>
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -53,7 +50,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <button type="submit" class="btn btn-gradient w-100 mt-1">Ingresar</button>
                 
                 <p class="auth-footer-text">
-                    ¿No tenés cuenta? <a href="registro.php">Registrate</a>
+                    ¿No tenés cuenta? 
+                    <a href="registro.php">Registrate</a>
                 </p>
             </form>
             
