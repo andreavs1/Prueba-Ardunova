@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARDUNOVA - Aprendé Arduino, creá el futuro</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
 </head>
 <body>
-
-    <!-- Header Superior -->
+       <!-- Header Superior -->
     <header class="main-header">
         <div class="header-container">
             <!-- Espacio reservado para tu archivo de logo como en la imagen -->
@@ -39,7 +37,7 @@
                     <h1>Aprendé <span class="highlight">Arduino</span> creá el futuro</h1>
                     <p>En ARDUNOVA te enseñamos de forma simple y práctica para que puedas crear tus propios proyectos.</p>
                     <div class="hero-buttons">
-                        <a href="login.html" class="btn btn-gradient">Comenzar ahora</a>
+                        <a href="login.php" class="btn btn-gradient">Comenzar ahora</a>
                         <a href="proyectos.html" class="btn btn-outline-cyan">Ver proyectos</a>
                     </div>
                 </div>
@@ -84,7 +82,7 @@
         <div class="footer-container">
             
             <div class="footer-column">
-                <div class="footer-brand">
+            <div class="footer-brand">
                     <h2>ARDUNOVA</h2>
                 </div>
                 <p class="footer-description">
