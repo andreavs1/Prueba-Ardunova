@@ -1,4 +1,4 @@
-<?php
+ <?php
  include 'conexion.php';
 
  if($_SERVER["REQUEST_METHOD"]== "POST"){
@@ -7,10 +7,14 @@
         $password=password_hash($_POST["password"], PASSWORD_DEFAULT) ;
 
     $sql="insert into usuarios(nombre,email,password) values ('$nombre', '$email', '$password')";
-     if($conn-> query($sql)){
-        echo "usuario registrado";
-    }
-  }
+
+  if($conn->query($sql)){
+    header("Location: index.php");
+    exit();
+} else {
+    echo "Error al registrar el usuario.";
+}
+}
  ?>
 
  <!DOCTYPE html>
