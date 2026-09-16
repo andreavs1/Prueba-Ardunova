@@ -24,7 +24,7 @@ img { max-width: 100%; height: auto; }
 a { transition: var(--transicion); }
 
 .main-header .navbar { min-height: 76px; }
-.brand-logo { height: 52px; width: auto; object-fit: contain; }
+.brand-logo { height: 70px; width: auto; object-fit: contain; }
 .navbar-nav .nav-link {
   color: var(--gris-texto);
   font-weight: 500;
@@ -128,7 +128,7 @@ a { transition: var(--transicion); }
 @media (max-width: 575.98px) {
   body { padding-top: 68px; }
   .main-header .navbar { min-height: 68px; }
-  .brand-logo { height: 46px; }
+  .brand-logo { height: 60px; }
   .hero { padding-top: 2.5rem; }
   .hero-buttons { display:flex; flex-direction:column; gap:.75rem; }
   .hero-buttons .btn { width:100%; }
