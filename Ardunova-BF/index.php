@@ -55,6 +55,22 @@ $active_page = 'inicio';
 <a class="btn btn-gradient mt-1 w-100" href="proyectos.php">Ver más</a>
 </div>
 </article></div></div>
+
+ <div class="contenedor-simulador">
+        <h1>Tutorial de Arduino Interactivo</h1>
+        <p>Prueba y modifica el código directamente desde el navegador:</p>
+
+        <!-- PEGA AQUÍ TU CÓDIGO DE IFRAME -->
+        <iframe 
+            src="https://wokwi.com" 
+            width="100%" 
+            height="500px" 
+            style="border: none; border-radius: 4px;">
+        </iframe>
+        <!-- FIN DEL SIMULADOR -->
+
+    </div>
+    
 </section>
 </main>
 <?php include 'includes/footer.php'; ?>
