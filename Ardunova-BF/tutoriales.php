@@ -32,7 +32,7 @@ $active_page = 'tutoriales';
                       <p>Aprende los conceptos principales de Arduino, la placa, el entorno de 
                         programacion y los primeros proyectos.
                       </p>
-                      <a class="btn btn-gradient mt-1 w-100" href="tutorial/nivelprincipiante.php">
+                      <a class="btn btn-gradient mt-1 w-100" href="principiantes/principiantes.php">
                         Comenzar 
                       </a>
                  </div>
