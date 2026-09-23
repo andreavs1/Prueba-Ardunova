@@ -247,6 +247,216 @@ $active_page = 'proyectos';
   </div>
 </main>
 
+<!-- Proyecto 7 -->
+
+<div class="col-12 col-sm-6 col-lg-4 proyecto" data-nivel="principiante">
+
+  <article class="card">
+
+    <div class="card-image">
+      <img alt="LED con botón" src="assets/img/led-boton.jpeg">
+    </div>
+
+    <div class="card-body">
+
+      <span class="tag-nivel principiante">
+        Principiante
+      </span>
+
+      <h3>
+        LED con botón
+      </h3>
+
+      <p>
+        Aprendé a controlar un LED utilizando un botón para encenderlo y apagarlo.
+      </p>
+
+      <a class="btn btn-gradient mt-1 w-100" href="ledboton.html">
+        Ver Proyecto
+      </a>
+
+    </div>
+
+  </article>
+
+</div>
+
+
+<!-- Proyecto 8 -->
+
+<div class="col-12 col-sm-6 col-lg-4 proyecto" data-nivel="principiante">
+
+  <article class="card">
+
+    <div class="card-image">
+      <img alt="Potenciómetro y LED" src="assets/img/potenciometro.jpeg">
+    </div>
+
+    <div class="card-body">
+
+      <span class="tag-nivel principiante">
+        Principiante
+      </span>
+
+      <h3>
+        LED con potenciómetro
+      </h3>
+
+      <p>
+        Utilizá un potenciómetro para controlar de manera gradual la intensidad de un LED.
+      </p>
+
+      <a class="btn btn-gradient mt-1 w-100" href="potenciometro.html">
+        Ver Proyecto
+      </a>
+
+    </div>
+
+  </article>
+
+</div>
+
+
+<!-- Proyecto 9 -->
+
+<div class="col-12 col-sm-6 col-lg-4 proyecto" data-nivel="principiante">
+
+  <article class="card">
+
+    <div class="card-image">
+      <img alt="LDR y LEDs" src="assets/img/ldr.jpeg">
+    </div>
+
+    <div class="card-body">
+
+      <span class="tag-nivel principiante">
+        Principiante
+      </span>
+
+      <h3>
+        LDR y tres LEDs
+      </h3>
+
+      <p>
+        Medí la cantidad de luz utilizando un sensor LDR y controlá diferentes LEDs según la iluminación.
+      </p>
+
+      <a class="btn btn-gradient mt-1 w-100" href="ldr.html">
+        Ver Proyecto
+      </a>
+
+    </div>
+
+  </article>
+
+</div>
+
+
+<!-- Proyecto 10 -->
+
+<div class="col-12 col-sm-6 col-lg-4 proyecto" data-nivel="intermedio">
+
+  <article class="card">
+
+    <div class="card-image">
+      <img alt="Servomotor con potenciómetro" src="assets/img/servomotor.jpeg">
+    </div>
+
+    <div class="card-body">
+
+      <span class="tag-nivel intermedio">
+        Intermedio
+      </span>
+
+      <h3>
+        Servomotor con potenciómetro
+      </h3>
+
+      <p>
+        Controlá el movimiento de un servomotor utilizando un potenciómetro para modificar su posición.
+      </p>
+
+      <a class="btn btn-gradient mt-1 w-100" href="servomotor.html">
+        Ver Proyecto
+      </a>
+
+    </div>
+
+  </article>
+
+</div>
+
+
+<!-- Proyecto 11 -->
+
+<div class="col-12 col-sm-6 col-lg-4 proyecto" data-nivel="intermedio">
+
+  <article class="card">
+
+    <div class="card-image">
+      <img alt="Sistema de riego automático" src="assets/img/riego.jpeg">
+    </div>
+
+    <div class="card-body">
+
+      <span class="tag-nivel intermedio">
+        Intermedio
+      </span>
+
+      <h3>
+        Sistema de riego automático
+      </h3>
+
+      <p>
+        Detectá la humedad del suelo y activá automáticamente un sistema de riego cuando sea necesario.
+      </p>
+
+      <a class="btn btn-gradient mt-1 w-100" href="riego.html">
+        Ver Proyecto
+      </a>
+
+    </div>
+
+  </article>
+
+</div>
+
+
+<!-- Proyecto 12 -->
+
+<div class="col-12 col-sm-6 col-lg-4 proyecto" data-nivel="avanzado">
+
+  <article class="card">
+
+    <div class="card-image">
+      <img alt="Robot evita obstáculos" src="assets/img/robot-obstaculos.jpeg">
+    </div>
+
+    <div class="card-body">
+
+      <span class="tag-nivel avanzado">
+        Avanzado
+      </span>
+
+      <h3>
+        Robot evita obstáculos
+      </h3>
+
+      <p>
+        Construí un robot capaz de detectar obstáculos y cambiar su dirección para evitarlos.
+      </p>
+
+      <a class="btn btn-gradient mt-1 w-100" href="robotobstaculos.html">
+        Ver Proyecto
+      </a>
+
+    </div>
+
+  </article>
+
+</div>
+
+
 <?php include 'includes/footer.php'; ?>
 
 <script>
@@ -265,3 +475,4 @@ $active_page = 'proyectos';
     });
   });
 </script>
+
