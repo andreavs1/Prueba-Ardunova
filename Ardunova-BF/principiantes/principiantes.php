@@ -95,7 +95,7 @@ Placa Arduino
 Partes principales de la placa y conexiones.
 </p>
 
-<a class="btn btn-gradient mt-1 w-100" href="02-placa-arduino.php">
+<a class="btn btn-gradient mt-1 w-100" href="02-placa-arduino.js">
 Ver tutorial
 </a>
 
@@ -128,7 +128,7 @@ Arduino IDE
 Programa utilizado para escribir códigos.
 </p>
 
-<a class="btn btn-gradient mt-1 w-100" href="03-arduino-ide.php">
+<a class="btn btn-gradient mt-1 w-100" href="03-arduino-ide.js">
 Ver tutorial
 </a>
 
@@ -161,7 +161,7 @@ Estructura del programa
 Aprendé cómo funcionan setup() y loop().
 </p>
 
-<a class="btn btn-gradient mt-1 w-100" href="04-estructura-programa.php">
+<a class="btn btn-gradient mt-1 w-100" href="04-estructura-programa.js">
 Ver tutorial
 </a>
 
@@ -194,7 +194,7 @@ Variables
 Uso de datos dentro de Arduino.
 </p>
 
-<a class="btn btn-gradient mt-1 w-100" href="05-variables.php">
+<a class="btn btn-gradient mt-1 w-100" href="05-variables.js">
 Ver tutorial
 </a>
 
@@ -227,7 +227,7 @@ Entradas y salidas
 Control de componentes mediante Arduino.
 </p>
 
-<a class="btn btn-gradient mt-1 w-100" href="06-entradas-salidas.php">
+<a class="btn btn-gradient mt-1 w-100" href="06-entradas-salidas.js">
 Ver tutorial
 </a>
 
@@ -260,7 +260,7 @@ Encender LED
 Primer proyecto práctico con Arduino.
 </p>
 
-<a class="btn btn-gradient mt-1 w-100" href="07-led.php">
+<a class="btn btn-gradient mt-1 w-100" href="07-led.js">
 Ver tutorial
 </a>
 
@@ -293,7 +293,7 @@ Pulsadores
 Uso de botones para controlar Arduino.
 </p>
 
-<a class="btn btn-gradient mt-1 w-100" href="08-pulsadores.php">
+<a class="btn btn-gradient mt-1 w-100" href="08-pulsadores.js">
 Ver tutorial
 </a>
 
