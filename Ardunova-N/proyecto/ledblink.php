@@ -7,17 +7,9 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="../assets/css/style.css">
 </head>
+
 <body>
-<?php session_start(); $active_page='proyectos'; ?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Proyecto: Parpadeo de LED - ARDUNOVA</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="../assets/css/style.css">
-</head>
-<body>
+
 <?php include __DIR__ . '/../includes/header.php'; ?>
 <main class="container section-container">
   <div class="project-header">
@@ -67,7 +59,8 @@ void loop() {
     <a href="proyectos.php" class="btn btn-outline-cyan">
     ← Volver a Proyectos
   </a>
-</div></section>
+</div>
+</section>
 </main>
 <?php include __DIR__ . '/../includes/footer.php'; ?>
 </body></html>
