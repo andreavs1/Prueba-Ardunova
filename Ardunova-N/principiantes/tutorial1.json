@@ -1,0 +1,76 @@
+{
+  "badge": "Tutorial 01 • Interactivo",
+  "titulo": "¿Qué es Arduino?",
+  "subtitulo": "Descubrí cómo funciona interactuando con los elementos de esta lección.",
+  "concepto_principal": {
+    "titulo": "Arduino es como un \"Cerebro Electrónico\"",
+    "descripcion": "Toma decisiones simples: **Lee** lo que pasa a su alrededor (sensores), **Procesa** la información según tus instrucciones (código) y **Actúa** en consecuencia (motores, luces, sonidos)."
+  },
+  "simulador_wokwi": {
+    "titulo": "🧪 Tu primera prueba en vivo",
+    "instruccion": "No tenés que escribir código todavía. Hacé clic en el botón de **Play (▶️)** dentro del simulador, presioná el botón rojo y mirá cómo reacciona el LED.",
+    "project_id": "305988188339274242",
+    "nota": "💡 **¿Qué está pasando?** Cuando presionás el botón (Entrada), el Arduino detecta la señal y ejecuta la orden de encender el LED (Salida)."
+  },
+  "simulador_logica": {
+    "titulo": "⚡ Simulador de Lógica General",
+    "instruccion": "Seleccioná un evento y mirá qué orden le daría el código a la placa",
+    "opciones": [
+      {
+        "id": "luz",
+        "evento": "Se hizo de noche 🌙",
+        "respuesta": "Encender farol de la calle 💡"
+      },
+      {
+        "id": "lluvia",
+        "evento": "Empieza a llover 🌧️",
+        "respuesta": "Cerrar ventana del techo automáticamente 🪟"
+      },
+      {
+        "id": "movimiento",
+        "evento": "Alguien se acerca 🚶‍♂️",
+        "respuesta": "Activar sirena de alarma 🚨"
+      }
+    ]
+  },
+  "anatomia": [
+    {
+      "icono": "🧠",
+      "titulo": "Microcontrolador",
+      "descripcion": "Es el chip principal. Guarda tu código y ejecuta las órdenes.",
+      "boton_texto": "¿Dónde está en la placa?",
+      "detalle": "Es el rectángulo negro alargado en el centro del Arduino UNO.",
+      "color_clase": "danger"
+    },
+    {
+      "icono": "📌",
+      "titulo": "Pines E/S",
+      "descripcion": "Los orificios laterales donde conectás los cables de tus sensores o luces.",
+      "boton_texto": "¿Cómo se dividen?",
+      "detalle": "Hay pines **Digitales** (solo ON/OFF) y **Analógicos** (para medir rangos como la temperatura).",
+      "color_clase": "success"
+    },
+    {
+      "icono": "🔌",
+      "titulo": "Puerto USB",
+      "descripcion": "Conecta la placa a tu computadora para alimentarla de energía y cargar el código.",
+      "boton_texto": "¿Necesita estar siempre conectado?",
+      "detalle": "No. Una vez cargado el programa, podés desconectarlo y alimentarlo con una batería externa.",
+      "color_clase": "primary"
+    }
+  ],
+  "quiz": {
+    "pregunta": "¿Cuál de los siguientes componentes actúa como un sensor (Entrada)?",
+    "opciones": [
+      { "texto": "Un Motor ⚙️", "es_correcta": false },
+      { "texto": "Un Detector de Luz ☀️", "es_correcta": true },
+      { "texto": "Un Parlante 🔊", "es_correcta": false }
+    ],
+    "mensaje_correcto": "¡Correcto! 🎉 Los sensores leen datos del entorno.",
+    "mensaje_incorrecto": "Ese componente es una Salida (Actuador). ¡Intentalo de nuevo!"
+  },
+  "navegacion": {
+    "anterior": "../tutoriales.php",
+    "siguiente": "tutorial2.php"
+  }
+}

@@ -19,8 +19,7 @@
                     <img src="assets/img/logo.jpg" alt="Logo de ARDUNOVA" class="brand-logo">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
-                    <span class="navbar-toggler-icon">
-                    </span>
+                    <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="mainNavbar">
                     <ul class="navbar-nav ms-auto">
@@ -53,8 +52,7 @@
                     <h2>Sobre el proyecto</h2>
                     <p>Desplazamiento de textos y control de una pantalla LCD con Arduino.</p>
                     <h3>Objetivo</h3>
-                    <p>Comprender cómo conectar los componentes, programar la placa y comprobar el funcionamiento paso a
-                        paso.</p>
+                    <p>Comprender cómo conectar los componentes, programar la placa y comprobar el funcionamiento paso a paso.</p>
                 </div>
             </div>
             <div class="col-12 col-lg-5">
@@ -65,6 +63,23 @@
                 </div>
             </div>
         </div>
+
+        <!-- SECCIÓN DEL SIMULADOR WOKWI -->
+        <section class="mt-5">
+            <h2 class="mb-3">Simulador Interactivo</h2>
+            <p>Proba y modificá el código directamente desde el navegador antes de armar el circuito real.</p>
+            <div class="card shadow-sm border-0 rounded-4 overflow-hidden">
+                <div class="ratio ratio-16x9">
+                    <iframe 
+                        src="https://wokwi.com/projects/ID_DE_TU_PROYECTO_WOKWI/embed" 
+                        title="Simulador de Arduino Pantalla LCD" 
+                        allow="autoplay; camera; microphone" 
+                        style="border: 0;">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
         <section class="mt-5">
             <h2 class="mb-4">Pasos básicos</h2>
             <div class="row g-3">
@@ -88,7 +103,7 @@
                 </div>
             </div>
         </section>
-        <div class="text-center button-container">
+        <div class="text-center button-container my-4">
             <a href="../proyectos.php" class="btn btn-outline-cyan">
                 Volver a Proyectos
             </a>
