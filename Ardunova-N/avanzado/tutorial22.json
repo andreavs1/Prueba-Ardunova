@@ -1,0 +1,81 @@
+{
+    "badge": "MÓDULO 4 · LECCIÓN 22 (AVANZADO)",
+    "titulo": "Protocolo de Comunicación SPI (SPI.h)",
+    "subtitulo": "Transferí datos a alta velocidad con buses de cuatro hilos dedicados (MOSI, MISO, SCK y SS).",
+    "concepto_principal": {
+      "titulo": "⚡ Bus Serie Síncrono Full-Duplex",
+      "descripcion": "El protocolo **SPI (Serial Peripheral Interface)** es ideal para comunicaciones de alta velocidad a corta distancia (como pantallas TFT, lecturas de tarjetas SD y lectores RFID). Trabaja bajo un esquema Maestro/Esclavo utilizando líneas independientes de envío (**MOSI**), recepción (**MISO**), reloj (**SCK**) y selección de chip (**SS**)."
+    },
+    "funciones_clave": [
+      {
+        "icono": "🚀",
+        "titulo": "SPI.begin()",
+        "descripcion": "Iniciador del bus SPI.",
+        "detalle": "Configura los pines de hardware (SCK, MOSI, SS) en modo salida y habilita el controlador periférico SPI dentro del microcontrolador."
+      },
+      {
+        "icono": "🔻",
+        "titulo": "digitalWrite(SS, LOW)",
+        "descripcion": "Selección del Esclavo.",
+        "detalle": "Lleva a nivel bajo la línea Chip Select (CS/SS) del dispositivo objetivo para indicarle que debe escuchar e interactuar con el bus."
+      },
+      {
+        "icono": "🔄",
+        "titulo": "SPI.transfer(data)",
+        "descripcion": "Transmisión simultánea.",
+        "detalle": "Envía un byte a través de la línea MOSI mientras recibe simultáneamente un byte entrante desde la línea MISO."
+      },
+      {
+        "icono": "🔺",
+        "titulo": "digitalWrite(SS, HIGH)",
+        "descripcion": "Liberación del bus.",
+        "detalle": "Restaura la línea Chip Select a nivel alto, desactivando el dispositivo seleccionado para que otros puedan usar el bus."
+      }
+    ],
+    "codigo_ejemplo": {
+      "titulo": "Envío de Bytes vía SPI a un Periférico",
+      "lenguaje": "C++ / Wiring",
+      "codigo": "#include <SPI.h>\n\nconst int chipSelect = 10;\n\nvoid setup() {\n    // Inicializa el controlador SPI de hardware\n    SPI.begin();\n    \n    // Configura el pin CS/SS como salida\n    pinMode(chipSelect, OUTPUT);\n    digitalWrite(chipSelect, HIGH);\n}\n\nvoid loop() {\n    // Selecciona el dispositivo esclavo (Nivel BAJO)\n    digitalWrite(chipSelect, LOW);\n    \n    // Transfiere un byte de datos (ej. valor 10)\n    SPI.transfer(10);\n    \n    // Deselecciona el dispositivo (Nivel ALTO)\n    digitalWrite(chipSelect, HIGH);\n    \n    delay(1000);\n}"
+    },
+    "simulador_wokwi": {
+      "titulo": "Simulación SPI en Arduino Uno",
+      "instruccion": "Iniciá la simulación con **Play (▶)** para observar la comunicación usando los pines 11 (MOSI), 12 (MISO), 13 (SCK) y 10 (SS):",
+      "project_id": "305102402120909376",
+      "nota": "💡 **Pines Estándar:** En Arduino UNO el pin **11 es MOSI**, **12 es MISO**, **13 es SCK** y **10 es SS**. En el Mega corresponden a los pines 50 (MISO), 51 (MOSI), 52 (SCK) y 53 (SS)."
+    },
+    "simulador_logica": {
+      "titulo": "Laboratorio Virtual: Selector de Esclavos SPI",
+      "instruccion": "Seleccioná la línea Chip Select (CS) a activar para verificar cuál periférico responderá al bus:",
+      "opciones": [
+        {
+          "id": "SPI_SD",
+          "evento": "Línea CS activa: Pin 10 (Módulo Tarjeta SD)",
+          "respuesta": "[SPI Bus] Módulo SD seleccionado. Preparado para transferencia de bloques de datos en MOSI/MISO."
+        },
+        {
+          "id": "SPI_TFT",
+          "evento": "Línea CS activa: Pin 9 (Pantalla TFT SPI)",
+          "respuesta": "[SPI Bus] Pantalla LCD TFT seleccionada. Preparada para recibir comandos de dibujo rápido."
+        },
+        {
+          "id": "SPI_NONE",
+          "evento": "Líneas CS inactivas: Todos en HIGH (1)",
+          "respuesta": "[SPI Bus] Todos los dispositivos en alta impedancia. Ningún esclavo procesará la señal de reloj SCK."
+        }
+      ]
+    },
+    "quiz": {
+      "pregunta": "🧪 ¿Qué pin o línea de control debe ponerse en estado lógico BAJO (LOW) para iniciar la transferencia de datos hacia un esclavo SPI específico?",
+      "opciones": [
+        { "texto": "MOSI (Master Out Slave In)", "es_correcta": false },
+        { "texto": "SCK (Serial Clock)", "es_correcta": false },
+        { "texto": "SS / CS (Slave Select / Chip Select)", "es_correcta": true }
+      ],
+      "mensaje_correcto": "🎉 ¡Excelente! Poner la línea SS / CS en nivel BAJO (LOW) le indica al dispositivo esclavo que debe habilitar su interfaz para responder al Maestro.",
+      "mensaje_incorrecto": "❌ Respuesta incorrecta. Recordá que MOSI transporta datos y SCK el reloj; la selección del esclavo se logra cambiando el pin SS/CS a LOW."
+    },
+    "navegacion": {
+      "anterior": "21-comunicacion-i2c.php",
+      "siguiente": "23-proyectos-integradores.php"
+    }
+  }

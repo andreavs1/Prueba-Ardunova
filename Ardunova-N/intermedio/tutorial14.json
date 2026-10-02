@@ -1,0 +1,81 @@
+{
+    "badge": "MÓDULO 3 · LECCIÓN 14 (INTERMEDIO)",
+    "titulo": "Sensor de Distancia HC-SR04",
+    "subtitulo": "Aprende a medir distancias por ultrasonido emitiendo pulsos y calculando el tiempo de rebote.",
+    "concepto_principal": {
+      "titulo": "🦇 Medición por Eco Ultrasónico",
+      "descripcion": "El **HC-SR04** funciona de manera similar a un sonar o eco de murciélago: emite una ráfaga de ultrasonido de 40 kHz a través del transmisor (Trig) y mide el tiempo que tarda la onda en rebotar en un objeto y volver al receptor (Echo)."
+    },
+    "funciones_clave": [
+      {
+        "icono": "📡",
+        "titulo": "Pin TRIG (Trigger)",
+        "descripcion": "Pin de disparo configurado como OUTPUT.",
+        "detalle": "Envía un pulso en HIGH durante al menos 10 microsegundos para desencadenar el envío del paquete de ultrasonido."
+      },
+      {
+        "icono": "🎧",
+        "titulo": "Pin ECHO",
+        "descripcion": "Pin de recepción configurado como INPUT.",
+        "detalle": "Permanece en estado HIGH durante el exacto tiempo que tarda la onda en ir y volver al objeto."
+      },
+      {
+        "icono": "⏱️",
+        "titulo": "pulseIn(echo, HIGH)",
+        "descripcion": "Mide el tiempo del pulso en microsegundos.",
+        "detalle": "Espera a que el pin pase a HIGH, inicia un cronómetro interno y devuelve el tiempo transcurrido hasta que el pin regresa a LOW."
+      },
+      {
+        "icono": "📐",
+        "titulo": "Cálculo (tiempo / 58)",
+        "descripcion": "Fórmula simplificada para convertir tiempo a centímetros.",
+        "detalle": "Basada en la velocidad del sonido (343 m/s) dividida por 2 (trayecto ida y vuelta). $Distancia = \\frac{tiempo}{58.2}$ cm."
+      }
+    ],
+    "codigo_ejemplo": {
+      "titulo": "Medición Continua de Distancia en Centímetros",
+      "lenguaje": "C++ / Wiring",
+      "codigo": "int trig = 9;\nint echo = 10;\n\nvoid setup() {\n    pinMode(trig, OUTPUT);\n    pinMode(echo, INPUT);\n    Serial.begin(9600);\n}\n\nvoid loop() {\n    // Limpia el pin Trig\n    digitalWrite(trig, LOW);\n    delayMicroseconds(2);\n\n    // Genera el pulso de 10 microsegundos\n    digitalWrite(trig, HIGH);\n    delayMicroseconds(10);\n    digitalWrite(trig, LOW);\n\n    // Mide la duración del pulso en Echo\n    long tiempo = pulseIn(echo, HIGH);\n\n    // Calcula la distancia en centímetros\n    long distancia = tiempo / 58;\n\n    Serial.print(\"Distancia: \");\n    Serial.print(distancia);\n    Serial.println(\" cm\");\n\n    delay(500);\n}"
+    },
+    "simulador_wokwi": {
+      "titulo": "Simulación de Sensor Ultrasónico en Vivo",
+      "instruccion": "Iniciá la simulación con **Play (▶)** y hacé clic sobre el sensor HC-SR04 para arrastrar el objetivo y cambiar la distancia medida:",
+      "project_id": "305102402120909376",
+      "nota": "💡 **Dato:** En la simulación podés ajustar tanto la distancia como los obstáculos para observar el cambio inmediato en el Monitor Serie."
+    },
+    "simulador_logica": {
+      "titulo": "Laboratorio Virtual: Conversión Tiempo-Distancia",
+      "instruccion": "Seleccioná el tiempo de eco retornado por la función pulseIn() para simular la distancia resultante:",
+      "opciones": [
+        {
+          "id": "T_580",
+          "evento": "Tiempo de eco: 580 µs",
+          "respuesta": "[Cálculo: 580 / 58] → Distancia estimada: 10 cm"
+        },
+        {
+          "id": "T_2900",
+          "evento": "Tiempo de eco: 2900 µs",
+          "respuesta": "[Cálculo: 2900 / 58] → Distancia estimada: 50 cm"
+        },
+        {
+          "id": "T_5800",
+          "evento": "Tiempo de eco: 5800 µs",
+          "respuesta": "[Cálculo: 5800 / 58] → Distancia estimada: 100 cm"
+        }
+      ]
+    },
+    "quiz": {
+      "pregunta": "🧪 ¿Qué función de Arduino se utiliza para medir la duración en microsegundos de la señal recibida en el pin Echo?",
+      "opciones": [
+        { "texto": "pulseIn()", "es_correcta": true },
+        { "texto": "analogRead()", "es_correcta": false },
+        { "texto": "delayMicroseconds()", "es_correcta": false }
+      ],
+      "mensaje_correcto": "🎉 ¡Excelente! 'pulseIn(echo, HIGH)' aguarda a que el pin vuelva a cambiar de estado y retorna la cantidad exacta de microsegundos transcurridos.",
+      "mensaje_incorrecto": "❌ Respuesta incorrecta. Recordá que 'pulseIn()' mide la duración en microsegundos en la que un pin se mantiene en determinado estado (HIGH o LOW)."
+    },
+    "navegacion": {
+      "anterior": "13-potenciometro.php",
+      "siguiente": "15-servomotores.php"
+    }
+  }

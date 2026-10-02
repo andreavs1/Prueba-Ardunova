@@ -1,0 +1,76 @@
+{
+  "badge": "MÓDULO 1 · LECCIÓN 06",
+  "titulo": "Entradas y Salidas Digitales",
+  "subtitulo": "Aprendé a interactuar con el mundo físico leyendo sensores o botones y controlando componentes como LEDs o motores.",
+  "concepto_principal": {
+    "titulo": "💡 Entradas vs. Salidas Digitales",
+    "descripcion": "Las **entradas** permiten que Arduino reciba información del entorno (por ejemplo, al presionar un pulsador o detectar movimiento). Las **salidas** le permiten actuar sobre el entorno, enviando voltaje para controlar componentes como LEDs, relés, motores o zumbadores."
+  },
+  "funciones_clave": [
+    {
+      "icono": "📥",
+      "titulo": "pinMode(pin, INPUT)",
+      "descripcion": "Configura un pin digital como entrada para leer voltaje externo.",
+      "detalle": "El pin queda en estado de alta impedancia, permitiendo detectar si ingresan 5V (HIGH) o 0V (LOW) sin consumir corriente apreciable."
+    },
+    {
+      "icono": "📤",
+      "titulo": "pinMode(pin, OUTPUT)",
+      "descripcion": "Configura un pin digital como salida para entregar energía.",
+      "detalle": "Habilita los transistores internos para suministrar hasta 5V (HIGH) o conectar a tierra GND (LOW) con una corriente máxima de 40mA."
+    },
+    {
+      "icono": "🔍",
+      "titulo": "digitalRead(pin)",
+      "descripcion": "Lee el estado lógico actual de un pin configurado como entrada.",
+      "detalle": "Devuelve HIGH si detecta un voltaje cercano a 5V o LOW si detecta 0V (referencia a GND)."
+    },
+    {
+      "icono": "⚡",
+      "titulo": "digitalWrite(pin, estado)",
+      "descripcion": "Establece el nivel de tensión de salida en un pin digital.",
+      "detalle": "Al enviar HIGH aplica 5V para activar actuadores y al enviar LOW aplica 0V para desactivarlos."
+    }
+  ],
+  "codigo_ejemplo": {
+    "titulo": "Control de un LED con Pulsador",
+    "lenguaje": "C++ / Wiring",
+    "codigo": "int led = 13;\nint boton = 2;\n\nvoid setup() {\n    pinMode(led, OUTPUT);   // Configura el LED como Salida\n    pinMode(boton, INPUT);  // Configura el botón como Entrada\n}\n\nvoid loop() {\n    // Si el botón está presionado (envía HIGH), enciende el LED\n    if (digitalRead(boton) == HIGH) {\n        digitalWrite(led, HIGH);\n    } else {\n        digitalWrite(led, LOW);\n    }\n}"
+  },
+  "simulador_wokwi": {
+    "titulo": "Simulación Interactiva: Pulsador y LED",
+    "instruccion": "Iniciá la simulación con el botón **Play (▶)** y mantené presionado el pulsador verde para ver encender el LED:",
+    "project_id": "305102402120909376",
+    "nota": "💡 **Análisis:** La función `digitalRead(boton)` evalúa en tiempo real cada ciclo del `loop()`. Al soltar el pulsador, la condición pasa a `LOW` y apaga el LED inmediatamente."
+  },
+  "simulador_logica": {
+    "titulo": "Laboratorio Virtual: Lógica de Entradas y Salidas",
+    "instruccion": "Seleccioná la acción del usuario sobre el pulsador para observar la respuesta del circuito:",
+    "opciones": [
+      {
+        "id": "BTN_PRESS",
+        "evento": "Pulsador Presionado (Entrada 5V / HIGH)",
+        "respuesta": "[ENTRADA: HIGH] digitalRead(2) == HIGH -> Ejecuta digitalWrite(13, HIGH) -> LED encendido."
+      },
+      {
+        "id": "BTN_RELEASE",
+        "evento": "Pulsador Suelto (Entrada 0V / LOW)",
+        "respuesta": "[ENTRADA: LOW] digitalRead(2) == LOW -> Ejecuta digitalWrite(13, LOW) -> LED apagado."
+      }
+    ]
+  },
+  "quiz": {
+    "pregunta": "🧪 ¿Qué función debes utilizar para saber si un botón conectado al Pin 2 está siendo presionado?",
+    "opciones": [
+      { "texto": "digitalWrite(2, HIGH)", "es_correcta": false },
+      { "texto": "pinMode(2, OUTPUT)", "es_correcta": false },
+      { "texto": "digitalRead(2)", "es_correcta": true }
+    ],
+    "mensaje_correcto": "🎉 ¡Excelente! digitalRead(pin) lee el estado eléctrico (HIGH o LOW) de una entrada digital.",
+    "mensaje_incorrecto": "❌ Respuesta incorrecta. Recordá que para LEER datos se utiliza digitalRead(), mientras que digitalWrite() se usa para ENVIAR datos."
+  },
+  "navegacion": {
+    "anterior": "05-variables-y-datos.php",
+    "siguiente": "07-encender-y-apagar-un-led.php"
+  }
+}

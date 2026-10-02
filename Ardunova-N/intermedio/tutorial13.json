@@ -1,0 +1,81 @@
+{
+    "badge": "MÓDULO 3 · LECCIÓN 13 (INTERMEDIO)",
+    "titulo": "Uso del Potenciómetro",
+    "subtitulo": "Aprende a conectar y controlar entradas analógicas mediante una resistencia variable en Arduino.",
+    "concepto_principal": {
+      "titulo": "🎛️ Resistencia Variable y Control Analógico",
+      "descripcion": "Un **potenciómetro** es un componente de tres terminales que actúa como un divisor de tensión ajustable. Al girar su perilla, modifica el voltaje entregado al pin analógico de Arduino entre 0V y 5V."
+    },
+    "funciones_clave": [
+      {
+        "icono": "📌",
+        "titulo": "Pines A0 a A5",
+        "descripcion": "Entradas analógicas dedicadas a medir tensiones continuas.",
+        "detalle": "Conectan directamente con el conversor analógico-digital (ADC) interno de 10 bits del microcontrolador."
+      },
+      {
+        "icono": "🔢",
+        "titulo": "analogRead(potenciometro)",
+        "descripcion": "Lee la tensión enviada por el terminal central del potenciómetro.",
+        "detalle": "Devuelve un valor entero de 0 (0 Volts) a 1023 (5 Volts) proporcional a la posición del eje."
+      },
+      {
+        "icono": "⏱️",
+        "titulo": "delay(200)",
+        "descripcion": "Define un intervalo de tiempo entre cada lectura analógica.",
+        "detalle": "Mantiene un flujo constante de lecturas en la consola sin saturar el puerto de comunicación serie."
+      },
+      {
+        "icono": "🔌",
+        "titulo": "Conexión de 3 terminales",
+        "descripcion": "Distribución de pines físicos del potenciómetro.",
+        "detalle": "Un extremo va a 5V, el opuesto a GND y la patilla central (wiper) entrega la señal variable al pin A0."
+      }
+    ],
+    "codigo_ejemplo": {
+      "titulo": "Lectura Continua de Potenciómetro",
+      "lenguaje": "C++ / Wiring",
+      "codigo": "int potenciometro = A0; // Pin de entrada analógica\nint valor;             // Variable para almacenar la lectura\n\nvoid setup() {\n    Serial.begin(9600); // Inicializa comunicación serie a 9600 baudios\n}\n\nvoid loop() {\n    valor = analogRead(potenciometro); // Lee el valor (0 a 1023)\n    Serial.println(valor);             // Imprime el valor en el Monitor Serie\n    delay(200);                        // Espera 200 milisegundos\n}"
+    },
+    "simulador_wokwi": {
+      "titulo": "Simulación de Potenciómetro en Vivo",
+      "instruccion": "Iniciá la simulación con **Play (▶)** y ajustá la perilla del potenciómetro para observar la actualización en el Monitor Serie:",
+      "project_id": "305102402120909376",
+      "nota": "💡 **Dato:** La señal que lee el pin analógico varía suavemente según el ángulo de giro del potenciómetro."
+    },
+    "simulador_logica": {
+      "titulo": "Laboratorio Virtual: Mapeo de Posición",
+      "instruccion": "Seleccioná un ángulo de giro para simular el valor analógico leído por Arduino:",
+      "opciones": [
+        {
+          "id": "POT_0",
+          "evento": "Giro al tope izquierdo (0°)",
+          "respuesta": "[Voltaje: 0.0V] → Lectura analogRead(): 0"
+        },
+        {
+          "id": "POT_50",
+          "evento": "Giro al centro (90°)",
+          "respuesta": "[Voltaje: 2.5V] → Lectura analogRead(): 512"
+        },
+        {
+          "id": "POT_100",
+          "evento": "Giro al tope derecho (180°)",
+          "respuesta": "[Voltaje: 5.0V] → Lectura analogRead(): 1023"
+        }
+      ]
+    },
+    "quiz": {
+      "pregunta": "🧪 ¿Qué rango de valores devuelve la función 'analogRead()' en un Arduino UNO?",
+      "opciones": [
+        { "texto": "De 0 a 255", "es_correcta": false },
+        { "texto": "De LOW a HIGH (0 o 1)", "es_correcta": false },
+        { "texto": "De 0 a 1023", "es_correcta": true }
+      ],
+      "mensaje_correcto": "🎉 ¡Excelente! La resolución del conversor ADC de Arduino UNO es de 10 bits, lo que permite representar el voltaje de 0V a 5V en un rango numérico de 0 a 1023.",
+      "mensaje_incorrecto": "❌ Respuesta incorrecta. Recordá que el conversor analógico-digital (ADC) convierte la entrada de 0V-5V en una escala de 10 bits (0 a 1023)."
+    },
+    "navegacion": {
+      "anterior": "12-lecturas-analogicas.php",
+      "siguiente": "14-salidas-pwm.php"
+    }
+  }

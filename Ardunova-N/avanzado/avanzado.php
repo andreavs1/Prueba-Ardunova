@@ -193,7 +193,7 @@ Conexión de Arduino a redes inalámbricas.
 </p>
 
 
-<a class="btn btn-gradient mt-1 w-100" href="20-wifi.php">
+<a class="btn btn-gradient mt-1 w-100" href="20-comunicacion-wifi.php">
 Ver tutorial
 </a>
 
@@ -232,7 +232,7 @@ Conexión de dispositivos usando el protocolo I2C.
 </p>
 
 
-<a class="btn btn-gradient mt-1 w-100" href="21-i2c.php">
+<a class="btn btn-gradient mt-1 w-100" href="21-comunicacion-i2c.php">
 Ver tutorial
 </a>
 
@@ -271,7 +271,7 @@ Intercambio de información con dispositivos electrónicos.
 </p>
 
 
-<a class="btn btn-gradient mt-1 w-100" href="22-spi.php">
+<a class="btn btn-gradient mt-1 w-100" href="22-comunicacion-spi.php">
 Ver tutorial
 </a>
 
@@ -310,7 +310,7 @@ Uso de varios elementos al mismo tiempo en un proyecto.
 </p>
 
 
-<a class="btn btn-gradient mt-1 w-100" href="23-varios-componentes.php">
+<a class="btn btn-gradient mt-1 w-100" href="23-proyectos-integradores.php">
 Ver tutorial
 </a>
 
@@ -349,7 +349,7 @@ Métodos para encontrar y corregir problemas en proyectos.
 </p>
 
 
-<a class="btn btn-gradient mt-1 w-100" href="24-solucion-errores.php">
+<a class="btn btn-gradient mt-1 w-100" href="24-solucion-de-errores.php">
 Ver tutorial
 </a>
 

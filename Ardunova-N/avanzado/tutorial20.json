@@ -1,0 +1,81 @@
+{
+    "badge": "MÓDULO 4 · LECCIÓN 20 (AVANZADO)",
+    "titulo": "Comunicación Wi-Fi e IoT (ESP32 / ESP8266)",
+    "subtitulo": "Conectá tu placa a Internet para enviar datos a servidores, recibir comandos remotos y crear proyectos de Internet de las Cosas.",
+    "concepto_principal": {
+      "titulo": "🌐 Conectividad a la Red e IoT",
+      "descripcion": "Mediante chips como el **ESP32** o módulos **ESP8266**, Arduino puede conectarse directamente a un router Wi-Fi. Esto permite realizar peticiones HTTP/HTTPS, comunicarse con plataformas Cloud (IoT) y monitorear sensores en tiempo real desde cualquier parte del mundo."
+    },
+    "funciones_clave": [
+      {
+        "icono": "📶",
+        "titulo": "WiFi.begin(ssid, pass)",
+        "descripcion": "Inicio de conexión.",
+        "detalle": "Inicia la asociación del chip a la red inalámbrica enviando el nombre de red (SSID) y la contraseña indicada."
+      },
+      {
+        "icono": "🔍",
+        "titulo": "WiFi.status()",
+        "descripcion": "Estado del enlace.",
+        "detalle": "Devuelve el estado de la conexión. Es fundamental verificar que retorne 'WL_CONNECTED' antes de realizar cualquier petición web."
+      },
+      {
+        "icono": "📍",
+        "titulo": "WiFi.localIP()",
+        "descripcion": "Dirección IP asignada.",
+        "detalle": "Obtiene la IP local recibida por DHCP dentro de la red inalámbrica para acceder al servidor web embebido."
+      },
+      {
+        "icono": "🌐",
+        "titulo": "HTTPClient / WiFiClient",
+        "descripcion": "Peticiones Web.",
+        "detalle": "Librerías integradas para interactuar con APIs REST externas usando métodos GET, POST o WebSockets."
+      }
+    ],
+    "codigo_ejemplo": {
+      "titulo": "Conexión Inalámbrica a Red Wi-Fi",
+      "lenguaje": "C++ / Wiring",
+      "codigo": "#include <WiFi.h>\n\nconst char* red = \"MiWiFi\";\nconst char* clave = \"12345678\";\n\nvoid setup() {\n    Serial.begin(115200);\n    \n    // Intenta conectar a la red Wi-Fi\n    WiFi.begin(red, clave);\n    \n    // Espera hasta confirmar la conexión\n    while (WiFi.status() != WL_CONNECTED) {\n        delay(500);\n        Serial.println(\"Conectando...\");\n    }\n    \n    Serial.println(\"Conectado al WiFi!\");\n    Serial.print(\"Dirección IP asignada: \");\n    Serial.println(WiFi.localIP());\n}\n\nvoid loop() {\n    // Lógica continua o peticiones periódicas\n}"
+    },
+    "simulador_wokwi": {
+      "titulo": "Simulación Wi-Fi en ESP32",
+      "instruccion": "Iniciá la simulación con **Play (▶)** para observar la secuencia de conexión y asignación de la dirección IP ficticia en el Monitor Serie:",
+      "project_id": "305102402120909376",
+      "nota": "💡 **Nota técnica:** Las placas ESP32 funcionan a 3.3V y requieren ajustar la velocidad del Monitor Serie a **115200 baudios** por defecto."
+    },
+    "simulador_logica": {
+      "titulo": "Laboratorio Virtual: Monitor de Estados de Red",
+      "instruccion": "Seleccioná un evento de red para observar el ciclo de respuesta de la librería WiFi:",
+      "opciones": [
+        {
+          "id": "WIFI_CONNECTING",
+          "evento": "Estado: WiFi.status() == WL_IDLE_STATUS",
+          "respuesta": "[WiFi] Intentando asociar con el AP... Estado: Conectando"
+        },
+        {
+          "id": "WIFI_SUCCESS",
+          "evento": "Estado: WiFi.status() == WL_CONNECTED",
+          "respuesta": "[WiFi] Enlace establecido con éxito. IP asignada: 192.168.1.45"
+        },
+        {
+          "id": "WIFI_FAILED",
+          "evento": "Estado: WiFi.status() == WL_CONNECT_FAILED",
+          "respuesta": "[WiFi] Error de autenticación. Clave incorrecta o AP fuera de alcance."
+        }
+      ]
+    },
+    "quiz": {
+      "pregunta": "🧪 ¿Qué constante o valor devuelve la función WiFi.status() cuando el dispositivo se ha asociado correctamente a la red Wi-Fi?",
+      "opciones": [
+        { "texto": "WL_CONNECTED", "es_correcta": true },
+        { "texto": "WL_DISCONNECTED", "es_correcta": false },
+        { "texto": "WL_IDLE_STATUS", "es_correcta": false }
+      ],
+      "mensaje_correcto": "🎉 ¡Correcto! 'WL_CONNECTED' confirma que el dispositivo obtuvo enlace y está listo para comunicarse en la red.",
+      "mensaje_incorrecto": "❌ Respuesta incorrecta. Recordá que la constante estándar para verificar una conexión exitosa es 'WL_CONNECTED'."
+    },
+    "navegacion": {
+      "anterior": "19-comunicacion-bluetooth.php",
+      "siguiente": "21-proyectos-integradores.php"
+    }
+  }

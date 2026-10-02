@@ -2,46 +2,238 @@ document.addEventListener('DOMContentLoaded', async () => {
     const app = document.getElementById('app-tutorial');
 
     try {
-        // 1. Cargar el JSON
         const response = await fetch('tutorial1.json');
-        if (!response.ok) throw new Error('No se pudo cargar tutorial1.json');
+        if (!response.ok) {
+            throw new Error(`No se pudo cargar 'tutorial1.json'. Estado HTTP: ${response.status}`);
+        }
         const data = await response.json();
 
-        // Helper para convertir **negrita** a HTML <strong>
-        const formatBold = (text) => text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        const formatBold = (text) => text ? text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') : '';
 
-        // 2. Renderizar el contenido
+        // Función para mezclar aleatoriamente las opciones del Quiz (Evita que la correcta quede fija)
+        const shuffledQuizOptions = [...data.quiz.opciones].sort(() => Math.random() - 0.5);
+
         app.innerHTML = `
-            <div class="container my-5">
-                <!-- Encabezado -->
-                <header class="mb-4 text-center">
-                    <span class="badge bg-primary px-3 py-2 mb-2">${data.badge}</span>
-                    <h1 class="display-5 fw-bold text-dark">${data.titulo}</h1>
-                    <p class="lead text-muted">${data.subtitulo}</p>
+            <div class="container py-5" style="max-width: 1000px;">
+                
+                <style>
+                    :root {
+                        --ardunova-dark: #0b132b;
+                        --ardunova-cyan: #06b6d4;
+                        --ardunova-blue: #3b82f6;
+                        --ardunova-purple: #a855f7;
+                    }
+
+                    .hero-ardunova {
+                        background: linear-gradient(135deg, #0b132b 0%, #1c2541 60%, #1e1b4b 100%);
+                        border: 1px solid rgba(6, 182, 212, 0.2);
+                        box-shadow: 0 0 25px rgba(6, 182, 212, 0.15);
+                    }
+
+                    .card-glow {
+                        background: #ffffff;
+                        border: 1px solid #e2e8f0;
+                        border-radius: 18px;
+                        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                    }
+
+                    .card-glow:hover {
+                        transform: translateY(-4px);
+                        border-color: var(--ardunova-cyan);
+                        box-shadow: 0 12px 30px -10px rgba(6, 182, 212, 0.25) !important;
+                    }
+
+                    .btn-details-custom {
+                        background: #f8fafc;
+                        border: 1px solid #e2e8f0;
+                        color: #0284c7;
+                        font-size: 0.85rem;
+                        font-weight: 600;
+                        padding: 8px 14px;
+                        border-radius: 10px;
+                        transition: all 0.25s ease;
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        width: 100%;
+                        cursor: pointer;
+                        margin-top: 12px;
+                    }
+
+                    .btn-details-custom:hover {
+                        background: #f0f9ff;
+                        border-color: #38bdf8;
+                        color: #0369a1;
+                    }
+
+                    .btn-details-custom .chevron-icon {
+                        transition: transform 0.3s ease;
+                        font-size: 0.75rem;
+                    }
+
+                    .btn-details-custom[aria-expanded="true"] .chevron-icon {
+                        transform: rotate(180deg);
+                    }
+
+                    .btn-details-custom[aria-expanded="true"] {
+                        background: #e0f2fe;
+                        border-color: #0284c7;
+                    }
+
+                    .details-box {
+                        background: #f8fafc;
+                        border-left: 4px solid var(--ardunova-cyan);
+                        border-radius: 8px;
+                        padding: 12px 16px;
+                        font-size: 0.88rem;
+                        color: #334155;
+                        box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+                        animation: fadeInDetails 0.3s ease-in-out;
+                    }
+
+                    @keyframes fadeInDetails {
+                        from { opacity: 0; transform: translateY(-6px); }
+                        to { opacity: 1; transform: translateY(0); }
+                    }
+
+                    .code-glow {
+                        background: #090d16;
+                        border: 1px solid rgba(59, 130, 246, 0.3);
+                        box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+                    }
+
+                    .btn-ardunova {
+                        background: linear-gradient(135deg, #0284c7, #2563eb);
+                        color: white;
+                        border: none;
+                        font-weight: 600;
+                        border-radius: 12px;
+                        transition: all 0.2s ease;
+                        box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+                    }
+
+                    .btn-ardunova:hover {
+                        background: linear-gradient(135deg, #0369a1, #1d4ed8);
+                        color: white;
+                        transform: translateY(-1px);
+                        box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+                    }
+
+                    .quiz-btn-interactive {
+                        transition: all 0.25s ease;
+                        border: 2px solid #e2e8f0;
+                        background-color: #f8fafc;
+                        border-radius: 12px;
+                        font-weight: 500;
+                    }
+
+                    .quiz-btn-interactive:hover {
+                        border-color: var(--ardunova-blue);
+                        background-color: #eff6ff;
+                        transform: translateX(4px);
+                    }
+
+                    .pulse-badge {
+                        animation: pulseGlow 2s infinite;
+                    }
+
+                    @keyframes pulseGlow {
+                        0% { box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.4); }
+                        70% { box-shadow: 0 0 0 10px rgba(6, 182, 212, 0); }
+                        100% { box-shadow: 0 0 0 0 rgba(6, 182, 212, 0); }
+                    }
+                </style>
+
+                <!-- Header Banner Hero -->
+                <header class="hero-ardunova rounded-4 p-4 p-md-5 mb-5 text-white position-relative overflow-hidden">
+                    <div class="position-relative z-1">
+                        <div class="d-flex align-items-center gap-2 mb-3">
+                            <span class="badge px-3 py-2 rounded-pill bg-info bg-opacity-10 text-info border border-info border-opacity-25 font-monospace pulse-badge" style="font-size: 0.8rem;">
+                                ${data.badge}
+                            </span>
+                        </div>
+                        <h1 class="fw-bold display-6 text-white mb-2">${data.titulo}</h1>
+                        <p class="fs-6 text-light opacity-75 mb-0">${data.subtitulo}</p>
+                    </div>
                 </header>
 
-                <!-- Concepto Principal -->
-                <div class="card shadow-sm border-0 mb-5">
-                    <div class="card-body p-4 p-md-5 text-center">
-                        <h2 class="h3 text-primary mb-3">${data.concepto_principal.titulo}</h2>
-                        <p class="fs-5 text-secondary mx-auto" style="max-width: 750px;">
-                            ${formatBold(data.concepto_principal.descripcion)}
-                        </p>
+                <!-- Explicación Conceptual -->
+                <section class="card card-glow shadow-sm mb-4 p-4" style="border-left: 6px solid #06b6d4 !important;">
+                    <div class="d-flex align-items-start gap-3">
+                        <div class="p-3 bg-info bg-opacity-10 text-info rounded-3 fs-3">🤖</div>
+                        <div>
+                            <h2 class="h5 fw-bold text-dark mb-2">${data.concepto_principal.titulo}</h2>
+                            <p class="text-secondary mb-0 leading-relaxed" style="font-size: 0.95rem;">
+                                ${formatBold(data.concepto_principal.descripcion)}
+                            </p>
+                        </div>
                     </div>
+                </section>
+
+                <!-- Tarjetas de Especificaciones y Funciones Clave -->
+                <h3 class="h5 fw-bold text-dark mb-3">Especificaciones y Características</h3>
+                <div class="row g-3 mb-5">
+                    ${data.funciones_clave.map((item, index) => `
+                        <div class="col-md-6">
+                            <div class="card card-glow h-100 p-4 d-flex flex-column justify-content-between">
+                                <div>
+                                    <div class="d-flex align-items-center gap-3 mb-2">
+                                        <span class="fs-3 p-2 bg-primary bg-opacity-10 rounded-3 text-primary">${item.icono}</span>
+                                        <div>
+                                            <h4 class="h6 fw-bold mb-0 text-dark font-monospace" style="font-size: 1.1rem;">${item.titulo}</h4>
+                                        </div>
+                                    </div>
+                                    <p class="text-secondary small mb-2 mt-2">${item.descripcion}</p>
+                                </div>
+                                
+                                ${item.detalle ? `
+                                <div>
+                                    <button class="btn-details-custom" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDetalle1_${index}" aria-expanded="false">
+                                        <span>ℹ️ Ver detalles técnicos</span>
+                                        <span class="chevron-icon">▼</span>
+                                    </button>
+                                    <div class="collapse mt-2" id="collapseDetalle1_${index}">
+                                        <div class="details-box">
+                                            ${formatBold(item.detalle)}
+                                        </div>
+                                    </div>
+                                </div>
+                                ` : ''}
+                            </div>
+                        </div>
+                    `).join('')}
                 </div>
 
-                <!-- SIMULADOR WOKWI EMBEBIDO -->
-                <div class="card shadow-sm border-0 mb-5 overflow-hidden">
-                    <div class="card-header bg-dark text-white p-3 text-center">
-                        <h3 class="h5 mb-0">${data.simulador_wokwi.titulo}</h3>
+                <!-- Código de Ejemplo -->
+                <section class="card code-glow rounded-4 mb-5 overflow-hidden shadow-lg">
+                    <div class="card-header bg-black bg-opacity-50 border-bottom border-secondary border-opacity-25 py-3 px-4 d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="rounded-circle bg-danger d-inline-block" style="width: 10px; height: 10px;"></span>
+                            <span class="rounded-circle bg-warning d-inline-block" style="width: 10px; height: 10px;"></span>
+                            <span class="rounded-circle bg-success d-inline-block" style="width: 10px; height: 10px;"></span>
+                            <span class="font-monospace small text-info ms-2">${data.codigo_ejemplo.titulo}</span>
+                        </div>
+                        <span class="badge bg-primary bg-opacity-25 text-info border border-info border-opacity-25 font-monospace">
+                            ${data.codigo_ejemplo.lenguaje}
+                        </span>
                     </div>
-                    <div class="card-body p-4">
-                        <p class="text-center text-secondary mb-3">
-                            ${formatBold(data.simulador_wokwi.instruccion)}
-                        </p>
+                    <div class="card-body p-4 font-monospace" style="font-size: 0.9rem; color: #e2e8f0; overflow-x: auto;">
+                        <pre class="m-0"><code>${data.codigo_ejemplo.codigo}</code></pre>
+                    </div>
+                </section>
+
+                <!-- Simulador Wokwi -->
+                <section class="card card-glow shadow-sm mb-5 overflow-hidden">
+                    <div class="card-header bg-white border-bottom py-3 px-4 d-flex align-items-center justify-content-between">
+                        <h3 class="h6 fw-bold mb-0 text-dark d-flex align-items-center gap-2">
+                            <span>🎮</span> ${data.simulador_wokwi.titulo}
+                        </h3>
+                        <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 small">● En Vivo</span>
+                    </div>
+                    <div class="card-body p-4 bg-light bg-opacity-50">
+                        <p class="small text-muted mb-3">${formatBold(data.simulador_wokwi.instruccion)}</p>
                         
-                        <!-- Contenedor Responsive de Iframe -->
-                        <div class="ratio ratio-16x9 rounded overflow-hidden border shadow-sm mb-3" style="max-height: 480px;">
+                        <div class="ratio ratio-16x9 rounded-4 border border-2 border-info shadow-sm bg-white overflow-hidden mb-3" style="max-height: 460px;">
                             <iframe 
                                 src="https://wokwi.com/projects/${data.simulador_wokwi.project_id}?embed=1" 
                                 title="Simulador Wokwi Arduino"
@@ -49,117 +241,114 @@ document.addEventListener('DOMContentLoaded', async () => {
                             </iframe>
                         </div>
 
-                        <div class="alert alert-info mb-0 small">
+                        <div class="p-3 bg-white border rounded-3 text-secondary small shadow-sm">
                             ${formatBold(data.simulador_wokwi.nota)}
                         </div>
                     </div>
-                </div>
+                </section>
 
-                <!-- Simulador de Lógica Teórica -->
-                <div class="card shadow border-primary mb-5">
-                    <div class="card-header bg-primary text-white p-3 text-center">
-                        <h3 class="h5 mb-0">${data.simulador_logica.titulo}</h3>
-                        <small>${data.simulador_logica.instruccion}</small>
-                    </div>
-                    <div class="card-body p-4">
-                        <div class="row g-4 align-items-center">
-                            <div class="col-md-5 text-center">
-                                <label class="form-label fw-bold">1. ¿Qué detecta el Sensor? (Entrada)</label>
-                                <select id="sim-input" class="form-select form-select-lg mb-3">
-                                    ${data.simulador_logica.opciones.map(opt => `
-                                        <option value="${opt.id}">${opt.evento}</option>
-                                    `).join('')}
-                                </select>
-                            </div>
-                            <div class="col-md-2 text-center fs-2 text-muted">➔ 🧠 ➔</div>
-                            <div class="col-md-5 text-center">
-                                <label class="form-label fw-bold">2. Respuesta de Arduino (Salida)</label>
-                                <div id="sim-output" class="p-3 bg-light rounded border border-2 text-primary fw-bold fs-5">
-                                    ${data.simulador_logica.opciones[0].respuesta}
-                                </div>
+                <!-- Simulador de Consola -->
+                <section class="card card-glow shadow-sm mb-5 p-4">
+                    <h3 class="h6 fw-bold text-dark mb-1 d-flex align-items-center gap-2">
+                        <span>🧪</span> ${data.simulador_logica.titulo}
+                    </h3>
+                    <p class="small text-muted mb-4">${data.simulador_logica.instruccion}</p>
+                    
+                    <div class="row g-3 align-items-stretch">
+                        <div class="col-md-5">
+                            <label class="form-label small fw-bold text-secondary">Fase del Programa</label>
+                            <select id="sim-input" class="form-select font-monospace small py-2 border-2 rounded-3">
+                                ${data.simulador_logica.opciones.map(opt => `
+                                    <option value="${opt.id}">${opt.evento}</option>
+                                `).join('')}
+                            </select>
+                        </div>
+                        <div class="col-md-7">
+                            <label class="form-label small fw-bold text-secondary">Respuesta del Sistema</label>
+                            <div id="sim-output" class="p-3 rounded-3 font-monospace small bg-dark text-info border border-info border-opacity-25 h-100 d-flex align-items-center shadow-inner">
+                                ${data.simulador_logica.opciones[0].respuesta}
                             </div>
                         </div>
                     </div>
-                </div>
+                </section>
 
-                <!-- Anatomía de la Placa -->
-                <h2 class="h3 mb-4 text-center">Explorá la Placa Arduino (Anatomía)</h2>
-                <div class="row g-3 mb-5">
-                    ${data.anatomia.map((item, index) => `
-                        <div class="col-md-4">
-                            <div class="card h-100 border-0 shadow-sm text-center p-3">
-                                <div class="fs-1 text-${item.color_clase}">${item.icono}</div>
-                                <h4 class="h5 fw-bold mt-2">${item.titulo}</h4>
-                                <p class="small text-muted">${item.descripcion}</p>
-                                <button class="btn btn-sm btn-outline-${item.color_clase} mt-auto" type="button" data-bs-toggle="collapse" data-bs-target="#desc-${index}">
-                                    ${item.boton_texto}
-                                </button>
-                                <div class="collapse mt-2 text-start small bg-light p-2 rounded" id="desc-${index}">
-                                    ${formatBold(item.detalle)}
-                                </div>
-                            </div>
-                        </div>
-                    `).join('')}
-                </div>
+                <!-- Quiz Interactivo (Opciones aleatorizadas) -->
+                <section class="card card-glow shadow-sm p-4 mb-5" style="border-top: 5px solid #a855f7 !important;">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <span class="badge px-3 py-2 rounded-pill font-monospace" style="background-color: #f3e8ff; color: #a855f7;">
+                            🧠 RETO DE CONOCIMIENTO
+                        </span>
+                    </div>
+                    <p class="fw-bold text-dark mb-3" style="font-size: 1rem;">${data.quiz.pregunta}</p>
 
-                <!-- Mini Quiz -->
-                <div class="card bg-light border-0 p-4 mb-5 shadow-sm">
-                    <h3 class="h5 fw-bold text-center mb-3">🧪 Mini-Comprobación Rápida</h3>
-                    <p class="text-center text-muted mb-4">${data.quiz.pregunta}</p>
-
-                    <div class="d-flex justify-content-center gap-3 flex-wrap">
-                        ${data.quiz.opciones.map(opt => `
-                            <button class="btn btn-outline-secondary px-4 quiz-btn" data-correct="${opt.es_correcta}">
+                    <div class="d-flex flex-column gap-2 mb-3">
+                        ${shuffledQuizOptions.map(opt => `
+                            <button class="btn text-start p-3 quiz-btn-interactive" 
+                                    style="font-size: 0.9rem;"
+                                    data-correct="${opt.es_correcta}">
                                 ${opt.texto}
                             </button>
                         `).join('')}
                     </div>
-                    <div id="quiz-feedback" class="mt-3 text-center fw-bold"></div>
-                </div>
+                    <div id="quiz-feedback" class="small fw-bold mt-2"></div>
+                </section>
 
-                <!-- Navegación -->
-                <div class="d-flex justify-content-between align-items-center mt-4 pt-3 border-top">
-                    <a href="${data.navegacion.anterior}" class="btn btn-outline-secondary">← Volver a Tutoriales</a>
-                    <a href="${data.navegacion.siguiente}" class="btn btn-primary px-4">Siguiente: Tu primer programa →</a>
-                </div>
+                <!-- Navegación Inferior -->
+                <footer class="d-flex justify-content-between align-items-center pt-4 border-top">
+                    <a href="${data.navegacion.anterior}" class="btn btn-outline-secondary px-4 py-2 rounded-3 fw-semibold" style="font-size: 0.9rem;">
+                        ← Anterior
+                    </a>
+                    <a href="${data.navegacion.siguiente}" class="btn btn-ardunova px-4 py-2" style="font-size: 0.9rem;">
+                        Siguiente Lección →
+                    </a>
+                </footer>
+
             </div>
         `;
 
-        // 3. Lógica del Simulador de Lógica
+        // Lógica de la consola interactiva
         const selectSim = document.getElementById('sim-input');
         const outputSim = document.getElementById('sim-output');
         const respuestasMap = Object.fromEntries(data.simulador_logica.opciones.map(o => [o.id, o.respuesta]));
 
         selectSim.addEventListener('change', (e) => {
             outputSim.textContent = respuestasMap[e.target.value];
-            outputSim.classList.add('bg-warning-subtle');
-            setTimeout(() => outputSim.classList.remove('bg-warning-subtle'), 300);
         });
 
-        // 4. Lógica del Quiz
-        const quizBtns = document.querySelectorAll('.quiz-btn');
+        // Lógica del Quiz
+        const quizBtns = document.querySelectorAll('.quiz-btn-interactive');
         const feedback = document.getElementById('quiz-feedback');
 
         quizBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                quizBtns.forEach(b => b.classList.remove('btn-success', 'btn-danger'));
+                quizBtns.forEach(b => {
+                    b.style.backgroundColor = "#f8fafc";
+                    b.style.borderColor = "#e2e8f0";
+                    b.style.color = "#212529";
+                });
                 
                 if (btn.dataset.correct === "true") {
-                    btn.classList.add('btn-success');
-                    feedback.innerHTML = `<span class="text-success">${data.quiz.mensaje_correcto}</span>`;
+                    btn.style.backgroundColor = "#dcfce7";
+                    btn.style.borderColor = "#22c55e";
+                    btn.style.color = "#15803d";
+                    feedback.className = "small fw-bold mt-2 text-success";
+                    feedback.textContent = data.quiz.mensaje_correcto;
                 } else {
-                    btn.classList.add('btn-danger');
-                    feedback.innerHTML = `<span class="text-danger">${data.quiz.mensaje_incorrecto}</span>`;
+                    btn.style.backgroundColor = "#fee2e2";
+                    btn.style.borderColor = "#ef4444";
+                    btn.style.color = "#b91c1c";
+                    feedback.className = "small fw-bold mt-2 text-danger";
+                    feedback.textContent = data.quiz.mensaje_incorrecto;
                 }
             });
         });
 
     } catch (error) {
         app.innerHTML = `
-            <div class="container my-5">
-                <div class="alert alert-danger text-center">
-                    <h4>Error al cargar el tutorial</h4>
-                    <p class="mb-0">${error.message}</p>
+            <div class="container my-5 text-center">
+                <div class="alert alert-danger p-4 rounded-4 shadow-sm">
+                    <h5 class="fw-bold text-danger">⚠️ Error al cargar la lección</h5>
+                    <p class="mb-0 font-monospace small text-secondary">${error.message}</p>
                 </div>
             </div>`;
     }

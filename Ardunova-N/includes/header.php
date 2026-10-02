@@ -16,11 +16,10 @@ $usuario_sesion = $_SESSION['usuario'] ?? null;
       <div class="collapse navbar-collapse" id="mainNavbar">
         <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
           <li class="nav-item"><a class="nav-link <?= $active_page === 'inicio' ? 'active' : '' ?>" href="index.php">Inicio</a></li>
-          <li class="nav-item"><a class="nav-link <?= $active_page === 'tutoriales' ? 'active' : '' ?>" href="tutoriales.php">Tutoriales</a></li>
-          <li class="nav-item"><a class="nav-link <?= $active_page === 'proyectos' ? 'active' : '' ?>" href="proyectos.php">Proyectos</a></li>
-          <li class="nav-item"><a class="nav-link <?= $active_page === 'recursos' ? 'active' : '' ?>" href="recursos.php">Recursos</a></li>
-          <li class="nav-item"><a class="nav-link <?= $active_page === 'comunidad' ? 'active' : '' ?>" href="comunidad.php">Comunidad</a></li>
-          <li class="nav-item"><a class="nav-link <?= $active_page === 'nosotros' ? 'active' : '' ?>" href="nosotros.php">Nosotros</a></li>
+          <li class="nav-item"><a class="nav-link <?= $active_page === 'tutoriales' ? 'active' : '' ?>" href="/Ardunova-N/tutoriales.php">Tutoriales</a></li>
+          <li class="nav-item"><a class="nav-link <?= $active_page === 'proyectos' ? 'active' : '' ?>" href="/Ardunova-N/asd/proyectos.php">Proyectos</a></li>
+          <li class="nav-item"><a class="nav-link <?= $active_page === 'recursos' ? 'active' : '' ?>" href="/Ardunova-N/recursos.php">Recursos</a></li>
+          <li class="nav-item"><a class="nav-link <?= $active_page === 'nosotros' ? 'active' : '' ?>" href="/Ardunova-N/nosotros.php">Nosotros</a></li>
           <?php if ($usuario_sesion): ?>
             <li class="nav-item dropdown ms-lg-2">
               <a class="nav-link dropdown-toggle user-link" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

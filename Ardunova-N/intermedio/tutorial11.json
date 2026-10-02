@@ -1,0 +1,81 @@
+{
+    "badge": "MÓDULO 3 · LECCIÓN 11 (INTERMEDIO)",
+    "titulo": "Sensores y Lectura de Datos del Entorno",
+    "subtitulo": "Descubrí cómo Arduino se conecta con el mundo físico mediante la lectura de señales analógicas y el uso de sensores.",
+    "concepto_principal": {
+      "titulo": "📡 Conexión con el Mundo Físico",
+      "descripcion": "Los **sensores** capturan magnitudes físicas del entorno (luz, temperatura, distancia, humedad) y las transforman en señales eléctricas que el microcontrolador analiza para tomar acciones automatizadas."
+    },
+    "funciones_clave": [
+      {
+        "icono": "📊",
+        "titulo": "analogRead(pin)",
+        "descripcion": "Lee la tensión en un pin analógico (A0-A5) y devuelve un entero entre 0 y 1023.",
+        "detalle": "Arduino Uno posee un Conversor Analógico-Digital (ADC) de 10 bits. Mapea un rango de tensión de 0V a 5V en un rango numérico de 0 a 1023."
+      },
+      {
+        "icono": "📺",
+        "titulo": "Serial.begin(baudios)",
+        "descripcion": "Inicializa la comunicación serie entre Arduino y la computadora a una velocidad de baudios dada.",
+        "detalle": "La velocidad estándar recomendada es de `9600` baudios. Es indispensable declararla dentro de `setup()` para usar la consola o el Monitor Serie."
+      },
+      {
+        "icono": "💬",
+        "titulo": "Serial.println(valor)",
+        "descripcion": "Envía un dato al Monitor Serie seguido de un salto de línea.",
+        "detalle": "Permite visualizar en tiempo real los valores leídos por los sensores en la pantalla del entorno de desarrollo (IDE)."
+      },
+      {
+        "icono": "📌",
+        "titulo": "Pines A0 - A5",
+        "descripcion": "Pines de entrada dedicados a medir variaciones continuas de voltaje.",
+        "detalle": "A diferencia de los pines digitales (que solo interpretan HIGH/LOW), estos pines miden gradaciones finas de tensión en sensores analógicos como LDRs o potenciómetros."
+      }
+    ],
+    "codigo_ejemplo": {
+      "titulo": "Lectura Serie de un Sensor Analógico",
+      "lenguaje": "C++ / Wiring",
+      "codigo": "int sensor = A0;  // Pin analógico donde se conecta el sensor\nint valor;       // Variable para almacenar la lectura\n\nvoid setup() {\n    Serial.begin(9600); // Inicializa comunicación serie a 9600 baudios\n}\n\nvoid loop() {\n    valor = analogRead(sensor); // Lee el valor analógico (0 a 1023)\n    Serial.println(valor);      // Imprime el valor en la consola serie\n    delay(500);                 // Muestrea la lectura cada medio segundo\n}"
+    },
+    "simulador_wokwi": {
+      "titulo": "Simulación Interactiva de Sensores",
+      "instruccion": "Iniciá la simulación con el botón **Play (▶)** y interactuá con el sensor analógico para observar el cambio de valores en el Monitor Serie:",
+      "project_id": "305102402120909376",
+      "nota": "💡 **Tip:** Ajustá la intensidad luminosa o potenciómetro simulado para ver cómo `analogRead()` varía entre 0 (0V) y 1023 (5V)."
+    },
+    "simulador_logica": {
+      "titulo": "Laboratorio Virtual: Conversión ADC (Voltaje a Valor Digital)",
+      "instruccion": "Seleccioná un voltaje de entrada en el Pin A0 para simular la conversión de lectura de Arduino:",
+      "opciones": [
+        {
+          "id": "VOLT_0V",
+          "evento": "Voltaje en A0: 0.0 Volts",
+          "respuesta": "[ADC CONVERSIÓN] analogRead(A0) -> Valor: 0 | Salida Serie: 0"
+        },
+        {
+          "id": "VOLT_25V",
+          "evento": "Voltaje en A0: 2.5 Volts (50%)",
+          "respuesta": "[ADC CONVERSIÓN] analogRead(A0) -> Valor: 511 | Salida Serie: 511"
+        },
+        {
+          "id": "VOLT_5V",
+          "evento": "Voltaje en A0: 5.0 Volts (100%)",
+          "respuesta": "[ADC CONVERSIÓN] analogRead(A0) -> Valor: 1023 | Salida Serie: 1023"
+        }
+      ]
+    },
+    "quiz": {
+      "pregunta": "🧪 ¿Cuál es el rango de valores devuelto por la función 'analogRead()' en un Arduino Uno?",
+      "opciones": [
+        { "texto": "De 0 a 1023", "es_correcta": true },
+        { "texto": "De 0 a 255", "es_correcta": false },
+        { "texto": "Únicamente 0 (LOW) o 1 (HIGH)", "es_correcta": false }
+      ],
+      "mensaje_correcto": "🎉 ¡Excelente! Debido a la resolución de 10 bits del conversor ADC, analogRead() convierte lecturas de 0V a 5V en valores enteros de 0 a 1023.",
+      "mensaje_incorrecto": "❌ Respuesta incorrecta. Recordá que 0 a 255 corresponde a salidas PWM (analogWrite), mientras que las entradas analógicas (analogRead) entregan valores entre 0 y 1023."
+    },
+    "navegacion": {
+      "anterior": "10-bucles-y-ciclos.php",
+      "siguiente": "12-comunicacion-serie.php"
+    }
+  }

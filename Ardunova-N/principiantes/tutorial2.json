@@ -1,0 +1,76 @@
+{
+  "badge": "MÓDULO 1 · LECCIÓN 02",
+  "titulo": "Componentes de la Placa Arduino",
+  "subtitulo": "Conocé las partes esenciales que integran la placa Arduino UNO y su función en el circuito.",
+  "concepto_principal": {
+    "titulo": "🧩 Arquitectura de la Placa Arduino UNO",
+    "descripcion": "La placa **Arduino UNO** integra múltiples módulos clave en un solo circuito impreso: el microcontrolador principal (**ATmega328P**), reguladores de voltaje, pines de conexión y el chip de comunicación USB."
+  },
+  "funciones_clave": [
+    {
+      "icono": "🧠",
+      "titulo": "Microcontrolador ATmega328P",
+      "descripcion": "El cerebro de la placa que ejecuta las instrucciones almacenadas.",
+      "detalle": "Microcontrolador de 8 bits a 16 MHz con 32 KB de memoria Flash, 2 KB de SRAM y 1 KB de EEPROM."
+    },
+    {
+      "icono": "🔌",
+      "titulo": "Puerto USB y Conector Jack",
+      "descripcion": "Interfaces de alimentación eléctrica y transferencia de datos.",
+      "detalle": "El puerto USB alimenta a 5V y permite programar la placa; el conector Jack tolera de 7V a 12V DC."
+    },
+    {
+      "icono": "📌",
+      "titulo": "Pines Digitales (0-13) y Analógicos (A0-A5)",
+      "descripcion": "Puntos de conexión para leer datos o controlar periféricos.",
+      "detalle": "Los pines digitales leen/escriben estados HIGH/LOW; los analógicos leen voltajes variables de 0V a 5V."
+    },
+    {
+      "icono": "⚡",
+      "titulo": "Pines de Alimentación (5V, 3.3V, GND)",
+      "descripcion": "Líneas de suministro de energía para circuitos externos.",
+      "detalle": "El pin 5V entrega energía a sensores; GND proporciona la referencia a tierra obligatoria del circuito."
+    }
+  ],
+  "codigo_ejemplo": {
+    "titulo": "Identificación de Pines en Código C++",
+    "lenguaje": "C++ / Wiring",
+    "codigo": "// Configuración de un pin digital de salida\nconst int pinLed = 13;      // Pin Digital 13 (LED integrado)\nconst int pinSensor = A0;   // Pin Analógico A0\n\nvoid setup() {\n  pinMode(pinLed, OUTPUT);\n}\n\nvoid loop() {\n  digitalWrite(pinLed, HIGH);\n  delay(1000);\n  digitalWrite(pinLed, LOW);\n  delay(1000);\n}"
+  },
+  "simulador_wokwi": {
+    "titulo": "Exploración Física de la Placa Arduino UNO",
+    "instruccion": "Presioná **Play (▶)** e interactuá con los componentes conectados en el simulador:",
+    "project_id": "305102402120909376",
+    "nota": "💡 **Tip:** Hacé clic sobre la placa Arduino dentro del simulador para inspeccionar el mapa de pines y referencias."
+  },
+  "simulador_logica": {
+    "titulo": "Laboratorio Virtual: Inspección de Componentes",
+    "instruccion": "Seleccioná un bloque físico para analizar su comportamiento eléctrico:",
+    "opciones": [
+      {
+        "id": "COMP_MICRO",
+        "evento": "Microcontrolador (ATmega328P)",
+        "respuesta": "[PROCESAMIENTO] Ejecuta las instrucciones en C++ a una frecuencia de reloj de 16 MHz."
+      },
+      {
+        "id": "COMP_POWER",
+        "evento": "Regulador de Voltaje y Pines GND",
+        "respuesta": "[ENERGÍA] Reduce la tensión de entrada a 5V estables y cierra el retorno a tierra (GND)."
+      }
+    ]
+  },
+  "quiz": {
+    "pregunta": "🧪 ¿Cuál es el microcontrolador principal que actúa como 'cerebro' en la placa Arduino UNO?",
+    "opciones": [
+      { "texto": "ESP8266 Wi-Fi Chip", "es_correcta": false },
+      { "texto": "Raspberry Pi Pico", "es_correcta": false },
+      { "texto": "ATmega328P", "es_correcta": true }
+    ],
+    "mensaje_correcto": "🎉 ¡Correcto! El ATmega328P es el microcontrolador de 8 bits que procesa el código en la placa Arduino UNO.",
+    "mensaje_incorrecto": "❌ Respuesta incorrecta. Recordá que el chip principal de la placa Arduino UNO es el ATmega328P."
+  },
+  "navegacion": {
+    "anterior": "01-introduccion-arduino.php",
+    "siguiente": "03-entorno-ide.php"
+  }
+}

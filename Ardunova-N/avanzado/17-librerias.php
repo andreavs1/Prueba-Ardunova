@@ -1,28 +1,21 @@
-<?php
-session_start();
-$active_page = 'tutoriales';
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>17. Librerías - ARDUNOVA</title>
-    
-    <!-- Estilos generales y Bootstrap -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>17 - Librerías | Ardunova</title>
+    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
-<body>
+<body class="bg-light">
 
-<?php include __DIR__ . '/../includes/header.php'; ?>
+    <!-- Contenedor dinámico de la lección -->
+    <main id="app-tutorial"></main>
 
-<!-- Contenedor dinámico para la lección -->
-<main id="app-tutorial"></main>
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Script ejecutor -->
+    <script src="tutorial17.js"></script>
 
-<?php include __DIR__ . '/../includes/footer.php'; ?>
-
-<!-- Carga del contenido y la lógica en JavaScript -->
-<script src="tutorial17.js"></script>
 </body>
 </html>
