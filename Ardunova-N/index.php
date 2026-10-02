@@ -20,7 +20,6 @@ $active_page = 'inicio';
   <div class="container">
     <div class="row align-items-center g-5">
       <div class="col-12 col-lg-6 hero-content">
-        Esto es un ejemplo
         <span class="hero-badge">Aprendé • Creá • Experimentá</span>
         <h1>Aprendé <span class="highlight">Arduino</span> creá el futuro</h1>
         <p>En ARDUNOVA te enseñamos de forma simple y práctica para que puedas crear tus propios proyectos.</p>
