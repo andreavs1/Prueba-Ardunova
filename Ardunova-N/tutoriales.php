@@ -27,7 +27,7 @@ $active_page = 'tutoriales';
               <div class="col-12 col-sm-6 col-lg-4">
                 <article class="card h-100">
                   <div class="card-image">
-                      <img src="../assets/img/principiante.png" alt="Principiante" class="card-img-top">
+                      <img src="/Ardunova-N/assets/img/principiante.png" alt="Principiante" class="card-img-top">
                   </div>
                  <div class="card-body">
                       <span class="tag-Nivel principiante">Principiante</span>
@@ -47,7 +47,7 @@ $active_page = 'tutoriales';
       <div class="col-12 col-sm-6 col-lg-4">
         <article class="card">
           <div class="card-image">
-              <img src="../assets/img/arduinoquees.jpg" alt="Intermedio" class="card-img-top">
+              <img src="/Ardunova-N/assets/intermedio.jpg" alt="Intermedio" class="card-img-top">
           </div>
           <div class="card-body">
             <span class="tag-Nivel intermedio">Intermedio</span>
@@ -66,7 +66,7 @@ $active_page = 'tutoriales';
       <div class="col-12 col-sm-6 col-lg-4">
         <article class="card">
           <div class="card-image">
-            <img src="../assets/img/avanzado.png" alt="Avanzado" class="card-img-top">
+            <img src="/Ardunova-N/assets/img/avanzado.png" alt="Avanzado" class="card-img-top">
           </div>
           <div class="card-body">
             <span class="tag-Nivel avanzado">Avanzado</span>
