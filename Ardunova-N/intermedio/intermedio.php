@@ -32,6 +32,9 @@ $active_page = 'tutoriales';
         <!-- TUTORIAL 9 -->
         <div class="col-12 col-sm-6 col-lg-4">
             <article class="card">
+                <div class="card-image">
+                    <img src="/Ardunova-N/assets/img/condicionales.png" alt="Condicionales" class="card-img-top">
+                </div>
                 <div class="card-body">
                     <span class="tag-nivel intermedio">Tutorial 9</span>
                     <h3>Condicionales</h3>
@@ -44,6 +47,9 @@ $active_page = 'tutoriales';
         <!-- TUTORIAL 10 -->
         <div class="col-12 col-sm-6 col-lg-4">
             <article class="card">
+                 <div class="card-image">
+                    <img src="/Ardunova-N/assets/img/bucle.png" alt="Bucles" class="card-img-top">
+                </div>
                 <div class="card-body">
                     <span class="tag-nivel intermedio">Tutorial 10</span>
                     <h3>Bucles</h3>
@@ -56,6 +62,9 @@ $active_page = 'tutoriales';
         <!-- TUTORIAL 11 -->
         <div class="col-12 col-sm-6 col-lg-4">
             <article class="card">
+                <div class="card-image">
+                    <img src="/Ardunova-N/assets/img/sensores.jpg" alt="Sensores" class="card-img-top">
+                </div>
                 <div class="card-body">
                     <span class="tag-nivel intermedio">Tutorial 11</span>
                     <h3>Sensores</h3>
@@ -68,6 +77,9 @@ $active_page = 'tutoriales';
         <!-- TUTORIAL 12 -->
         <div class="col-12 col-sm-6 col-lg-4">
             <article class="card">
+                <div class="card-image">
+                    <img src="/Ardunova-N/assets/img/lecanalogicas.png" alt="Lecturas analógicas" class="card-img-top">
+                </div>
                 <div class="card-body">
                     <span class="tag-nivel intermedio">Tutorial 12</span>
                     <h3>Lecturas analógicas</h3>
@@ -80,6 +92,9 @@ $active_page = 'tutoriales';
         <!-- TUTORIAL 13 -->
         <div class="col-12 col-sm-6 col-lg-4">
             <article class="card">
+                <div class="card-image">
+                    <img src="/Ardunova-N/assets/img/bucle.png" alt="Bucles" class="card-img-top">
+                </div>
                 <div class="card-body">
                     <span class="tag-nivel intermedio">Tutorial 13</span>
                     <h3>Potenciómetro</h3>
@@ -92,6 +107,9 @@ $active_page = 'tutoriales';
         <!-- TUTORIAL 14 -->
         <div class="col-12 col-sm-6 col-lg-4">
             <article class="card">
+                <div class="card-image">
+                    <img src="/Ardunova-N/assets/img/sensor-hc-sr04.png" alt="Sensor HC-SR04" class="card-img-top">
+                </div>
                 <div class="card-body">
                     <span class="tag-nivel intermedio">Tutorial 14</span>
                     <h3>Sensor HC-SR04</h3>
@@ -104,6 +122,9 @@ $active_page = 'tutoriales';
         <!-- TUTORIAL 15 -->
         <div class="col-12 col-sm-6 col-lg-4">
             <article class="card">
+                <div class="card-image">
+                    <img src="/Ardunova-N/assets/img/servomotor.png" alt="Servomotores" class="card-img-top">
+                </div>
                 <div class="card-body">
                     <span class="tag-nivel intermedio">Tutorial 15</span>
                     <h3>Servomotores</h3>
@@ -116,6 +137,9 @@ $active_page = 'tutoriales';
         <!-- TUTORIAL 16 -->
         <div class="col-12 col-sm-6 col-lg-4">
             <article class="card">
+                <div class="card-image">
+                    <img src="/Ardunova-N/assets/img/monitor-serial.png" alt="Monitor Serial" class="card-img-top">
+                </div>
                 <div class="card-body">
                     <span class="tag-nivel intermedio">Tutorial 16</span>
                     <h3>Monitor Serial</h3>
