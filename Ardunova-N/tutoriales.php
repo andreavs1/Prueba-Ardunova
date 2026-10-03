@@ -47,7 +47,7 @@ $active_page = 'tutoriales';
       <div class="col-12 col-sm-6 col-lg-4">
         <article class="card">
           <div class="card-image">
-              <img src="/Ardunova-N/assets/intermedio.jpg" alt="Intermedio" class="card-img-top">
+              <img src="/Ardunova-N/assets/img/intermedio.jpg" alt="Intermedio" class="card-img-top">
           </div>
           <div class="card-body">
             <span class="tag-Nivel intermedio">Intermedio</span>
