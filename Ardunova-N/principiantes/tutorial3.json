@@ -70,7 +70,7 @@
     "mensaje_incorrecto": "❌ Respuesta incorrecta. El botón 'Verificar' solo comprueba la sintaxis; para transferirlo a la placa debes usar 'Subir'."
   },
   "navegacion": {
-    "anterior": "02-componentes-arduino.php",
-    "siguiente": "04-primer-programa-blink.php"
+    "anterior": "/Ardunova-N/principiantes/02-placa-arduino.php",
+    "siguiente": "/Ardunova-N/principiantes/04-estructura-programada.php"
   }
 }

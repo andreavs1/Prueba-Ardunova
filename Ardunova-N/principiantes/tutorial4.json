@@ -70,7 +70,7 @@
     "mensaje_incorrecto": "❌ Respuesta incorrecta. Recordá que el bucle loop() es casi instantáneo; sin delay(), el ciclo se repite de inmediato."
   },
   "navegacion": {
-    "anterior": "03-entorno-ide.php",
-    "siguiente": "05-variables-y-datos.php"
+    "anterior": "/Ardunova-N/principiantes/03-arduino-ide.php",
+    "siguiente": "/Ardunova-N/principiantes/05-variables.php"
   }
 }

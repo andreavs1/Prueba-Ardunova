@@ -70,7 +70,7 @@
     "mensaje_incorrecto": "❌ Respuesta incorrecta. Cuando ingresa tensión de 5V al pin, digitalRead() devuelve el estado HIGH."
   },
   "navegacion": {
-    "anterior": "07-encender-y-apagar-un-led.php",
-    "siguiente": "09-uso-del-buzzer.php"
+    "anterior": "/Ardunova-N/principiantes/07-led.php",
+    "siguiente": "/Ardunova-N/intermedio/09-condicionales.php"
   }
 }

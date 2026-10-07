@@ -70,7 +70,7 @@
     "mensaje_incorrecto": "❌ Respuesta incorrecta. Recordá que para LEER datos se utiliza digitalRead(), mientras que digitalWrite() se usa para ENVIAR datos."
   },
   "navegacion": {
-    "anterior": "05-variables-y-datos.php",
-    "siguiente": "07-encender-y-apagar-un-led.php"
+    "anterior": "/Ardunova-N/principiantes/05-variables.php",
+    "siguiente": "/Ardunova-N/principiantes/07-led.php"
   }
 }

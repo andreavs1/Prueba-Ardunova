@@ -70,7 +70,7 @@
       "mensaje_incorrecto": "❌ Respuesta incorrecta. Para cortar la corriente hacia una salida digital debes usar digitalWrite(pin, LOW)."
     },
     "navegacion": {
-      "anterior": "06-entradas-y-salidas-digitales.php",
-      "siguiente": "08-uso-de-pulsadores.php"
+      "anterior": "/Ardunova-N/principiantes/06-entradas-salidas.php",
+      "siguiente": "/Ardunova-N/principiantes/08-pulsadores.php"
     }
   }
