@@ -15,7 +15,7 @@ $usuario_sesion = $_SESSION['usuario'] ?? null;
 
       <div class="collapse navbar-collapse" id="mainNavbar">
         <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
-          <li class="nav-item"><a class="nav-link <?= $active_page === 'inicio' ? 'active' : '' ?>" href="index.php">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link <?= $active_page === 'inicio' ? 'active' : '' ?>" href="/Ardunova.N/index.php">Inicio</a></li>
           <li class="nav-item"><a class="nav-link <?= $active_page === 'tutoriales' ? 'active' : '' ?>" href="/Ardunova-N/tutoriales.php">Tutoriales</a></li>
           <li class="nav-item"><a class="nav-link <?= $active_page === 'proyectos' ? 'active' : '' ?>" href="/Ardunova-N/asd/proyectos.php">Proyectos</a></li>
           <li class="nav-item"><a class="nav-link <?= $active_page === 'recursos' ? 'active' : '' ?>" href="/Ardunova-N/recursos.php">Recursos</a></li>
