@@ -57,6 +57,9 @@ Elegí el tutorial que querés aprender.
 <div class="col-12 col-sm-6 col-lg-4">
 
 <article class="card">
+                  <div class="card-image">
+                    <img src="/Ardunova-N/assets/img/librerias.png" alt="Librerías" class="card-img-top">
+                </div>
 
 <div class="card-body">
 
@@ -96,7 +99,9 @@ Ver tutorial
 <div class="col-12 col-sm-6 col-lg-4">
 
 <article class="card">
-
+                <div class="card-image">
+                    <img src="/Ardunova-N/assets/img/lcd.jpg" alt="Pantallas LCD" class="card-img-top">
+                </div>
 <div class="card-body">
 
 
@@ -135,6 +140,9 @@ Ver tutorial
 <div class="col-12 col-sm-6 col-lg-4">
 
 <article class="card">
+                  <div class="card-image">
+                    <img src="/Ardunova-N/assets/img/bluetooth.jpg" alt="Comunicación Bluetooth" class="card-img-top">
+                </div>
 
 <div class="card-body">
 
@@ -174,7 +182,9 @@ Ver tutorial
 <div class="col-12 col-sm-6 col-lg-4">
 
 <article class="card">
-
+                <div class="card-image">
+                    <img src="/Ardunova-N/assets/img/wifi.jpg" alt="Comunicación Wi-Fi" class="card-img-top">
+                </div>
 <div class="card-body">
 
 
@@ -213,7 +223,9 @@ Ver tutorial
 <div class="col-12 col-sm-6 col-lg-4">
 
 <article class="card">
-
+                <div class="card-image">
+                    <img src="/Ardunova-N/assets/img/i2c.png" alt="Comunicación I2C" class="card-img-top">
+                </div>
 <div class="card-body">
 
 
@@ -252,7 +264,9 @@ Ver tutorial
 <div class="col-12 col-sm-6 col-lg-4">
 
 <article class="card">
-
+                <div class="card-image">
+                    <img src="/Ardunova-N/assets/img/comunicacion.png" alt="Comunicación SPI" class="card-img-top">
+                </div>
 <div class="card-body">
 
 
@@ -291,7 +305,9 @@ Ver tutorial
 <div class="col-12 col-sm-6 col-lg-4">
 
 <article class="card">
-
+                <div class="card-image">
+                    <img src="/Ardunova-N/assets/img/componentes.png" alt="Varios componentes" class="card-img-top">
+                </div>
 <div class="card-body">
 
 
@@ -330,7 +346,9 @@ Ver tutorial
 <div class="col-12 col-sm-6 col-lg-4">
 
 <article class="card">
-
+                <div class="card-image">
+                    <img src="/Ardunova-N/assets/img/errores.png" alt="Solución de errores" class="card-img-top">
+                </div>
 <div class="card-body">
 
 

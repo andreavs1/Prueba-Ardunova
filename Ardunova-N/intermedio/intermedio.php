@@ -108,7 +108,7 @@ $active_page = 'tutoriales';
         <div class="col-12 col-sm-6 col-lg-4">
             <article class="card">
                 <div class="card-image">
-                    <img src="/Ardunova-N/assets/img/sensor-hc-sr04.png" alt="Sensor HC-SR04" class="card-img-top">
+                    <img src="/Ardunova-N/assets/img/ultrasonico.jpg" alt="Sensor HC-SR04" class="card-img-top">
                 </div>
                 <div class="card-body">
                     <span class="tag-nivel intermedio">Tutorial 14</span>
@@ -123,7 +123,7 @@ $active_page = 'tutoriales';
         <div class="col-12 col-sm-6 col-lg-4">
             <article class="card">
                 <div class="card-image">
-                    <img src="/Ardunova-N/assets/img/servomotor.png" alt="Servomotores" class="card-img-top">
+                    <img src="/Ardunova-N/assets/img/servo.jpg" alt="Servomotores" class="card-img-top">
                 </div>
                 <div class="card-body">
                     <span class="tag-nivel intermedio">Tutorial 15</span>
@@ -138,7 +138,7 @@ $active_page = 'tutoriales';
         <div class="col-12 col-sm-6 col-lg-4">
             <article class="card">
                 <div class="card-image">
-                    <img src="/Ardunova-N/assets/img/monitor-serial.png" alt="Monitor Serial" class="card-img-top">
+                    <img src="/Ardunova-N/assets/img/monitorserial.png" alt="Monitor Serial" class="card-img-top">
                 </div>
                 <div class="card-body">
                     <span class="tag-nivel intermedio">Tutorial 16</span>
