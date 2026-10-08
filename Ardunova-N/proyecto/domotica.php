@@ -21,17 +21,16 @@
                 <div class="collapse navbar-collapse" id="mainNavbar">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php">Inicio</a>
+                            <a class="nav-link" href="/Ardunova-N/index.php">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="tutoriales.php">Tutoriales</a>
+                            <a class="nav-link" href="/Ardunova-N/tutoriales.php">Tutoriales</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="proyectos.php">Proyectos</a>
+                            <a class="nav-link active" href="/Ardunova-N/proyectos.php">Proyectos</a>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="recursos.php">Recursos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="comunidad.php">Comunidad</a></li>
-                        <li class="nav-item"><a class="nav-link" href="nosotros.php">Nosotros</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/Ardunova-N/recursos.php">Recursos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/Ardunova-N/nosotros.php">Nosotros</a></li>
                         
                     </ul>
                 </div>
