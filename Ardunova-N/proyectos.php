@@ -158,7 +158,7 @@ $active_page = 'proyectos';
       </span>
 
       <h3>
-        Sensor Ultrasónico de Distancia
+        Sensor Ultrasónico
       </h3>
 
       <p>

@@ -34,7 +34,7 @@ $active_page = 'tutoriales';
             <div class="card-body">
               <span class="tag-Nivel principiante">Principiante</span>
               <h3>NIVEL PRINCIPIANTE</h3>
-              <p>Aprende los conceptos principales de Arduino, la placa, el entorno de programación y los primeros proyectos.</p>
+              <p>Aprende los conceptos principales de Arduino, el entorno de programación y los primeros proyectos.</p>
               <a class="btn btn-gradient mt-1 w-100" href="principiantes/principiantes.php">
                 Comenzar 
               </a>
