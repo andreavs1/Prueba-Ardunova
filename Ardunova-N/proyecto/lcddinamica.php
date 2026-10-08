@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <?php include __DIR__ . '/Ardunova-N/includes/header.php'; ?>
+    <?php include __DIR__ . '/includes/header.php'; ?>
     <header class="main-header">
         <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
             <div class="container">
@@ -117,7 +117,7 @@
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <?php include __DIR__ . '/../includes/footer.php'; ?>
+    <?php include __DIR__ . '/includes/footer.php'; ?>
 </body>
 
 </html>

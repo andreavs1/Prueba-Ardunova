@@ -11,7 +11,7 @@
 
 <body>
   
-<?php include __DIR__ . '/Ardunova-N/includes/header.php'; ?>
+<?php include __DIR__ . '/includes/header.php'; ?>
 
 <main class="container section-container">
     <div class="project-header">
@@ -112,6 +112,6 @@ void loop() {
     </section>
 </main>
 
-<?php include __DIR__ . '/Ardunova-N/includes/footer.php'; ?>
+<?php include __DIR__ . '/includes/footer.php'; ?>
 </body>
 </html>
