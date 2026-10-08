@@ -68,3 +68,37 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+--
+--
+--
+-- CREAMOS LA TABLA DE TUTORIAL
+CREATE TABLE tutoriales (
+    id_tutorial INT PRIMARY KEY AUTO_INCREMENT,
+    categoria_t VARCHAR(20) NOT NULL
+);
+--
+--
+--
+-- VOLCADO DE DATOS PARA LA TABLA DE TUTORIALES
+INSERT INTO tutoriales (categoria_t) VALUES
+('Principiante'),
+('Principiante'),
+('Principiante'),
+('Principiante'),
+('Principiante'),
+('Principiante'),
+('Principiante'),
+('Principiante');
+--
+--
+--
+-- CREAMOS LA TABLA PROGRESO PARA TENER UN SEGUIMIENTO DE LO REALIZADO DEL USUSARIO
+CREATE TABLE progreso (
+    id_progreso INT PRIMARY KEY AUTO_INCREMENT,
+    id_usuario INT NOT NULL,
+    id_tutorial INT NOT NULL,
+    completado BOOLEAN NOT NULL DEFAULT 0,
+
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
+    FOREIGN KEY (id_tutorial) REFERENCES tutoriales(id_tutorial)
+);
