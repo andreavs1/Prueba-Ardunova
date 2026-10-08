@@ -21,7 +21,7 @@ $active_page = 'proyectos';
 
 <body>
 
-<?php include __DIR__ . '/Ardunova-N/includes/header.php'; ?>
+<?php include __DIR__ . '/includes/header.php'; ?>
 
 <main class="container section-container">
 
