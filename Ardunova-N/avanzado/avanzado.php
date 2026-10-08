@@ -107,7 +107,7 @@ $active_page = 'tutoriales';
         <div class="col-12 col-sm-6 col-lg-4">
             <article class="card">
                 <div class="card-image">
-                    <img src="../assets/img/spi.png" alt="Comunicación SPI" class="card-img-top">
+                    <img src="../assets/img/comunicacion.png" alt="Comunicación SPI" class="card-img-top">
                 </div>
                 <div class="card-body">
                     <span class="tag-nivel avanzado">Tutorial 22</span>
@@ -122,7 +122,7 @@ $active_page = 'tutoriales';
         <div class="col-12 col-sm-6 col-lg-4">
             <article class="card">
                 <div class="card-image">
-                    <img src="../assets/img/multiproyecto.jpg" alt="Varios componentes" class="card-img-top">
+                    <img src="../assets/img/componentes.png" alt="Varios componentes" class="card-img-top">
                 </div>
                 <div class="card-body">
                     <span class="tag-nivel avanzado">Tutorial 23</span>
@@ -137,7 +137,7 @@ $active_page = 'tutoriales';
         <div class="col-12 col-sm-6 col-lg-4">
             <article class="card">
                 <div class="card-image">
-                    <img src="../assets/img/debugging.png" alt="Solución de errores" class="card-img-top">
+                    <img src="../assets/img/errores.png" alt="Solución de errores" class="card-img-top">
                 </div>
                 <div class="card-body">
                     <span class="tag-nivel avanzado">Tutorial 24</span>
