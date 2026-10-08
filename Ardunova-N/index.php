@@ -39,19 +39,19 @@ $active_page = 'inicio';
 
           <div class="carousel-inner rounded-4 overflow-hidden shadow-lg">
             <div class="carousel-item active">
-              <img src="assets/img/ardui2.png" class="d-block w-100" alt="Placa Arduino Uno">
+              <img src="/Ardunova-N/assets/img/ardui2.png" class="d-block w-100" alt="Placa Arduino Uno">
               <div class="carousel-caption d-none d-md-block">
                 <span>Arduino desde cero</span>
               </div>
             </div>
             <div class="carousel-item">
-              <img src="assets/img/robot.png" class="d-block w-100" alt="Proyecto de robótica">
+              <img src="/Ardunova-N/assets/img/robot.png" class="d-block w-100" alt="Proyecto de robótica">
               <div class="carousel-caption d-none d-md-block">
                 <span>Robótica y creatividad</span>
               </div>
             </div>
             <div class="carousel-item">
-              <img src="assets/img/proyecto.png" class="d-block w-100" alt="Proyecto práctico">
+              <img src="/Ardunova-N/assets/img/proyecto.png" class="d-block w-100" alt="Proyecto práctico">
               <div class="carousel-caption d-none d-md-block">
                 <span>Proyectos para aprender haciendo</span>
               </div>
@@ -87,13 +87,13 @@ $active_page = 'inicio';
           <div class="col-12 col-md-6">
             <article class="card h-100">
               <div class="card-image">
-                <img alt="Semáforo inteligente" src="assets/img/semaforo.png"/>
+                <img alt="Semáforo inteligente" src="/Ardunova-N/assets/img/semaforo.png"/>
               </div>
               <div class="card-body">
                 <span class="tag-nivel principiante">Principiante</span>
                 <h3>Semáforo Inteligente</h3>
                 <p>Estructuración básica de temporizaciones de luces viales.</p>
-                <a class="btn btn-gradient mt-1 w-100" href="proyectos.php">Ver más</a>
+                <a class="btn btn-gradient mt-1 w-100" href="/Ardunova-N/proyectos.php">Ver más</a>
               </div>
             </article>
           </div>
@@ -101,13 +101,13 @@ $active_page = 'inicio';
           <div class="col-12 col-md-6">
             <article class="card h-100">
               <div class="card-image">
-                <img alt="Robot seguidor de línea" src="assets/img/robot-seguidor-linea.png"/>
+                <img alt="Robot seguidor de línea" src="/Ardunova-N/assets/img/robot-seguidor-linea.png"/>
               </div>
               <div class="card-body">
                 <span class="tag-nivel intermedio">Intermedio</span>
                 <h3>Auto Seguidor de Línea</h3>
                 <p>Diseño de un robot móvil autónomo con sensores infrarrojos.</p>
-                <a class="btn btn-gradient mt-1 w-100" href="proyectos.php">Ver más</a>
+                <a class="btn btn-gradient mt-1 w-100" href="/Ardunova-N/proyectos.php">Ver más</a>
               </div>
             </article>
           </div>
@@ -119,13 +119,13 @@ $active_page = 'inicio';
           <div class="col-12 col-md-6">
             <article class="card h-100">
               <div class="card-image">
-                <img alt="Pantalla LCD" src="assets/img/lcd.jpg"/>
+                <img alt="Pantalla LCD" src="/Ardunova-N/assets/img/lcd.jpg"/>
               </div>
               <div class="card-body">
                 <span class="tag-nivel principiante">Principiante</span>
                 <h3>Pantalla LCD</h3>
                 <p>Conocé cómo mostrar información en una pantalla usando Arduino.</p>
-                <a class="btn btn-gradient mt-1 w-100" href="proyectos.php">Ver más</a>
+                <a class="btn btn-gradient mt-1 w-100" href="/Ardunova-N/proyectos.php">Ver más</a>
               </div>
             </article>
           </div>
@@ -133,13 +133,13 @@ $active_page = 'inicio';
           <div class="col-12 col-md-6">
             <article class="card h-100">
               <div class="card-image">
-                <img alt="Sensor ultrasónico" src="assets/img/ultrasonico.jpg"/>
+                <img alt="Sensor ultrasónico" src="/Ardunova-N/assets/img/ultrasonico.jpg"/>
               </div>
               <div class="card-body">
                 <span class="tag-nivel intermedio">Intermedio</span>
                 <h3>Sensor Ultrasónico</h3>
                 <p>Aprendé a medir distancias y usar sensores en tus proyectos.</p>
-                <a class="btn btn-gradient mt-1 w-100" href="proyectos.php">Ver más</a>
+                <a class="btn btn-gradient mt-1 w-100" href="/Ardunova-N/proyectos.php">Ver más</a>
               </div>
             </article>
           </div>
