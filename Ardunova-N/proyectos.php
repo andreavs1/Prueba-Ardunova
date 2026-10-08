@@ -455,9 +455,9 @@ $active_page = 'proyectos';
 </main>
 
 
-<?php include __DIR__ . '/../includes/chatbot.php'; ?>
+<?php include __DIR__ . '/includes/chatbot.php'; ?>
 
-<?php include __DIR__ . '/../includes/footer.php'; ?>
+<?php include __DIR__ . '/includes/footer.php'; ?>
 
 
 <script>
