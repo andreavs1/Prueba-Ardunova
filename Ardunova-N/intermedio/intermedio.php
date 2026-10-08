@@ -1,4 +1,3 @@
-                                                                                                                                                                                                                                                    
 <?php
 session_start();
 $active_page = 'tutoriales';
@@ -39,7 +38,7 @@ $active_page = 'tutoriales';
                     <span class="tag-nivel intermedio">Tutorial 9</span>
                     <h3>Condicionales</h3>
                     <p>Aprendé a tomar decisiones utilizando if y else.</p>
-                    <a class="btn btn-gradient mt-1 w-100" href="09-condicionales.php">Ver tutorial</a>
+                    <a class="btn btn-gradient mt-1 w-100" href="tutorial.intermedio.php?id=9">Ver tutorial</a>
                 </div>
             </article>
         </div>
@@ -47,14 +46,14 @@ $active_page = 'tutoriales';
         <!-- TUTORIAL 10 -->
         <div class="col-12 col-sm-6 col-lg-4">
             <article class="card">
-                 <div class="card-image">
+                <div class="card-image">
                     <img src="/Ardunova-N/assets/img/bucle.png" alt="Bucles" class="card-img-top">
                 </div>
                 <div class="card-body">
                     <span class="tag-nivel intermedio">Tutorial 10</span>
                     <h3>Bucles</h3>
                     <p>Repetición de acciones utilizando estructuras de control.</p>
-                    <a class="btn btn-gradient mt-1 w-100" href="10-bucles.php">Ver tutorial</a>
+                    <a class="btn btn-gradient mt-1 w-100" href="tutorial.intermedio.php?id=10">Ver tutorial</a>
                 </div>
             </article>
         </div>
@@ -69,7 +68,7 @@ $active_page = 'tutoriales';
                     <span class="tag-nivel intermedio">Tutorial 11</span>
                     <h3>Sensores</h3>
                     <p>Aprendé cómo Arduino recibe información del ambiente.</p>
-                    <a class="btn btn-gradient mt-1 w-100" href="11-sensores.php">Ver tutorial</a>
+                    <a class="btn btn-gradient mt-1 w-100" href="tutorial.intermedio.php?id=11">Ver tutorial</a>
                 </div>
             </article>
         </div>
@@ -84,7 +83,7 @@ $active_page = 'tutoriales';
                     <span class="tag-nivel intermedio">Tutorial 12</span>
                     <h3>Lecturas analógicas</h3>
                     <p>Uso de entradas analógicas para leer valores variables.</p>
-                    <a class="btn btn-gradient mt-1 w-100" href="12-lecturas-analogicas.php">Ver tutorial</a>
+                    <a class="btn btn-gradient mt-1 w-100" href="tutorial.intermedio.php?id=12">Ver tutorial</a>
                 </div>
             </article>
         </div>
@@ -93,13 +92,13 @@ $active_page = 'tutoriales';
         <div class="col-12 col-sm-6 col-lg-4">
             <article class="card">
                 <div class="card-image">
-                    <img src="/Ardunova-N/assets/img/bucle.png" alt="Bucles" class="card-img-top">
+                    <img src="/Ardunova-N/assets/img/bucle.png" alt="Potenciómetro" class="card-img-top">
                 </div>
                 <div class="card-body">
                     <span class="tag-nivel intermedio">Tutorial 13</span>
                     <h3>Potenciómetro</h3>
                     <p>Control de valores mediante una resistencia variable.</p>
-                    <a class="btn btn-gradient mt-1 w-100" href="13-potenciometro.php">Ver tutorial</a>
+                    <a class="btn btn-gradient mt-1 w-100" href="tutorial.intermedio.php?id=13">Ver tutorial</a>
                 </div>
             </article>
         </div>
@@ -114,7 +113,7 @@ $active_page = 'tutoriales';
                     <span class="tag-nivel intermedio">Tutorial 14</span>
                     <h3>Sensor HC-SR04</h3>
                     <p>Medición de distancia mediante ultrasonido.</p>
-                    <a class="btn btn-gradient mt-1 w-100" href="14-hc-sr04.php">Ver tutorial</a>
+                    <a class="btn btn-gradient mt-1 w-100" href="tutorial.intermedio.php?id=14">Ver tutorial</a>
                 </div>
             </article>
         </div>
@@ -129,7 +128,7 @@ $active_page = 'tutoriales';
                     <span class="tag-nivel intermedio">Tutorial 15</span>
                     <h3>Servomotores</h3>
                     <p>Control de movimientos y posiciones con Arduino.</p>
-                    <a class="btn btn-gradient mt-1 w-100" href="15-servomotores.php">Ver tutorial</a>
+                    <a class="btn btn-gradient mt-1 w-100" href="tutorial.intermedio.php?id=15">Ver tutorial</a>
                 </div>
             </article>
         </div>
@@ -144,7 +143,7 @@ $active_page = 'tutoriales';
                     <span class="tag-nivel intermedio">Tutorial 16</span>
                     <h3>Monitor Serial</h3>
                     <p>Visualización de datos enviados por Arduino.</p>
-                    <a class="btn btn-gradient mt-1 w-100" href="16-monitor-serial.php">Ver tutorial</a>
+                    <a class="btn btn-gradient mt-1 w-100" href="tutorial.intermedio.php?id=16">Ver tutorial</a>
                 </div>
             </article>
         </div>
@@ -157,4 +156,4 @@ $active_page = 'tutoriales';
 <?php include __DIR__ . '/../includes/footer.php'; ?>
 
 </body>
-</html>
+</html>                                                                                                                                                                                                                                           

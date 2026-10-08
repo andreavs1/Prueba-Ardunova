@@ -54,7 +54,7 @@ Tutorial 1
 <p>
 Conocé qué es Arduino y para qué sirve.
 </p>
-<a class="btn btn-gradient mt-1 w-100" href="01-que-es-arduino.php">
+<a class="btn btn-gradient mt-1 w-100" href="tutorial.principiante.php?id=1">
 Ver tutorial
 </a>
 </div>
@@ -78,7 +78,7 @@ Placa Arduino
 <p>
 Partes principales de la placa y conexiones.
 </p>
-<a class="btn btn-gradient mt-1 w-100" href="02-placa-arduino.php">
+<a class="btn btn-gradient mt-1 w-100" href="tutorial.principiante.php?id=2">
 Ver tutorial
 </a>
 </div>
@@ -102,7 +102,7 @@ Arduino IDE
 <p>
 Programa utilizado para escribir códigos.
 </p>
-<a class="btn btn-gradient mt-1 w-100" href="03-arduino-ide.php">
+<a class="btn btn-gradient mt-1 w-100" href="tutorial.principiante.php?id=3">
 Ver tutorial
 </a>
 </div>
@@ -126,7 +126,7 @@ Estructura del programa
 <p>
 Aprendé cómo funcionan setup() y loop().
 </p>
-<a class="btn btn-gradient mt-1 w-100" href="04-estructura-programa.php">
+<a class="btn btn-gradient mt-1 w-100" href="tutorial.principiante.php?id=4">
 Ver tutorial
 </a>
 </div>
@@ -150,7 +150,7 @@ Variables
 <p>
 Uso de datos dentro de Arduino.
 </p>
-<a class="btn btn-gradient mt-1 w-100" href="05-variables.php">
+<a class="btn btn-gradient mt-1 w-100" href="tutorial.principiante.php?id=5">
 Ver tutorial
 </a>
 </div>
@@ -174,7 +174,7 @@ Entradas y salidas
 <p>
 Control de componentes mediante Arduino.
 </p>
-<a class="btn btn-gradient mt-1 w-100" href="06-entradas-salidas.php">
+<a class="btn btn-gradient mt-1 w-100" href="tutorial.principiante.php?id=6">
 Ver tutorial
 </a>
 </div>
@@ -198,7 +198,7 @@ Encender LED
 <p>
 Primer proyecto práctico con Arduino.
 </p>
-<a class="btn btn-gradient mt-1 w-100" href="07-led.php">
+<a class="btn btn-gradient mt-1 w-100" href="tutorial.principiante.php?id=7">
 Ver tutorial
 </a>
 </div>
@@ -222,7 +222,7 @@ Pulsadores
 <p>
 Uso de botones para controlar Arduino.
 </p>
-<a class="btn btn-gradient mt-1 w-100" href="08-pulsadores.php">
+<a class="btn btn-gradient mt-1 w-100" href="tutorial.principiante.php?id=8">
 Ver tutorial
 </a>
 </div>
