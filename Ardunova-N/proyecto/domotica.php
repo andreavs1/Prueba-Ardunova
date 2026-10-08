@@ -11,11 +11,11 @@
 </head>
 
 <body>
-    <?php include __DIR__ . '/../includes/header.php'; ?>
+    <?php include __DIR__ . '/Ardunova-N/includes/header.php'; ?>
     <header class="main-header">
         <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
             <div class="container"><a class="navbar-brand" href="index.php">
-                    <img src="assets/img/logo.jpg" alt="Logo de ARDUNOVA" class="brand-logo"></a>
+                    <img src="/Ardunova-N/assets/img/logo.jpg" alt="Logo de ARDUNOVA" class="brand-logo"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#mainNavbar"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="mainNavbar">
@@ -52,7 +52,7 @@
             <div class="col-12 col-lg-5">
                 <div class="card h-100">
                     <div class="card-image">
-                        <img src="assets/img/domotica.jpg" alt="Domótica Básica">
+                        <img src="/Ardunova-N/assets/img/domotica.jpg" alt="Domótica Básica">
                     </div>
                 </div>
             </div>
@@ -81,7 +81,7 @@
             </div>
         </section>
         <div class="text-center button-container">
-            <a href="../proyectos.php" class="btn btn-outline-cyan">← Volver a Proyectos</a>
+            <a href="/Ardunova-N/proyectos.php" class="btn btn-outline-cyan">← Volver a Proyectos</a>
         </div>
     </main>
  <?php include __DIR__ . '/../includes/footer.php'; ?>

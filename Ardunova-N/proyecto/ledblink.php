@@ -10,7 +10,7 @@
 
 <body>
 
-<?php include __DIR__ . '/../includes/header.php'; ?>
+<?php include __DIR__ . '/Ardunova-N/includes/header.php'; ?>
 <main class="container section-container">
   <div class="project-header">
     <span class="tag-nivel principiante">Principiante</span>
@@ -22,7 +22,7 @@
     <div class="col-12 col-lg-7"><div class="project-info"><h2>Explicación</h2>
     <p>Este proyecto sirve para aprender a controlar una salida digital de Arduino. El LED se enciende y se apaga automáticamente cada segundo.</p><h3>Materiales</h3><ul><li>Arduino UNO</li><li>LED</li><li>Resistencia de 220Ω</li><li>Protoboard</li><li>Cables</li></ul></div></div>
     <div class="col-12 col-lg-5">
-      <div class="card h-100"><div class="card-image"><img src="assets/img/lcd.jpg" alt="Componentes del proyecto LED"></div></div></div>
+      <div class="card h-100"><div class="card-image"><img src="/Ardunova-N/assets/img/lcd.jpg" alt="Componentes del proyecto LED"></div></div></div>
   </div>
   <section class="code-section mt-5"><h2>Código</h2><div class="card code-card"><pre><code>void setup() {
   pinMode(13, OUTPUT);
@@ -62,7 +62,7 @@ void loop() {
 </div>
 </section>
 </main>
-<?php include __DIR__ . '/../includes/footer.php'; ?>
+<?php include __DIR__ . '/Ardunova-N/includes/footer.php'; ?>
 </body></html>
 <main class="container section-container">
   <div class="project-header">
@@ -76,7 +76,7 @@ void loop() {
     <p>Este proyecto sirve para aprender a controlar una salida digital de Arduino. El LED se enciende y se apaga automáticamente cada segundo.</p><h3>Materiales</h3><ul><li>Arduino UNO</li><li>LED</li><li>Resistencia de 220Ω</li><li>Protoboard</li><li>Cables</li></ul></div></div>
     <div class="col-12 col-lg-5">
       <div class="card h-100"><div class="card-image">
-        <img src="../assets/img/lcd.jpg" alt="Componentes del proyecto LED"></div></div></div>
+        <img src="/Ardunova-N/assets/img/lcd.jpg" alt="Componentes del proyecto LED"></div></div></div>
   </div>
   <section class="code-section mt-5">
     <h2>Código</h2>
@@ -115,10 +115,10 @@ void loop() {
     <p class="mb-0">El LED se prenderá y apagará cada segundo de forma continua.</p>
   </div>
   <div class="text-center button-container">
-    <a href="../proyectos.php" class="btn btn-outline-cyan">
+    <a href="/Ardunova-N/proyectos.php" class="btn btn-outline-cyan">
     ← Volver a Proyectos
   </a>
 </div></section>
 </main>
-<?php include __DIR__ . '/../includes/footer.php'; ?>
+<?php include __DIR__ . '/Ardunova-N/includes/footer.php'; ?>
 </body></html>

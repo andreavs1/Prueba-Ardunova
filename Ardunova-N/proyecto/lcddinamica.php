@@ -11,12 +11,12 @@
 </head>
 
 <body>
-    <?php include __DIR__ . '/../includes/header.php'; ?>
+    <?php include __DIR__ . '/Ardunova-N/includes/header.php'; ?>
     <header class="main-header">
         <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="index.php">
-                    <img src="assets/img/logo.jpg" alt="Logo de ARDUNOVA" class="brand-logo">
+                    <img src="/Ardunova-N/assets/img/logo.jpg" alt="Logo de ARDUNOVA" class="brand-logo">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
                     <span class="navbar-toggler-icon"></span>

@@ -39,7 +39,7 @@
         <div class="col-12 col-lg-5">
             <div class="card h-100">
                 <div class="card-image">
-                    <img src="../assets/img/ledboton.jpg" alt="Componentes del proyecto LED con Pulsador">
+                    <img src="/Ardunova-N/assets/img/ledboton.jpg" alt="Componentes del proyecto LED con Pulsador">
                 </div>
             </div>
         </div>
@@ -100,13 +100,13 @@ void loop() {
         </div>
 
         <div class="text-center button-container">
-            <a href="../proyectos.php" class="btn btn-outline-cyan">
+            <a href="/Ardunova-N/proyectos.php" class="btn btn-outline-cyan">
                 ← Volver a Proyectos
             </a>
         </div>
     </section>
 </main>
 
-<?php include __DIR__ . '/../includes/footer.php'; ?>
+<?php include __DIR__ . '/Ardunova-N/includes/footer.php'; ?>
 </body>
 </html>

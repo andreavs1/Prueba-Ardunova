@@ -11,7 +11,7 @@
 
 <body>
   
-<?php include __DIR__ . '/../includes/header.php'; ?>
+<?php include __DIR__ . '/Ardunova-N/includes/header.php'; ?>
 
 <main class="container section-container">
     <div class="project-header">
@@ -39,7 +39,7 @@
         <div class="col-12 col-lg-5">
             <div class="card h-100">
                 <div class="card-image">
-                    <img src="../assets/img/riego.jpg" alt="Componentes del proyecto Riego Automático">
+                    <img src="/Ardunova-N/assets/img/riego.jpg" alt="Componentes del proyecto Riego Automático">
                 </div>
             </div>
         </div>
@@ -105,13 +105,13 @@ void loop() {
         </div>
 
         <div class="text-center button-container">
-            <a href="../proyectos.php" class="btn btn-outline-cyan">
+            <a href="/Ardunova-N/proyectos.php" class="btn btn-outline-cyan">
                 ← Volver a Proyectos
             </a>
         </div>
     </section>
 </main>
 
-<?php include __DIR__ . '/../includes/footer.php'; ?>
+<?php include __DIR__ . '/Ardunova-N/includes/footer.php'; ?>
 </body>
 </html>
