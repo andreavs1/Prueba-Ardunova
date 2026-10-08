@@ -49,7 +49,7 @@ $active_page = 'proyectos';
       <article class="card">
 
         <div class="card-image">
-          <img alt="Pantalla LCD" src="../assets/img/lcd.jpg">
+          <img alt="Pantalla LCD" src="/Ardunova-N/assets/img/lcd.jpg">
         </div>
 
         <div class="card-body">
@@ -66,7 +66,7 @@ $active_page = 'proyectos';
             El clásico "Hola Mundo" del hardware. Aprendé el control básico del ciclo de procesamiento interno de salidas digitales.
           </p>
 
-          <a class="btn btn-gradient mt-1 w-100" href="ledblink.php">
+          <a class="btn btn-gradient mt-1 w-100" href="/Ardunova-N/proyecto/ledblink.php">
             Ver Proyecto
           </a>
 
@@ -83,7 +83,7 @@ $active_page = 'proyectos';
       <article class="card">
 
         <div class="card-image">
-          <img alt="Pantalla LCD Dinámica" src="../assets/img/lcd-dinamica.jpg">
+          <img alt="Pantalla LCD Dinámica" src="/Ardunova-N/assets/img/lcd-dinamica.jpg">
         </div>
 
         <div class="card-body">
@@ -100,7 +100,7 @@ $active_page = 'proyectos';
             Desplegá textos fijos y dinámicos con desplazamiento lateral programado controlando el contraste del dispositivo.
           </p>
 
-          <a class="btn btn-gradient mt-1 w-100" href="lcddinamica.php">
+          <a class="btn btn-gradient mt-1 w-100" href="/Ardunova-N/proyecto/lcddinamica.php">
             Ver Proyecto
           </a>
 
@@ -117,7 +117,7 @@ $active_page = 'proyectos';
       <article class="card">
 
         <div class="card-image">
-          <img alt="Semáforo Básico Arduino" src="../assets/img/semaforo-arduino.png">
+          <img alt="Semáforo Básico Arduino" src="/Ardunova-N/assets/img/semaforo-arduino.png">
         </div>
 
         <div class="card-body">
@@ -151,7 +151,7 @@ $active_page = 'proyectos';
       <article class="card">
 
         <div class="card-image">
-          <img alt="Sensor Ultrasónico de Distancia" src="../assets/img/ultrasonico.jpg">
+          <img alt="Sensor Ultrasónico de Distancia" src="/Ardunova-N/assets/img/ultrasonico.jpg">
         </div>
 
         <div class="card-body">
@@ -168,7 +168,7 @@ $active_page = 'proyectos';
             Medición precisa de proximidad calculando el tiempo de retorno de ondas de sonido de alta frecuencia.
           </p>
 
-          <a class="btn btn-gradient mt-1 w-100" href="sensorUltrasonico.php">
+          <a class="btn btn-gradient mt-1 w-100" href="/Ardunova-N/proyecto/sensorUltrasonico.php">
             Ver Proyecto
           </a>
 
@@ -185,7 +185,7 @@ $active_page = 'proyectos';
       <article class="card">
 
         <div class="card-image">
-          <img alt="Domótica" src="../assets/img/domotica.jpg">
+          <img alt="Domótica" src="/Ardunova-N/assets/img/domotica.jpg">
         </div>
 
         <div class="card-body">
@@ -202,7 +202,7 @@ $active_page = 'proyectos';
             Automatizá el encendido de luces de tu hogar utilizando relevadores eléctricos seguros y sensores de presencia.
           </p>
 
-          <a class="btn btn-gradient mt-1 w-100" href="domotica.php">
+          <a class="btn btn-gradient mt-1 w-100" href="/Ardunova-N/proyecto/domotica.php">
             Ver Proyecto
           </a>
 
@@ -219,7 +219,7 @@ $active_page = 'proyectos';
       <article class="card">
 
         <div class="card-image">
-          <img alt="Auto Seguidor de Línea" src="../assets/img/robot-seguidor-linea.png">
+          <img alt="Auto Seguidor de Línea" src="/Ardunova-N/assets/img/robot-seguidor-linea.png">
         </div>
 
         <div class="card-body">
@@ -236,7 +236,7 @@ $active_page = 'proyectos';
             Integración total de motores de corriente continua, puentes H de potencia y algoritmos lógicos PID.
           </p>
 
-          <a class="btn btn-gradient mt-1 w-100" href="seguidordelinea.php">
+          <a class="btn btn-gradient mt-1 w-100" href="/Ardunova-N/proyecto/seguidordelinea.php">
             Ver Proyecto
           </a>
 
@@ -253,7 +253,7 @@ $active_page = 'proyectos';
       <article class="card">
 
         <div class="card-image">
-          <img alt="LED con botón" src="../assets/img/ledBoton.jpg">
+          <img alt="LED con botón" src="/Ardunova-N/assets/img/ledBoton.jpg">
         </div>
 
         <div class="card-body">
@@ -270,7 +270,7 @@ $active_page = 'proyectos';
             Aprendé a controlar un LED utilizando un botón pulsador y las entradas y salidas digitales de Arduino.
           </p>
 
-          <a class="btn btn-gradient mt-1 w-100" href="ledboton.php">
+          <a class="btn btn-gradient mt-1 w-100" href="/Ardunova-N/proyecto/ledboton.php">
             Ver Proyecto
           </a>
 
@@ -287,7 +287,7 @@ $active_page = 'proyectos';
       <article class="card">
 
         <div class="card-image">
-          <img alt="LED con potenciómetro" src="../assets/img/Potenciómetro.jpg">
+          <img alt="LED con potenciómetro" src="/Ardunova-N/assets/img/Potenciómetro.jpg">
         </div>
 
         <div class="card-body">
@@ -304,7 +304,7 @@ $active_page = 'proyectos';
             Aprendé a controlar la intensidad de un LED utilizando un potenciómetro y una salida PWM de Arduino.
           </p>
 
-          <a class="btn btn-gradient mt-1 w-100" href="potenciometro.php">
+          <a class="btn btn-gradient mt-1 w-100" href="/Ardunova-N/proyecto/potenciometro.php">
             Ver Proyecto
           </a>
 
@@ -321,7 +321,7 @@ $active_page = 'proyectos';
       <article class="card">
 
         <div class="card-image">
-          <img alt="Sensor de luz LDR" src="../assets/img/SensorDeLuz.jpg">
+          <img alt="Sensor de luz LDR" src="/Ardunova-N/assets/img/SensorDeLuz.jpg">
         </div>
 
         <div class="card-body">
@@ -338,7 +338,7 @@ $active_page = 'proyectos';
             Utilizá un sensor LDR para detectar la cantidad de luz del ambiente y controlar diferentes LEDs mediante Arduino.
           </p>
 
-          <a class="btn btn-gradient mt-1 w-100" href="sensordeluZ.php">
+          <a class="btn btn-gradient mt-1 w-100" href="/Ardunova-N/assets/sensordeluZ.php">
             Ver Proyecto
           </a>
 
@@ -355,7 +355,7 @@ $active_page = 'proyectos';
       <article class="card">
 
         <div class="card-image">
-          <img alt="Sistema de riego automático" src="../assets/img/SistemaDeRiego.jpg">
+          <img alt="Sistema de riego automático" src="/Ardunova-N/assets/img/SistemaDeRiego.jpg">
         </div>
 
         <div class="card-body">
@@ -372,7 +372,7 @@ $active_page = 'proyectos';
             Automatizá el riego de una planta utilizando sensores y Arduino para detectar cuándo es necesario activar el sistema.
           </p>
 
-          <a class="btn btn-gradient mt-1 w-100" href="riego.php">
+          <a class="btn btn-gradient mt-1 w-100" href="/Ardunova-N/proyecto/riego.php">
             Ver Proyecto
           </a>
 
@@ -389,7 +389,7 @@ $active_page = 'proyectos';
       <article class="card">
 
         <div class="card-image">
-          <img alt="Robot evita obstáculos" src="../assets/img/robotobstaculos.jpg">
+          <img alt="Robot evita obstáculos" src="/Ardunova-N/assets/img/robotobstaculos.jpg">
         </div>
 
         <div class="card-body">
@@ -406,7 +406,7 @@ $active_page = 'proyectos';
             Construí un robot capaz de detectar obstáculos mediante sensores y modificar su recorrido automáticamente.
           </p>
 
-          <a class="btn btn-gradient mt-1 w-100" href="robotobstaculos.php">
+          <a class="btn btn-gradient mt-1 w-100" href="/Ardunova-N/proyecto/robotobstaculos.php">
             Ver Proyecto
           </a>
 
@@ -423,7 +423,7 @@ $active_page = 'proyectos';
       <article class="card">
 
         <div class="card-image">
-          <img alt="Servomotor con Arduino" src="../assets/img/ServoMotor.jpg">
+          <img alt="Servomotor con Arduino" src="/Ardunova-N/assets/img/ServoMotor.jpg">
         </div>
 
         <div class="card-body">
@@ -440,7 +440,7 @@ $active_page = 'proyectos';
             Aprendé a controlar la posición de un servomotor utilizando Arduino y programación.
           </p>
 
-          <a class="btn btn-gradient mt-1 w-100" href="servoMotor.php">
+          <a class="btn btn-gradient mt-1 w-100" href="/Ardunova-N/proyecto/servoMotor.php">
             Ver Proyecto
           </a>
 
