@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     loadLesson();
-    window.addEventListener('popstate', loadLesson);
 });
+
+window.addEventListener('popstate', loadLesson);
 
 async function loadLesson() {
     const app = document.getElementById('app-tutorial');
@@ -36,13 +37,12 @@ async function loadLesson() {
         const formatBold = (text) => text ? text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') : '';
 
         // Mezclar aleatoriamente las opciones del quiz
-        const shuffledQuizOptions = data.quiz?.opciones 
-            ? [...data.quiz.opciones].sort(() => Math.random() - 0.5) 
+        const shuffledQuizOptions = data.quiz?.opciones
+            ? [...data.quiz.opciones].sort(() => Math.random() - 0.5)
             : [];
 
         app.innerHTML = `
             <div class="container py-4" style="max-width: 1000px;">
-                
                 <style>
                     :root {
                         --ardunova-dark: #0b132b;
@@ -50,26 +50,22 @@ async function loadLesson() {
                         --ardunova-blue: #3b82f6;
                         --ardunova-purple: #a855f7;
                     }
-
                     .hero-ardunova {
                         background: linear-gradient(135deg, #0b132b 0%, #1c2541 60%, #1e1b4b 100%);
                         border: 1px solid rgba(6, 182, 212, 0.2);
                         box-shadow: 0 0 25px rgba(6, 182, 212, 0.15);
                     }
-
                     .card-glow {
                         background: #ffffff;
                         border: 1px solid #e2e8f0;
                         border-radius: 18px;
                         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
                     }
-
                     .card-glow:hover {
                         transform: translateY(-4px);
                         border-color: var(--ardunova-cyan);
                         box-shadow: 0 12px 30px -10px rgba(6, 182, 212, 0.25) !important;
                     }
-
                     .btn-details-custom {
                         background: #f8fafc;
                         border: 1px solid #e2e8f0;
@@ -86,27 +82,22 @@ async function loadLesson() {
                         cursor: pointer;
                         margin-top: 12px;
                     }
-
                     .btn-details-custom:hover {
                         background: #f0f9ff;
                         border-color: #38bdf8;
                         color: #0369a1;
                     }
-
                     .btn-details-custom .chevron-icon {
                         transition: transform 0.3s ease;
                         font-size: 0.75rem;
                     }
-
                     .btn-details-custom[aria-expanded="true"] .chevron-icon {
                         transform: rotate(180deg);
                     }
-
                     .btn-details-custom[aria-expanded="true"] {
                         background: #e0f2fe;
                         border-color: #0284c7;
                     }
-
                     .details-box {
                         background: #f8fafc;
                         border-left: 4px solid var(--ardunova-cyan);
@@ -117,18 +108,15 @@ async function loadLesson() {
                         box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
                         animation: fadeInDetails 0.3s ease-in-out;
                     }
-
                     @keyframes fadeInDetails {
                         from { opacity: 0; transform: translateY(-6px); }
                         to { opacity: 1; transform: translateY(0); }
                     }
-
                     .code-glow {
                         background: #090d16;
                         border: 1px solid rgba(59, 130, 246, 0.3);
                         box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
                     }
-
                     .btn-ardunova {
                         background: linear-gradient(135deg, #0284c7, #2563eb);
                         color: white;
@@ -138,21 +126,18 @@ async function loadLesson() {
                         transition: all 0.2s ease;
                         box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
                     }
-
                     .btn-ardunova:hover:not(:disabled) {
                         background: linear-gradient(135deg, #0369a1, #1d4ed8);
                         color: white;
                         transform: translateY(-1px);
                         box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
                     }
-
                     .btn-ardunova:disabled {
                         background: #94a3b8;
                         cursor: not-allowed;
                         box-shadow: none;
                         opacity: 0.6;
                     }
-
                     .quiz-btn-interactive {
                         transition: all 0.25s ease;
                         border: 2px solid #e2e8f0;
@@ -160,17 +145,14 @@ async function loadLesson() {
                         border-radius: 12px;
                         font-weight: 500;
                     }
-
                     .quiz-btn-interactive:hover {
                         border-color: var(--ardunova-blue);
                         background-color: #eff6ff;
                         transform: translateX(4px);
                     }
-
                     .pulse-badge {
                         animation: pulseGlow 2s infinite;
                     }
-
                     @keyframes pulseGlow {
                         0% { box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.4); }
                         70% { box-shadow: 0 0 0 10px rgba(6, 182, 212, 0); }
@@ -195,7 +177,7 @@ async function loadLesson() {
                 ${data.concepto_principal ? `
                 <section class="card card-glow shadow-sm mb-4 p-4" style="border-left: 6px solid #06b6d4 !important;">
                     <div class="d-flex align-items-start gap-3">
-                        <div class="p-3 bg-info bg-opacity-10 text-info rounded-3 fs-3">🔘</div>
+                        <div class="p-3 bg-info bg-opacity-10 text-info rounded-3 fs-3">💡</div>
                         <div>
                             <h2 class="h5 fw-bold text-dark mb-2">${data.concepto_principal.titulo}</h2>
                             <p class="text-secondary mb-0 leading-relaxed" style="font-size: 0.95rem;">
@@ -211,33 +193,32 @@ async function loadLesson() {
                 <h3 class="h5 fw-bold text-dark mb-3">Especificaciones y Funciones Clave</h3>
                 <div class="row g-3 mb-5">
                     ${data.funciones_clave.map((item, index) => `
-                        <div class="col-md-6">
-                            <div class="card card-glow h-100 p-4 d-flex flex-column justify-content-between">
-                                <div>
-                                    <div class="d-flex align-items-center gap-3 mb-2">
-                                        <span class="fs-3 p-2 bg-primary bg-opacity-10 rounded-3 text-primary">${item.icono || '⚡'}</span>
-                                        <div>
-                                            <h4 class="h6 fw-bold mb-0 text-dark font-monospace" style="font-size: 1.1rem;">${item.titulo}</h4>
-                                        </div>
-                                    </div>
-                                    <p class="text-secondary small mb-2 mt-2">${item.descripcion}</p>
-                                </div>
-                                
-                                ${item.detalle ? `
-                                <div>
-                                    <button class="btn-details-custom" type="button" data-bs-target="#collapseDetalle_${index}" aria-expanded="false">
-                                        <span>ℹ️ Ver detalles técnicos</span>
-                                        <span class="chevron-icon">▼</span>
-                                    </button>
-                                    <div class="collapse mt-2" id="collapseDetalle_${index}">
-                                        <div class="details-box">
-                                            ${formatBold(item.detalle)}
-                                        </div>
+                    <div class="col-md-6">
+                        <div class="card card-glow h-100 p-4 d-flex flex-column justify-content-between">
+                            <div>
+                                <div class="d-flex align-items-center gap-3 mb-2">
+                                    <span class="fs-3 p-2 bg-primary bg-opacity-10 rounded-3 text-primary">${item.icono || '⚡'}</span>
+                                    <div>
+                                        <h4 class="h6 fw-bold mb-0 text-dark font-monospace" style="font-size: 1.1rem;">${item.titulo}</h4>
                                     </div>
                                 </div>
-                                ` : ''}
+                                <p class="text-secondary small mb-2 mt-2">${item.descripcion}</p>
                             </div>
+                            ${item.detalle ? `
+                            <div>
+                                <button class="btn-details-custom" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDetalle_${index}" aria-expanded="false" aria-controls="collapseDetalle_${index}">
+                                    <span>Ver detalles técnicos</span>
+                                    <span class="chevron-icon">▼</span>
+                                </button>
+                                <div class="collapse mt-2" id="collapseDetalle_${index}">
+                                    <div class="details-box">
+                                        ${formatBold(item.detalle)}
+                                    </div>
+                                </div>
+                            </div>
+                            ` : ''}
                         </div>
+                    </div>
                     `).join('')}
                 </div>
                 ` : ''}
@@ -267,21 +248,19 @@ async function loadLesson() {
                 <section class="card card-glow shadow-sm mb-5 overflow-hidden">
                     <div class="card-header bg-white border-bottom py-3 px-4 d-flex align-items-center justify-content-between">
                         <h3 class="h6 fw-bold mb-0 text-dark d-flex align-items-center gap-2">
-                            <span>🎮</span> ${data.simulador_wokwi.titulo}
+                            <span>💻</span> ${data.simulador_wokwi.titulo}
                         </h3>
-                        <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 small">● En Vivo</span>
+                        <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 small">En Vivo</span>
                     </div>
                     <div class="card-body p-4 bg-light bg-opacity-50">
                         <p class="small text-muted mb-3">${formatBold(data.simulador_wokwi.instruccion)}</p>
-                        
                         <div class="ratio ratio-16x9 rounded-4 border border-2 border-info shadow-sm bg-white overflow-hidden mb-3" style="max-height: 460px;">
                             <iframe 
                                 src="https://wokwi.com/projects/${data.simulador_wokwi.project_id}?embed=1" 
-                                title="Simulador Wokwi Arduino"
+                                title="Simulador Wokwi Arduino" 
                                 allow="autoplay">
                             </iframe>
                         </div>
-
                         ${data.simulador_wokwi.nota ? `
                         <div class="p-3 bg-white border rounded-3 text-secondary small shadow-sm">
                             ${formatBold(data.simulador_wokwi.nota)}
@@ -295,16 +274,15 @@ async function loadLesson() {
                 ${data.simulador_logica ? `
                 <section class="card card-glow shadow-sm mb-5 p-4">
                     <h3 class="h6 fw-bold text-dark mb-1 d-flex align-items-center gap-2">
-                        <span>🧪</span> ${data.simulador_logica.titulo}
+                        <span>🔌</span> ${data.simulador_logica.titulo}
                     </h3>
                     <p class="small text-muted mb-4">${data.simulador_logica.instruccion}</p>
-                    
                     <div class="row g-3 align-items-stretch">
                         <div class="col-md-5">
                             <label class="form-label small fw-bold text-secondary">Acción en el Circuito</label>
                             <select id="sim-input" class="form-select font-monospace small py-2 border-2 rounded-3">
                                 ${data.simulador_logica.opciones.map(opt => `
-                                    <option value="${opt.id}">${opt.evento}</option>
+                                <option value="${opt.id}">${opt.evento}</option>
                                 `).join('')}
                             </select>
                         </div>
@@ -323,18 +301,17 @@ async function loadLesson() {
                 <section class="card card-glow shadow-sm p-4 mb-5" style="border-top: 5px solid #a855f7 !important;">
                     <div class="d-flex align-items-center gap-2 mb-3">
                         <span class="badge px-3 py-2 rounded-pill font-monospace" style="background-color: #f3e8ff; color: #a855f7;">
-                            🧠 RETO DE CONOCIMIENTO
+                            ☑️ RETO DE CONOCIMIENTO
                         </span>
                     </div>
                     <p class="fw-bold text-dark mb-3" style="font-size: 1rem;">${data.quiz.pregunta}</p>
-
                     <div class="d-flex flex-column gap-2 mb-3">
                         ${shuffledQuizOptions.map(opt => `
-                            <button class="btn text-start p-3 quiz-btn-interactive" 
-                                    style="font-size: 0.9rem;"
-                                    data-correct="${opt.es_correcta}">
-                                ${opt.texto}
-                            </button>
+                        <button class="btn text-start p-3 quiz-btn-interactive" 
+                                style="font-size: 0.9rem;" 
+                                data-correct="${opt.es_correcta}">
+                            ${opt.texto}
+                        </button>
                         `).join('')}
                     </div>
                     <div id="quiz-feedback" class="small fw-bold mt-2"></div>
@@ -351,7 +328,6 @@ async function loadLesson() {
                         Siguiente Lección →
                     </button>
                 </footer>
-
             </div>
         `;
 
@@ -363,7 +339,6 @@ async function loadLesson() {
                 if (targetEl) {
                     const isExpanded = btn.getAttribute('aria-expanded') === 'true';
                     btn.setAttribute('aria-expanded', !isExpanded);
-                    
                     if (isExpanded) {
                         targetEl.classList.remove('show');
                         targetEl.style.display = 'none';
@@ -385,13 +360,20 @@ async function loadLesson() {
             });
         }
 
-        // Navegación (Siguiente / Anterior)
+        // Navegación y guardado del progreso
         const currentNum = parseInt(lessonId, 10);
         const btnNext = document.getElementById('btn-next');
         const btnPrev = document.getElementById('btn-prev');
+        const quizBtns = document.querySelectorAll('.quiz-btn-interactive');
+        const feedback = document.getElementById('quiz-feedback');
+
+        let isQuizPassed = false;
 
         if (btnPrev) {
-            if (currentNum <= 1) btnPrev.classList.add('disabled');
+            if (currentNum <= 1) {
+                btnPrev.classList.add('disabled');
+            }
+
             btnPrev.addEventListener('click', () => {
                 if (currentNum > 1) {
                     window.location.search = `?id=${currentNum - 1}`;
@@ -400,48 +382,83 @@ async function loadLesson() {
         }
 
         if (btnNext) {
-            if (currentNum >= 8) btnNext.classList.add('disabled');
-            btnNext.addEventListener('click', () => {
-                if (currentNum < 8 && !btnNext.disabled) {
-                    window.location.search = `?id=${currentNum + 1}`;
+            if (currentNum >= 8) {
+                btnNext.textContent = 'Finalizar tutorial';
+            }
+
+            btnNext.addEventListener('click', async () => {
+                if (data.quiz && !isQuizPassed) {
+                    alert('Respondé correctamente el cuestionario para avanzar.');
+                    return;
+                }
+
+                btnNext.disabled = true;
+
+                try {
+                    const respuesta = await fetch('guardar_progreso.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body: `id_tutorial=${encodeURIComponent(currentNum)}`
+                    });
+
+                    const resultado = await respuesta.json();
+
+                    if (!respuesta.ok || !resultado.ok) {
+                        throw new Error(resultado.mensaje || 'No se pudo guardar el progreso.');
+                    }
+
+                    if (currentNum < 8) {
+                        window.location.search = `?id=${currentNum + 1}`;
+                    } else {
+                        window.location.href = 'Perfil.php';
+                    }
+
+                } catch (error) {
+                    alert(error.message || 'Ocurrió un error al guardar el progreso.');
+                    btnNext.disabled = false;
                 }
             });
         }
 
-        // Eventos para las Opciones del Quiz y Desbloqueo de Navegación
-        const quizBtns = document.querySelectorAll('.quiz-btn-interactive');
-        const feedback = document.getElementById('quiz-feedback');
-        
         if (quizBtns.length > 0 && feedback && data.quiz) {
             quizBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
                     quizBtns.forEach(b => {
-                        b.style.backgroundColor = "#f8fafc";
-                        b.style.borderColor = "#e2e8f0";
-                        b.style.color = "#212529";
+                        b.style.backgroundColor = '#f8fafc';
+                        b.style.borderColor = '#e2e8f0';
+                        b.style.color = '#212529';
                     });
-                    
-                    if (btn.dataset.correct === "true") {
-                        btn.style.backgroundColor = "#dcfce7";
-                        btn.style.borderColor = "#22c55e";
-                        btn.style.color = "#15803d";
-                        feedback.className = "small fw-bold mt-2 text-success";
-                        feedback.textContent = data.quiz.mensaje_correcto + " ¡Ya podés avanzar a la siguiente lección!";
-                        
-                        // DESBLOQUEA EL BOTÓN SIGUIENTE
-                        if (btnNext && currentNum < 8) {
+
+                    if (btn.dataset.correct === 'true') {
+                        isQuizPassed = true;
+
+                        btn.style.backgroundColor = '#dcfce7';
+                        btn.style.borderColor = '#22c55e';
+                        btn.style.color = '#15803d';
+
+                        feedback.className = 'small fw-bold mt-2 text-success';
+                        feedback.textContent = data.quiz.mensaje_correcto + ' ¡Ya podés avanzar a la siguiente lección!';
+
+                        if (btnNext) {
                             btnNext.disabled = false;
+                            btnNext.classList.remove('opacity-50');
                         }
+
                     } else {
-                        btn.style.backgroundColor = "#fee2e2";
-                        btn.style.borderColor = "#ef4444";
-                        btn.style.color = "#b91c1c";
-                        feedback.className = "small fw-bold mt-2 text-danger";
-                        feedback.textContent = data.quiz.mensaje_incorrecto + " Respondé correctamente para desbloquear la siguiente lección.";
-                        
-                        // BLOQUEA EL BOTÓN SIGUIENTE
+                        isQuizPassed = false;
+
+                        btn.style.backgroundColor = '#fee2e2';
+                        btn.style.borderColor = '#ef4444';
+                        btn.style.color = '#b91c1c';
+
+                        feedback.className = 'small fw-bold mt-2 text-danger';
+                        feedback.textContent = data.quiz.mensaje_incorrecto + ' Respondé correctamente para avanzar.';
+
                         if (btnNext) {
                             btnNext.disabled = true;
+                            btnNext.classList.add('opacity-50');
                         }
                     }
                 });
@@ -452,84 +469,9 @@ async function loadLesson() {
         app.innerHTML = `
             <div class="container my-5 text-center">
                 <div class="alert alert-danger p-4 rounded-4 shadow-sm">
-                    <h5 class="fw-bold text-danger">⚠️ Error al cargar el tutorial</h5>
+                    <h5 class="fw-bold text-danger">Error al cargar el tutorial</h5>
                     <p class="mb-0 font-monospace small text-secondary">${error.message}</p>
                 </div>
             </div>`;
-    }
-    // Estado local para verificar si el quiz fue aprobado
-    let isQuizPassed = false;
-
-    // Navegación (Siguiente / Anterior)
-    const currentNum = parseInt(lessonId, 10);
-    const btnNext = document.getElementById('btn-next');
-    const btnPrev = document.getElementById('btn-prev');
-
-    if (btnPrev) {
-        if (currentNum <= 1) btnPrev.classList.add('disabled');
-        btnPrev.addEventListener('click', () => {
-            if (currentNum > 1) {
-                window.location.search = `?id=${currentNum - 1}`;
-            }
-        });
-    }
-
-    if (btnNext) {
-        if (currentNum >= 8) {
-            btnNext.classList.add('disabled');
-        } else {
-            // Al hacer clic en Siguiente, valida estrictamente si aprobó
-            btnNext.addEventListener('click', (e) => {
-                if (data.quiz && !isQuizPassed) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    alert('⚠️ Debes responder correctamente la pregunta del quiz para avanzar al siguiente tutorial.');
-                    return false;
-                }
-                window.location.search = `?id=${currentNum + 1}`;
-            });
-        }
-    }
-
-    // Eventos para las Opciones del Quiz
-    const quizBtns = document.querySelectorAll('.quiz-btn-interactive');
-    const feedback = document.getElementById('quiz-feedback');
-    
-    if (quizBtns.length > 0 && feedback && data.quiz) {
-        quizBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                quizBtns.forEach(b => {
-                    b.style.backgroundColor = "#f8fafc";
-                    b.style.borderColor = "#e2e8f0";
-                    b.style.color = "#212529";
-                });
-                
-                if (btn.dataset.correct === "true") {
-                    isQuizPassed = true; // Marcar como aprobado
-                    btn.style.backgroundColor = "#dcfce7";
-                    btn.style.borderColor = "#22c55e";
-                    btn.style.color = "#15803d";
-                    feedback.className = "small fw-bold mt-2 text-success";
-                    feedback.textContent = data.quiz.mensaje_correcto + " ¡Ya podés avanzar a la siguiente lección!";
-                    
-                    if (btnNext) {
-                        btnNext.disabled = false;
-                        btnNext.classList.remove('opacity-50');
-                    }
-                } else {
-                    isQuizPassed = false; // Marcar como no aprobado
-                    btn.style.backgroundColor = "#fee2e2";
-                    btn.style.borderColor = "#ef4444";
-                    btn.style.color = "#b91c1c";
-                    feedback.className = "small fw-bold mt-2 text-danger";
-                    feedback.textContent = data.quiz.mensaje_incorrecto + " Respondé correctamente para desbloquear la siguiente lección.";
-                    
-                    if (btnNext) {
-                        btnNext.disabled = true;
-                        btnNext.classList.add('opacity-50');
-                    }
-                }
-            });
-        });
     }
 }
