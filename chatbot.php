@@ -1,125 +1,86 @@
 <?php
+session_start();
+if (!isset($_SESSION['usuario'])) { header('Location: login.php'); exit(); }
+include 'conexion.php';
 
-header('Content-Type: application/json; charset=utf-8');
+$nombre = $_SESSION['usuario'];
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405);
-    echo json_encode(['error' => 'Método no permitido.']);
-    exit;
-}
+// Consultar datos del usuario (ya sin el campo rol)
+$stmt = $conn->prepare('SELECT id_usuarios, nombre, email FROM usuarios WHERE nombre = ? LIMIT 1');
+$stmt->bind_param('s', $nombre);
+$stmt->execute();
+$usuario = $stmt->get_result()->fetch_assoc();
 
-$config = __DIR__ . '/config/openai.php';
+if (!$usuario) { session_destroy(); header('Location: login.php'); exit(); }
 
-if (!file_exists($config)) {
-    http_response_code(500);
-    echo json_encode(['error' => 'Falta configurar el chatbot.']);
-    exit;
-}
+$id_usuarios = $usuario['id_usuarios'];
+$inicial = strtoupper(substr($usuario['nombre'], 0, 1));
 
-require $config;
+// Contar cuántos tutoriales completó este usuario en la tabla progreso
+$stmt_count = $conn->prepare('SELECT COUNT(*) AS total FROM progreso WHERE id_usuarios = ? AND completado = 1');
+$stmt_count->bind_param('i', $id_usuarios);
+$stmt_count->execute();
+$resultado_count = $stmt_count->get_result()->fetch_assoc();
+$total_tutoriales = $resultado_count['total'] ?? 0;
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi perfil - ARDUNOVA</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<?php $active_page = ''; include 'includes/header.php'; ?>
+<main class="perfil-page">
+  <section class="perfil-header">
+    <div class="row align-items-center g-3">
+      <div class="col-12 col-md-auto"><div class="perfil-avatar"><?= htmlspecialchars($inicial) ?></div></div>
+      <div class="col-12 col-md">
+        <div class="perfil-info">
+          <h1 class="h2 mb-1"><?= htmlspecialchars($usuario['nombre']) ?></h1>
+          <p class="mb-2"><?= htmlspecialchars($usuario['email']) ?></p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-if (
-    !defined('OPENAI_API_KEY') ||
-    OPENAI_API_KEY === '' ||
-    OPENAI_API_KEY === 'PON_TU_CLAVE_AQUI'
-) {
-    http_response_code(500);
-    echo json_encode([
-        'error' => 'El chatbot todavía no tiene configurada la clave.'
-    ]);
-    exit;
-}
+  <section class="row g-3 mb-4">
+    <div class="col-12 col-md-6"><div class="resumen-card"><h3>Proyectos</h3><strong>0</strong><p>Proyectos realizados</p></div></div>
+    <div class="col-12 col-md-6"><div class="resumen-card"><h3>Tutoriales</h3><strong><?= $total_tutoriales ?></strong><p>Tutoriales completados</p></div></div>
+  </section>
 
-$input = json_decode(file_get_contents('php://input'), true);
-$message = trim($input['message'] ?? '');
+  <section class="perfil-seccion">
+    <div class="seccion-titulo d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-2">
+      <h2 class="h4 mb-0">Mi información</h2>
+    </div>
+    <div class="row g-3">
+      <div class="col-12 col-md-6"><div class="informacion-item"><span>Nombre</span><strong><?= htmlspecialchars($usuario['nombre']) ?></strong></div></div>
+      <div class="col-12 col-md-6"><div class="informacion-item"><span>Correo electrónico</span><strong><?= htmlspecialchars($usuario['email']) ?></strong></div></div>
+    </div>
+  </section>
 
-if ($message === '') {
-    http_response_code(400);
-    echo json_encode(['error' => 'Escribí una pregunta.']);
-    exit;
-}
+  <section class="perfil-seccion">
+    <div class="seccion-titulo d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-2">
+      <h2 class="h4 mb-0">Historial de proyectos</h2><a href="proyectos.php">Ver proyectos</a>
+    </div>
+    <div class="historial-vacio"><h3>Todavía no realizaste proyectos</h3><p>Cuando realices un proyecto, aparecerá acá.</p><a href="proyectos.php" class="btn btn-gradient">Explorar proyectos</a></div>
+  </section>
 
-if (mb_strlen($message) > 1000) {
-    http_response_code(400);
-    echo json_encode(['error' => 'La pregunta es demasiado larga.']);
-    exit;
-}
+  <section class="perfil-seccion">
+    <div class="seccion-titulo"><h2 class="h4 mb-0">Tutoriales completados</h2></div>
+    <?php if ($total_tutoriales > 0): ?>
+      <div class="alert alert-success">¡Felicitaciones! Has completado <?= $total_tutoriales ?> lección(es).</div>
+    <?php else: ?>
+      <div class="historial-vacio"><h3>No hay tutoriales completados</h3><p>Empezá un tutorial para verlo en tu historial.</p><a href="tutoriales.php" class="btn btn-gradient">Explorar tutoriales</a></div>
+    <?php endif; ?>
+  </section>
 
-$payload = [
-    'model' => OPENAI_MODEL,
-    'messages' => [
-        [
-            'role' => 'system',
-            'content' => 'Sos el asistente educativo de ARDUNOVA. Ayudás a aprender Arduino, electrónica y robótica de forma clara, sencilla y amigable para personas de distintas edades. Respondé en español rioplatense, con explicaciones paso a paso y ejemplos simples. Si una pregunta no tiene relación con Arduino, electrónica, robótica, programación educativa o el uso de ARDUNOVA, indicá amablemente que podés ayudar principalmente con esos temas.'
-        ],
-        [
-            'role' => 'user',
-            'content' => $message
-        ]
-    ],
-    'max_tokens' => 500
-];
-
-$ch = curl_init('https://openrouter.ai/api/v1/chat/completions');
-
-curl_setopt_array($ch, [
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_POST => true,
-
-    CURLOPT_HTTPHEADER => [
-        'Content-Type: application/json',
-        'Authorization: Bearer ' . OPENAI_API_KEY,
-        'HTTP-Referer: http://localhost/ardunova/',
-        'X-Title: ARDUNOVA'
-    ],
-
-    CURLOPT_POSTFIELDS => json_encode($payload),
-    CURLOPT_TIMEOUT => 45
-]);
-
-$response = curl_exec($ch);
-$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-$curlError = curl_error($ch);
-
-curl_close($ch);
-
-if ($response === false || $curlError) {
-    http_response_code(502);
-
-    echo json_encode([
-        'error' => 'No se pudo conectar con OpenRouter.'
-    ]);
-
-    exit;
-}
-
-$data = json_decode($response, true);
-
-if ($httpCode < 200 || $httpCode >= 300) {
-
-    $detalle = $data['error']['message'] ?? 'Error desconocido';
-
-    http_response_code(502);
-
-    echo json_encode([
-        'error' => 'OpenRouter respondió con un error: ' . $detalle
-    ], JSON_UNESCAPED_UNICODE);
-
-    exit;
-}
-
-$reply = $data['choices'][0]['message']['content'] ?? '';
-
-if ($reply === '') {
-    http_response_code(502);
-
-    echo json_encode([
-        'error' => 'La IA no devolvió una respuesta.'
-    ]);
-
-    exit;
-}
-
-echo json_encode([
-    'reply' => trim($reply)
-], JSON_UNESCAPED_UNICODE);
+  <div class="text-center my-4"><a href="logout.php" class="btn btn-outline-cyan">Cerrar sesión</a></div>
+</main>
+<?php include 'includes/chatbot.php'; ?>
+<?php include 'includes/footer.php'; ?>
+</body>
+</html>
