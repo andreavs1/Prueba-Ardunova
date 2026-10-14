@@ -11,7 +11,8 @@ $stmt->bind_param('s', $nombre);
 $stmt->execute();
 $usuario = $stmt->get_result()->fetch_assoc();
 
-if (!$usuario) { session_destroy(); header('Location: login.php'); exit(); }
+if (!$usuario) { session_destroy();
+ header('Location: login.php'); exit(); }
 
 $id_usuarios = $usuario['id_usuarios'];
 $inicial = strtoupper(substr($usuario['nombre'], 0, 1));
