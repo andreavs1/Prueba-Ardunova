@@ -21,13 +21,13 @@ async function loadLesson() {
 
         if (!data) {
             app.innerHTML = `
-                <div class="container my-5 text-center">
-                    <div class="alert alert-warning p-4 rounded-4 shadow-sm">
-                        <h5 class="fw-bold">⚠️ Tutorial no encontrado</h5>
-                        <p class="mb-0 small">No existen contenidos cargados para la lección ID: <strong>${lessonId}</strong>.</p>
-                        <a href="?id=9" class="btn btn-outline-primary btn-sm mt-3">Volver al Tutorial 9</a>
-                    </div>
-                </div>`;
+            <div class="container my-5 text-center">
+                <div class="alert alert-warning p-4 rounded-4 shadow-sm">
+                    <h5 class="fw-bold">⚠️ Tutorial no encontrado</h5>
+                    <p class="mb-0 small">No existen contenidos cargados para la lección ID: <strong>${lessonId}</strong>.</p>
+                    <a href="?id=9" class="btn btn-outline-primary btn-sm mt-3">Volver al Tutorial 9</a>
+                </div>
+            </div>`;
             return;
         }
 
@@ -372,6 +372,23 @@ async function loadLesson() {
                         alert('⚠️ Debes responder correctamente la pregunta del quiz para avanzar al siguiente tutorial.');
                         return false;
                     }
+
+                    // Petición AJAX para guardar el progreso en el archivo central de la raíz
+                    fetch('../guardar_progreso.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: `id_tutorial=${currentNum}`
+                    })
+                    .then(response => response.json())
+                    .then(dataResponse => {
+                        if (!dataResponse.ok) {
+                            console.error('Error al guardar el progreso:', dataResponse.mensaje);
+                        }
+                    })
+                    .catch(error => console.error('Error en la petición:', error));
+
                     window.location.search = `?id=${currentNum + 1}`;
                 });
             }

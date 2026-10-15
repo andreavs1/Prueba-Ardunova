@@ -27,78 +27,75 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `usuarios`
 --
 
-CREATE TABLE `usuarios` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
-  `email` varchar(150) NOT NULL,
-  `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `usuarios`
+ CREATE TABLE usuarios (
+    -> id_usuarios INT AUTO_INCREMENT PRIMARY KEY,
+    -> nombre VARCHAR(100) NOT NULL,
+    -> email VARCHAR(150) NOT NULL UNIQUE,
+    -> password VARCHAR(255) NOT NULL,
+    -> );
 --
 
-INSERT INTO `usuarios` (`id`, `nombre`, `email`, `password`) VALUES
-(1, 'SKJDFNSF', 'SJHDGFKSDJF@ILHFVSD', '$2y$10$ze7cyF2ZpyuvTwiipCAvpO0F2krz9f82QgW6gVbS2efR7i9qcdMJG'),
-(2, 'SDFSDFSDF', 'SFDSFSDF@LSDFJND', '$2y$10$YcQ6giAPD3zV14XmbCDOdONd2zMzqOooEt3wJwRcqcnGdS/qxOF2K'),
-(3, 'Joan', 'robledojoan12@gmail.com', '$2y$10$120N/iQQy0GU4BK5j.Bf0uGGcjZAbEF7lWOJGQpRhmUp4V2.B0Imm');
-
---
--- Índices para tablas volcadas
+-- Creamos la tabla tutoriale spara poder cargarlos en la base de datos de forma id
+> CREATE TABLE tutoriales (
+    -> id_tutorial INT AUTO_INCREMENT PRIMARY KEY,
+    -> categoria_t VARCHAR(20) NOT NULL
+    -> );
 --
 
 --
--- Indices de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
---
---
---
--- CREAMOS LA TABLA DE TUTORIAL
-CREATE TABLE tutoriales (
-    id_tutorial INT PRIMARY KEY AUTO_INCREMENT,
-    categoria_t VARCHAR(20) NOT NULL
-);
---
---
---
--- VOLCADO DE DATOS PARA LA TABLA DE TUTORIALES
-INSERT INTO tutoriales (categoria_t) VALUES
-('Principiante'),
-('Principiante'),
-('Principiante'),
-('Principiante'),
-('Principiante'),
-('Principiante'),
-('Principiante'),
-('Principiante');
---
---
---
--- CREAMOS LA TABLA PROGRESO PARA TENER UN SEGUIMIENTO DE LO REALIZADO DEL USUSARIO
+-- Tabla intermedia 
+-- Creamos la tabla de progreso para que cada tutorial completado de cada usuario se guarde en la base de datos 
 CREATE TABLE progreso (
-    id_progreso INT PRIMARY KEY AUTO_INCREMENT,
-    id_usuario INT NOT NULL,
-    id_tutorial INT NOT NULL,
-    completado BOOLEAN NOT NULL DEFAULT 0,
+    -> id_progreso INT AUTO_INCREMENT PRIMARY KEY,
+    -> id_usuarios INT NOT NULL,
+    -> id_tutorial INT NOT NULL,
+    -> completado BOOLEAN NOT NULL DEFAULT FALSE,
+    --
+    --
+    --
+    -- Hacemos la conexion de las tablas 
+    -> FOREIGN KEY (id_usuarios)
+    -> REFERENCES usuarios(id_usuarios)
+    -> ON DELETE CASCADE
+    -> ON UPDATE CASCADE,
+    --
+    --
+    --
 
-    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
-    FOREIGN KEY (id_tutorial) REFERENCES tutoriales(id_tutorial)
-);
+    -> FOREIGN KEY (id_tutorial)
+    -> REFERENCES tutoriales(id_tutorial)
+    -> ON DELETE RESTRICT
+    -> ON UPDATE CASCADE,
+    -> UNIQUE (id_usuarios, id_tutorial),
+
+    -- En la base de datos se duarda en 0 y 1
+    -- 1 = completado 
+    -- 0 = no completado 
+    -> CHECK (completado IN (0, 1)) 
+    -> );
+-- cargamos las categoria de los tutoriales 
+ insert into tutoriales (id_tutorial, categoria_t) values
+    -> (1, 'Principiante'),
+    -> (2, 'Principiante'),
+    -> (3, 'Principiante'),
+    -> (4, 'Principiante'),
+    -> (5, 'Principiante'),
+    -> (6, 'Principiante'),
+    -> (7, 'Principiante'),
+    -> (8, 'Principiante'),
+    -> (9, 'Intermedio'),
+    -> (10, 'Intermedio'),
+    -> (11, 'Intermedio'),
+    -> (12, 'Intermedio'),
+    -> (13, 'Intermedio'),
+    -> (14, 'Intermedio'),
+    -> (15, 'Intermedio'),
+    -> (16, 'Intermedio'),
+    -> (17, 'Avanzado'),
+    -> (18, 'Avanzado'),
+    -> (19, 'Avanzado'),
+    -> (20, 'Avanzado'),
+    -> (21, 'Avanzado'),
+    -> (22, 'Avanzado'),
+    -> (23, 'Avanzado'),
+    -> (24, 'Avanzado');

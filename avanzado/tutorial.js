@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     loadLesson();
+    window.addEventListener('popstate', loadLesson);
 });
 
 async function loadLesson() {
@@ -257,6 +258,23 @@ async function loadLesson() {
                         alert('⚠️ Debes responder correctamente la pregunta del quiz para avanzar al siguiente tutorial.');
                         return false;
                     }
+
+                    // Petición AJAX centralizada para guardar el progreso
+                    fetch('../guardar_progreso.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: `id_tutorial=${currentNum}`
+                    })
+                    .then(response => response.json())
+                    .then(dataResponse => {
+                        if (!dataResponse.ok) {
+                            console.error('Error al guardar el progreso:', dataResponse.mensaje);
+                        }
+                    })
+                    .catch(error => console.error('Error en la petición:', error));
+
                     window.location.search = `?id=${currentNum + 1}`;
                 });
             }

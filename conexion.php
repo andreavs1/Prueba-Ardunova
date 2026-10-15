@@ -3,7 +3,7 @@
 $host = "localhost";
 $usuario = "root";
 $contrasena = "";
-$base_datos = "Ardunova";
+$base_datos = "ardunova";
 
 $conn = new mysqli($host, $usuario, $contrasena, $base_datos);
 
