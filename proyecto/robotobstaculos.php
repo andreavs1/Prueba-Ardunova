@@ -39,7 +39,8 @@
         <div class="col-12 col-lg-5">
             <div class="card h-100">
                 <div class="card-image">
-                    <img src="<?= BASE_URL ?>assets/img/robotobstaculos.jpg" alt="Componentes del proyecto Robot Esquivador de Obstáculos">
+                     <img src="../assets/img/robotobstaculos.jpg" alt="Robot evita obstáculos">
+                    <img src="../assets/img/robotobstaculos1.jpg" alt="Proyecto robot evita obstáculos">
                 </div>
             </div>
         </div>
@@ -158,7 +159,7 @@ void detener() {
         </div>
 
         <div class="text-center button-container">
-            <a href="<?= BASE_URL ?>proyectos.php" class="btn btn-outline-cyan">
+            <a href="proyectos.php" class="btn btn-outline-cyan">
                 ← Volver a Proyectos
             </a>
         </div>
