@@ -13,7 +13,7 @@ $active_page = 'recursos';
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-<?php include 'includes/header.php'; ?>
+<?php include '../includes/header.php'; ?>
 <main class="container section-container">
 <h1 class="section-title">Recursos Descargables</h1>
 <div class="row g-4">
@@ -47,6 +47,6 @@ $active_page = 'recursos';
 </div>
 </article></div></div>
 </main>
-<?php include 'includes/footer.php'; ?>
+<?php include '../includes/footer.php'; ?>
 </body>
 </html>

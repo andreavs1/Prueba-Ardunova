@@ -61,7 +61,7 @@
     "titulo": "Sistema de Riego Automático",
     "nivel": "Avanzado",
     "descripcion": "Aprendé cómo automatizar el riego de las plantas.",
-    "imagen": "../assets/img/riego.jpg",
+    "imagen": "../assets/img/wifi.jpg",
     "enlace": "riego.php"
   },
   {
@@ -83,6 +83,6 @@
     "nivel": "Intermedio",
     "descripcion": "Controlá el movimiento y el ángulo de un servomotor con Arduino.",
     "imagen": "../assets/img/servoMotor.jpg",
-    "enlace": "servomotor.php"
+    "enlace": "servoMotor.php"
   }
 ]

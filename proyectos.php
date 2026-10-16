@@ -21,7 +21,7 @@ $active_page = 'proyectos';
 
 <body>
 
-<?php include __DIR__ . '/includes/header.php'; ?>
+<?php include '../includes/header.php'; ?>
 
 <main class="container section-container">
 
@@ -455,9 +455,9 @@ $active_page = 'proyectos';
 </main>
 
 
-<?php include __DIR__ . '/includes/chatbot.php'; ?>
+<?php include '../includes/chatbot.php'; ?>
 
-<?php include __DIR__ . '/includes/footer.php'; ?>
+<?php include '../includes/footer.php'; ?>
 
 
 <script>
