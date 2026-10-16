@@ -1,8 +1,11 @@
+/*
+Logout se encarga de cerrar sesion y redirigirte a la ruta principal de ardunova    
+*/
 <?php
-// Cierra la sesión y vuelve al inicio.
 session_start();
 session_unset();
 session_destroy();
 
-header('Location: index.php');
+header("Location: index.php");
 exit();
+?>

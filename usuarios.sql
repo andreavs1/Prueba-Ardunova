@@ -1,59 +1,70 @@
--- ARDUNOVA - Base de datos
--- Importar en phpMyAdmin o con: mysql -u root < usuarios.sql
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 13-08-2026 a las 07:41:10
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.1.25
 
-CREATE DATABASE IF NOT EXISTS ardunova CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE ardunova;
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
--- Usuarios registrados
-CREATE TABLE IF NOT EXISTS usuarios (
-  id_usuarios INT AUTO_INCREMENT PRIMARY KEY,
-  nombre VARCHAR(100) NOT NULL,
-  email VARCHAR(150) NOT NULL UNIQUE,
-  password VARCHAR(255) NOT NULL
-);
 
--- Catálogo de tutoriales (1-8 Principiante, 9-16 Intermedio, 17-24 Avanzado)
-CREATE TABLE IF NOT EXISTS tutoriales (
-  id_tutorial INT AUTO_INCREMENT PRIMARY KEY,
-  categoria_t VARCHAR(20) NOT NULL
-);
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
--- Progreso: un registro por usuario y tutorial (1 = completado, 0 = no completado)
-CREATE TABLE IF NOT EXISTS progreso (
-  id_progreso INT AUTO_INCREMENT PRIMARY KEY,
-  id_usuarios INT NOT NULL,
-  id_tutorial INT NOT NULL,
-  completado BOOLEAN NOT NULL DEFAULT FALSE,
-  FOREIGN KEY (id_usuarios) REFERENCES usuarios(id_usuarios)
-    ON DELETE CASCADE ON UPDATE CASCADE,
-  FOREIGN KEY (id_tutorial) REFERENCES tutoriales(id_tutorial)
-    ON DELETE RESTRICT ON UPDATE CASCADE,
-  UNIQUE (id_usuarios, id_tutorial),
-  CHECK (completado IN (0, 1))
-);
+--
+-- Base de datos: `ardunova`
+--
 
-INSERT IGNORE INTO tutoriales (id_tutorial, categoria_t) VALUES
-  (1, 'Principiante'),
-  (2, 'Principiante'),
-  (3, 'Principiante'),
-  (4, 'Principiante'),
-  (5, 'Principiante'),
-  (6, 'Principiante'),
-  (7, 'Principiante'),
-  (8, 'Principiante'),
-  (9, 'Intermedio'),
-  (10, 'Intermedio'),
-  (11, 'Intermedio'),
-  (12, 'Intermedio'),
-  (13, 'Intermedio'),
-  (14, 'Intermedio'),
-  (15, 'Intermedio'),
-  (16, 'Intermedio'),
-  (17, 'Avanzado'),
-  (18, 'Avanzado'),
-  (19, 'Avanzado'),
-  (20, 'Avanzado'),
-  (21, 'Avanzado'),
-  (22, 'Avanzado'),
-  (23, 'Avanzado'),
-  (24, 'Avanzado');
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `email` varchar(150) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `nombre`, `email`, `password`) VALUES
+(1, 'SKJDFNSF', 'SJHDGFKSDJF@ILHFVSD', '$2y$10$ze7cyF2ZpyuvTwiipCAvpO0F2krz9f82QgW6gVbS2efR7i9qcdMJG'),
+(2, 'SDFSDFSDF', 'SFDSFSDF@LSDFJND', '$2y$10$YcQ6giAPD3zV14XmbCDOdONd2zMzqOooEt3wJwRcqcnGdS/qxOF2K'),
+(3, 'Joan', 'robledojoan12@gmail.com', '$2y$10$120N/iQQy0GU4BK5j.Bf0uGGcjZAbEF7lWOJGQpRhmUp4V2.B0Imm');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

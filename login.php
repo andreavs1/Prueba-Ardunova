@@ -7,16 +7,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email'] ?? '');
     $password = $_POST['password'] ?? '';
 
-    $stmt = $conn->prepare('SELECT id_usuarios, nombre, email, password FROM usuarios WHERE email = ? LIMIT 1');
+    $stmt = $conn->prepare('SELECT nombre, email, password FROM usuarios WHERE email = ? LIMIT 1');
     $stmt->bind_param('s', $email);
     $stmt->execute();
     $resultado = $stmt->get_result();
     $usuario = $resultado->fetch_assoc();
 
     if ($usuario && password_verify($password, $usuario['password'])) {
-        session_regenerate_id(true);
         $_SESSION['usuario'] = $usuario['nombre'];
-        $_SESSION['id_usuario'] = (int) $usuario['id_usuarios'];
         header('Location: index.php');
         exit();
     }

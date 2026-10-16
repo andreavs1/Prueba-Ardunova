@@ -14,72 +14,64 @@ $active_page = 'tutoriales';
 </head>
 <body>
   <?php include 'includes/header.php';?>
-
   <main>
     <section class="text-center container section-container">
-      <h1 class="section-title">Tutoriales Académicos</h1>
-      <p>Aprende Arduino desde cero con guías organizadas por niveles de dificultad</p>
+      <h1 class="section-title"> Tutoriales Academicos</h1>
+      <p>Aprende arduino desde cero con guias organizadas por niveles de dificultad</p>
     </section>
 
     <section class="container section-container">
-      <h2 class="section-title">Niveles de aprendizaje</h2>
+      <h2 class="section-title"> Niveles de aprendizaje</h2>
   
-      <div class="row g-4">
-        <!-- Nivel Principiante -->
-        <div class="col-12 col-sm-6 col-lg-4">
-          <article class="card h-100">
-            <div class="card-image">
-              <img src="<?= BASE_URL ?>assets/img/principiante.png" alt="Principiante" class="card-img-top">
-            </div>
-            <div class="card-body">
-              <span class="tag-nivel principiante">Principiante</span>
-              <h3>NIVEL PRINCIPIANTE</h3>
-              <p>Aprende los conceptos principales de Arduino, el entorno de programación y los primeros proyectos.</p>
-              <a class="btn btn-gradient mt-1 w-100" href="principiantes/principiantes.php">
-                Comenzar 
-              </a>
-            </div>
-          </article>
-        </div>
+    <div class="row g-4">
+              <div class="col-12 col-sm-6 col-lg-4">
+                <article class="card h-100">
+                 <div class="card-body">
+                      <span class="tag-Nivel principiante">Principiante</span>
+                      <h3>NIVEL PRINCIPIANTE</h3>
+                      <p>Aprende los conceptos principales de Arduino, la placa, el entorno de 
+                        programacion y los primeros proyectos.
+                      </p>
+                      <a class="btn btn-gradient mt-1 w-100" href="principiantes/principiantes.php">
+                        Comenzar 
+                      </a>
+                 </div>
+                </article>
+              </div>
 
-        <!-- Nivel Intermedio -->
-        <div class="col-12 col-sm-6 col-lg-4">
-          <article class="card h-100">
-            <div class="card-image">
-              <img src="<?= BASE_URL ?>assets/img/intermedio.jpg" alt="Intermedio" class="card-img-top">
-            </div>
-            <div class="card-body">
-              <span class="tag-nivel intermedio">Intermedio</span>
-              <h3>NIVEL INTERMEDIO</h3>
-              <p>Trabaja con sensores, entradas analógicas, motores y diferentes componentes electrónicos.</p>
+    
+    <!-- Nivel intermedio -->
+      <div class="col-12 col-sm-6 col-lg-4">
+        <article class="card">
+          <div class="card-body">
+            <span class="tag-Nivel intermedio">Intermedio</span>
+            <h3> NIVEL INTERMEDIO</h3>
+            <p> Trabaja con sensores, entradas analogicas, motores y 
+              diferentes componentes electronicos</p>
               <a class="btn btn-gradient mt-1 w-100" href="intermedio/intermedio.php">
                 Comenzar
               </a>
-            </div>
+          </div>
           </article>
-        </div>
-
-        <!-- Nivel Avanzado -->
-        <div class="col-12 col-sm-6 col-lg-4">
-          <article class="card h-100">
-            <div class="card-image">
-              <img src="<?= BASE_URL ?>assets/img/avanzado.png" alt="Avanzado" class="card-img-top">
-            </div>
-            <div class="card-body">
-              <span class="tag-nivel avanzado">Avanzado</span>
-              <h3>NIVEL AVANZADO</h3>
-              <p>Aprende comunicaciones, librerías y proyectos más completos utilizando Arduino.</p>
+        </div>  
+        
+    
+    <!-- Nivel avanzado -->
+      <div class="col-12 col-sm-6 col-lg-4">
+        <article class="card">
+          <div class="card-body">
+            <span class="tag-Nivel avanzado">Avanzado</span>
+            <h3> NIVEL AVANZADO</h3>
+            <p> Aprende comunicaciones, librerias y proyectos 
+                 mas completos utilizando aurduino</p>
               <a class="btn btn-gradient mt-1 w-100" href="avanzado/avanzado.php">
                 Comenzar
               </a>
-            </div>
+          </div>
           </article>
         </div> 
-      </div>
-    </section>
+</section> 
   </main>
-
   <?php include 'includes/chatbot.php'; ?>
   <?php include 'includes/footer.php';?>
 </body>
-</html>
