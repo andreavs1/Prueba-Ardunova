@@ -24,8 +24,12 @@ $active_page = 'tutoriales';
       <h2 class="section-title"> Niveles de aprendizaje</h2>
   
     <div class="row g-4">
-              <div class="col-12 col-sm-6 col-lg-4">
-                <article class="card h-100">
+                  <div class="col-12 col-sm-6 col-lg-4">
+                  <article class="card h-100">
+                          <div class="card-image">
+                  <img alt="Principiante" src="../assets/img/principiante.png">
+                </div>
+
                  <div class="card-body">
                       <span class="tag-Nivel principiante">Principiante</span>
                       <h3>NIVEL PRINCIPIANTE</h3>
@@ -43,6 +47,10 @@ $active_page = 'tutoriales';
     <!-- Nivel intermedio -->
       <div class="col-12 col-sm-6 col-lg-4">
         <article class="card">
+                  <div class="card-image">
+          <img alt="Intermedio" src="../assets/img/intermedio.jpg">
+        </div>
+
           <div class="card-body">
             <span class="tag-Nivel intermedio">Intermedio</span>
             <h3> NIVEL INTERMEDIO</h3>
@@ -59,6 +67,10 @@ $active_page = 'tutoriales';
     <!-- Nivel avanzado -->
       <div class="col-12 col-sm-6 col-lg-4">
         <article class="card">
+                  <div class="card-image">
+          <img alt="Avanzado" src="../assets/img/avanzado.png">
+        </div>
+
           <div class="card-body">
             <span class="tag-Nivel avanzado">Avanzado</span>
             <h3> NIVEL AVANZADO</h3>

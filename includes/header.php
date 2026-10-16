@@ -19,7 +19,6 @@ $usuario_sesion = $_SESSION['usuario'] ?? null;
           <li class="nav-item"><a class="nav-link <?= $active_page === 'tutoriales' ? 'active' : '' ?>" href="tutoriales.php">Tutoriales</a></li>
           <li class="nav-item"><a class="nav-link <?= $active_page === 'proyectos' ? 'active' : '' ?>" href="proyecto.php">Proyectos</a></li>
           <li class="nav-item"><a class="nav-link <?= $active_page === 'recursos' ? 'active' : '' ?>" href="recursos.php">Recursos</a></li>
-          <li class="nav-item"><a class="nav-link <?= $active_page === 'comunidad' ? 'active' : '' ?>" href="comunidad.php">Comunidad</a></li>
           <li class="nav-item"><a class="nav-link <?= $active_page === 'nosotros' ? 'active' : '' ?>" href="nosotros.php">Nosotros</a></li>
           <?php if ($usuario_sesion): ?>
             <li class="nav-item dropdown ms-lg-2">
