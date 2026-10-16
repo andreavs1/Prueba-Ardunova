@@ -6,7 +6,7 @@ $usuario_sesion = $_SESSION['usuario'] ?? null;
   <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center" href="index.php" aria-label="ARDUNOVA - Inicio">
-        <img src="assets/img/logo.jpg" alt="Logo de ARDUNOVA" class="brand-logo">
+        <img src="../assets/img/logo.jpg" alt="Logo de ARDUNOVA" class="brand-logo">
       </a>
 
       <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Abrir menú">
