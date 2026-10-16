@@ -7,76 +7,39 @@ $active_page = 'tutoriales';
 <html lang="es">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Nivel Principiante - ARDUNOVA</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css">
-  
-  <style>
-    /* Estilo para que todo el buscador se ilumine con el resplandor celeste al hacer clic */
-    .buscador-ardunova {
-      max-width: 250px;
-      border: 1.5px solid #cbd5e1;
-      transition: all 0.2s ease-in-out;
-    }
-    .buscador-ardunova:focus-within {
-      border-color: #86b7fe !important;
-      box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25) !important;
-    }
-  </style>
+
 </head>
 <body>
  
+<?php include __DIR__ . '/../includes/header.php'; ?>
 <main>
-<?php include '../includes/header.php'; ?>
 
-<!-- SECCIÓN DE ENCABEZADO Y BUSCADOR -->
-<section class="container section-container">
-  <div class="row align-items-center">
-    
-    <!-- Columna izquierda vacía (para equilibrar el diseño y centrar el título) -->
-    <div class="col-md-3 d-none d-md-block"></div>
+<section class="text-center container section-container">
 
-    <!-- Columna central: Título centrado -->
-    <div class="col-md-6 text-center">
-      <h1 class="section-title mb-1">
-        🟢 Nivel Principiante
-      </h1>
-      <p class="mb-0">
-        Elegí el tutorial que querés aprender.
-      </p>
-    </div>
+<h1 class="section-title">
+🟢 Nivel Principiante
+</h1>
 
-    <!-- Columna derecha: Buscador con resplandor celeste -->
-    <div class="col-md-3 d-flex justify-content-md-end mt-3 mt-md-0">
-      <div class="input-group rounded-2 overflow-hidden buscador-ardunova">
-        <span class="input-group-text bg-light text-secondary border-0 border-end">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-          </svg>
-        </span>
-        <input 
-          type="text" 
-          id="inputBuscador" 
-          class="form-control border-0 bg-light shadow-none" 
-          placeholder="Buscar tutorial..." 
-          onkeyup="filtrarTutoriales()"
-        >
-      </div>
-    </div>
+<p>
+Elegí el tutorial que querés aprender.
+</p>
 
-  </div>
 </section>
 
-<!-- GRILLA DE TUTORIALES -->
-<section class="container section-container pt-3">
 
-<div class="row g-4" id="listaTutoriales">
+<section class="container section-container">
+
+<div class="row g-4">
 
 <!-- TUTORIAL 1 -->
-<div class="col-12 col-sm-6 col-lg-4 tarjeta-tutorial">
+<div class="col-12 col-sm-6 col-lg-4">
 <article class="card">
 <div class="card-image">
     <img src="../assets/img/arduinoquees.jpg" alt="¿Qué es Arduino?" class="card-img-top">
@@ -85,7 +48,7 @@ $active_page = 'tutoriales';
 <span class="tag-nivel principiante">
 Tutorial 1
 </span>
-<h3 class="titulo-tutorial">
+<h3>
 ¿Qué es Arduino?
 </h3>
 <p>
@@ -98,8 +61,9 @@ Ver tutorial
 </article>
 </div>
 
+
 <!-- TUTORIAL 2 -->
-<div class="col-12 col-sm-6 col-lg-4 tarjeta-tutorial">
+<div class="col-12 col-sm-6 col-lg-4">
 <article class="card">
 <div class="card-image">
     <img src="../assets/img/partes-arduino.jpg" alt="Placa Arduino" class="card-img-top">
@@ -108,7 +72,7 @@ Ver tutorial
 <span class="tag-nivel principiante">
 Tutorial 2
 </span>
-<h3 class="titulo-tutorial">
+<h3>
 Placa Arduino
 </h3>
 <p>
@@ -121,8 +85,9 @@ Ver tutorial
 </article>
 </div>
 
+
 <!-- TUTORIAL 3 -->
-<div class="col-12 col-sm-6 col-lg-4 tarjeta-tutorial">
+<div class="col-12 col-sm-6 col-lg-4">
 <article class="card">
 <div class="card-image">
     <img src="../assets/img/arduinoide.png" alt="Arduino IDE" class="card-img-top">
@@ -131,7 +96,7 @@ Ver tutorial
 <span class="tag-nivel principiante">
 Tutorial 3
 </span>
-<h3 class="titulo-tutorial">
+<h3>
 Arduino IDE
 </h3>
 <p>
@@ -144,8 +109,9 @@ Ver tutorial
 </article>
 </div>
 
+
 <!-- TUTORIAL 4 -->
-<div class="col-12 col-sm-6 col-lg-4 tarjeta-tutorial">
+<div class="col-12 col-sm-6 col-lg-4">
 <article class="card">
 <div class="card-image">
     <img src="../assets/img/setup.png" alt="Estructura del programa" class="card-img-top">
@@ -154,7 +120,7 @@ Ver tutorial
 <span class="tag-nivel principiante">
 Tutorial 4
 </span>
-<h3 class="titulo-tutorial">
+<h3>
 Estructura del programa
 </h3>
 <p>
@@ -167,8 +133,9 @@ Ver tutorial
 </article>
 </div>
 
+
 <!-- TUTORIAL 5 -->
-<div class="col-12 col-sm-6 col-lg-4 tarjeta-tutorial">
+<div class="col-12 col-sm-6 col-lg-4">
 <article class="card">
 <div class="card-image">
     <img src="../assets/img/variables.png" alt="Variables" class="card-img-top">
@@ -177,7 +144,7 @@ Ver tutorial
 <span class="tag-nivel principiante">
 Tutorial 5
 </span>
-<h3 class="titulo-tutorial">
+<h3>
 Variables
 </h3>
 <p>
@@ -190,8 +157,9 @@ Ver tutorial
 </article>
 </div>
 
+
 <!-- TUTORIAL 6 -->
-<div class="col-12 col-sm-6 col-lg-4 tarjeta-tutorial">
+<div class="col-12 col-sm-6 col-lg-4">
 <article class="card">
 <div class="card-image">
     <img src="../assets/img/entradas-analogicas.jpg" alt="Entradas y salidas" class="card-img-top">
@@ -200,7 +168,7 @@ Ver tutorial
 <span class="tag-nivel principiante">
 Tutorial 6
 </span>
-<h3 class="titulo-tutorial">
+<h3>
 Entradas y salidas
 </h3>
 <p>
@@ -213,8 +181,9 @@ Ver tutorial
 </article>
 </div>
 
+
 <!-- TUTORIAL 7 -->
-<div class="col-12 col-sm-6 col-lg-4 tarjeta-tutorial">
+<div class="col-12 col-sm-6 col-lg-4">
 <article class="card">
 <div class="card-image">
     <img src="../assets/img/encenderled.png" alt="Encender LED" class="card-img-top">
@@ -223,7 +192,7 @@ Ver tutorial
 <span class="tag-nivel principiante">
 Tutorial 7
 </span>
-<h3 class="titulo-tutorial">
+<h3>
 Encender LED
 </h3>
 <p>
@@ -236,8 +205,9 @@ Ver tutorial
 </article>
 </div>
 
+
 <!-- TUTORIAL 8 -->
-<div class="col-12 col-sm-6 col-lg-4 tarjeta-tutorial">
+<div class="col-12 col-sm-6 col-lg-4">
 <article class="card">
 <div class="card-image">
     <img src="../assets/img/pulsador.jpg" alt="Pulsadores" class="card-img-top">
@@ -246,7 +216,7 @@ Ver tutorial
 <span class="tag-nivel principiante">
 Tutorial 8
 </span>
-<h3 class="titulo-tutorial">
+<h3>
 Pulsadores
 </h3>
 <p>
@@ -261,61 +231,11 @@ Ver tutorial
 
 </div>
 
-<!-- Mensaje oculto por si no hay resultados en la búsqueda -->
-<div id="sinResultados" class="text-center text-muted d-none my-5">
-  <h4>No se encontraron tutoriales que coincidan con la búsqueda.</h4>
-</div>
-
 </section>
 
 </main>
 
-<?php include '../includes/footer.php'; ?>
-
-<!-- Script limpio para la búsqueda (ignora tildes comunes) -->
-<script>
-function limpiarTexto(texto) {
-  return texto
-    .toLowerCase()
-    .replace(/á/g, 'a')
-    .replace(/é/g, 'e')
-    .replace(/í/g, 'i')
-    .replace(/ó/g, 'o')
-    .replace(/ú/g, 'u');
-}
-
-function filtrarTutoriales() {
-  const inputEl = document.getElementById('inputBuscador');
-  if (!inputEl) return;
-
-  const textoBusqueda = limpiarTexto(inputEl.value.trim());
-  const tarjetas = document.querySelectorAll('.tarjeta-tutorial');
-  let encontrados = 0;
-
-  tarjetas.forEach(tarjeta => {
-    const tituloEl = tarjeta.querySelector('.titulo-tutorial');
-    if (!tituloEl) return;
-    
-    const titulo = limpiarTexto(tituloEl.innerText);
-
-    if (titulo.includes(textoBusqueda)) {
-      tarjeta.classList.remove('d-none');
-      encontrados++;
-    } else {
-      tarjeta.classList.add('d-none');
-    }
-  });
-
-  const msgSinResultados = document.getElementById('sinResultados');
-  if (msgSinResultados) {
-    if (encontrados === 0 && textoBusqueda !== "") {
-      msgSinResultados.classList.remove('d-none');
-    } else {
-      msgSinResultados.classList.add('d-none');
-    }
-  }
-}
-</script>
+<?php include __DIR__ . '/../includes/footer.php'; ?>
 
 </body>
 </html>

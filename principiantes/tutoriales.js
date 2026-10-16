@@ -395,7 +395,7 @@ async function loadLesson() {
                 btnNext.disabled = true;
 
                 try {
-                     fetch('../guardar_progreso.php', {
+                    const respuesta = await fetch('../guardar_progreso.php', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'
