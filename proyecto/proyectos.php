@@ -46,9 +46,9 @@ $active_page = 'proyectos';
 </main>
 
 
-<?php include __DIR__ . '/../includes/chatbot.php'; ?>
+<?php include '/../includes/chatbot.php'; ?>
 
-<?php include __DIR__ . '/../includes/footer.php'; ?>
+<?php include '/../includes/footer.php'; ?>
 
 
 
