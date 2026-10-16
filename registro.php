@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($nombre === '' || !filter_var($email, FILTER_VALIDATE_EMAIL) || strlen($password) < 6) {
         $error = 'Completá los datos correctamente. La contraseña debe tener al menos 6 caracteres.';
     } else {
-        $stmt = $conn->prepare('SELECT id FROM usuarios WHERE email = ? LIMIT 1');
+        $stmt = $conn->prepare('SELECT id_usuarios FROM usuarios WHERE email = ? LIMIT 1');
         $stmt->bind_param('s', $email);
         $stmt->execute();
         $existe = $stmt->get_result()->fetch_assoc();
