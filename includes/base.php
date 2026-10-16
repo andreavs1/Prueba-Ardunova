@@ -1,8 +1,9 @@
 <?php
-// Calcula la URL base del sitio automáticamente.
-if (!defined('BASE_URL')) {
-    $raiz = str_replace('\\', '/', (string) realpath(__DIR__ . '/..'));
-    $doc  = str_replace('\\', '/', (string) realpath($_SERVER['DOCUMENT_ROOT'] ?? ''));
-    $ruta = ($doc !== '' && strpos($raiz, $doc) === 0) ? substr($raiz, strlen($doc)) : '';
-    define('BASE_URL', rtrim($ruta, '/') . '/');
+// Calcula la ruta relativa a la raíz del sitio ($base) según la carpeta de la página actual.
+// Raíz => ''   |   principiantes/, intermedio/, avanzado/, proyecto/ => '../'
+if (!isset($base)) {
+    $root = str_replace('\\', '/', realpath(__DIR__ . '/..'));
+    $dir  = str_replace('\\', '/', realpath(dirname($_SERVER['SCRIPT_FILENAME'])));
+    $rel  = trim(substr($dir, strlen($root)), '/');
+    $base = ($rel === '') ? '' : str_repeat('../', substr_count($rel, '/') + 1);
 }

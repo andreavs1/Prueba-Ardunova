@@ -1,3 +1,4 @@
+<?php require_once __DIR__ . '/base.php'; ?>
 <footer class="main-footer mt-auto">
   <div class="container py-5">
     <div class="row g-4">
@@ -8,18 +9,18 @@
       <div class="col-6 col-md-3 col-lg-2">
         <h3>Explorá</h3>
         <ul class="footer-links">
-          <li><a href="index.php">Inicio</a></li>
-          <li><a href="tutoriales.php">Tutoriales</a></li>
-          <li><a href="proyectos.php">Proyectos</a></li>
-          <li><a href="recursos.php">Recursos</a></li>
+          <li><a href="<?= $base ?>index.php">Inicio</a></li>
+          <li><a href="<?= $base ?>tutoriales.php">Tutoriales</a></li>
+          <li><a href="<?= $base ?>proyectos.php">Proyectos</a></li>
+          <li><a href="<?= $base ?>recursos.php">Recursos</a></li>
         </ul>
       </div>
       <div class="col-6 col-md-3 col-lg-3">
         <h3>Comunidad</h3>
         <ul class="footer-links">
-          <li><a href="comunidad.php">Comunidad</a></li>
-          <li><a href="nosotros.php">Nosotros</a></li>
-          <li><a href="login.php">Iniciar sesión</a></li>
+          <li><a href="<?= $base ?>comunidad.php">Comunidad</a></li>
+          <li><a href="<?= $base ?>nosotros.php">Nosotros</a></li>
+          <li><a href="<?= $base ?>login.php">Iniciar sesión</a></li>
         </ul>
       </div>
       <div class="col-12 col-lg-3">
