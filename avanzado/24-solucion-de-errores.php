@@ -1,4 +1,4 @@
 <?php
-// Lección 24: se muestra desde el visor dinámico.
+// Redirige al visor de tutoriales (el contenido vive en tutoriales.json)
 header('Location: tutorial.avanzado.php?id=24');
 exit();

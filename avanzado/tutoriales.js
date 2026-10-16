@@ -12,7 +12,7 @@ async function loadLesson() {
 
     try {
         // Carga con ruta relativa explícita y timestamp anti-caché
-        const response = await fetch('./tutoriales.json?v=' + Date.now());
+        const response = await fetch('tutoriales.json');
         
         if (!response.ok) {
             throw new Error(`No se pudo acceder a tutoriales.json (Código HTTP: ${response.status})`);

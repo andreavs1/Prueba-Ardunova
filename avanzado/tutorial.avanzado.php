@@ -29,9 +29,6 @@ $active_page = 'tutoriales';
     <!-- FOOTER INCLUIDO DESDE CARPETA INCLUDES -->
     <?php include __DIR__ . '/../includes/footer.php'; ?>
 
-    <!-- Bootstrap Bundle JS (corregido a .js) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    
     <!-- Motor dinámico JavaScript con versión anti-caché -->
     <script src="tutoriales.js"></script>
 </body>
