@@ -1,4 +1,3 @@
-<?php require_once __DIR__ . '/base.php'; ?>
 <button class="chatbot-toggle" id="chatbotToggle" type="button" aria-label="Abrir asistente ARDUNOVA" aria-expanded="false">
   <span aria-hidden="true">💬</span>
 </button>
@@ -70,7 +69,7 @@
     const loading = addMessage('Estoy pensando...', 'bot');
 
     try {
-      const response = await fetch('<?= BASE_URL ?>chatbot.php', {
+      const response = await fetch('chatbot.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: message })
