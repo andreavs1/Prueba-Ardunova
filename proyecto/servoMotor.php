@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 $active_page = 'proyectos';
@@ -9,7 +10,8 @@ $active_page = 'proyectos';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="Control de un servomotor mediante Arduino.">
+    <meta name="description" content="Aprendé a controlar un servomotor con Arduino paso a paso.">
+
     <title>Servomotor con Arduino - ARDUNOVA</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -20,190 +22,90 @@ $active_page = 'proyectos';
 
 <?php include __DIR__ . '/../includes/header.php'; ?>
 
-<main class="container section-container">
+<main class="container section-container py-4">
 
-    <div class="project-header">
-        <span class="tag-nivel intermedio">Intermedio</span>
+    <h1 class="section-title">Servomotor con Arduino</h1>
 
-        <h1 class="section-title mb-2">
-            ⚙️ Servomotor con Arduino
-        </h1>
+    <p>
+        En este proyecto vamos a aprender a controlar un servomotor
+        utilizando Arduino. Un servomotor es un dispositivo que permite
+        mover un eje hasta una posición determinada, por ejemplo,
+        0°, 90° o 180°.
+    </p>
 
-        <p class="section-subtitle">
-            Controlá la posición de un servomotor utilizando Arduino.
-        </p>
+    <h2>¿Qué vamos a aprender?</h2>
+
+    <p>
+        Vamos a conectar un servomotor a una placa Arduino y programarlo
+        para que se mueva automáticamente entre diferentes ángulos.
+        Es un proyecto útil para iniciarse en la robótica y la automatización.
+    </p>
+
+    <div class="text-center my-4">
+        <img
+            src="../assets/img/servomotor.jpg"
+            alt="Servomotor utilizado en el proyecto"
+            class="img-fluid rounded"
+            style="max-width: 500px;"
+        >
     </div>
 
-    <div class="row g-4">
+    <h2>Lista de componentes</h2>
 
-        <!-- INFORMACIÓN -->
-        <div class="col-12 col-lg-7">
+    <ul>
+        <li>Una placa Arduino Uno.</li>
+        <li>Un servomotor, por ejemplo, un SG90.</li>
+        <li>Cables jumper.</li>
+        <li>Cable USB para conectar Arduino a la computadora.</li>
+    </ul>
 
-            <div class="project-info">
+    <h2>Conexión de los cables</h2>
 
-                <h2>Explicación</h2>
+    <p>Para un servomotor SG90, las conexiones habituales son:</p>
 
-                <p>
-                    En este proyecto vamos a controlar un servomotor utilizando
-                    una placa Arduino UNO. El servomotor permite mover su eje
-                    hasta una posición determinada, generalmente entre 0° y 180°.
-                </p>
+    <ul>
+        <li><strong>Cable rojo:</strong> alimentación de 5 V.</li>
+        <li><strong>Cable marrón o negro:</strong> GND.</li>
+        <li><strong>Cable naranja o amarillo:</strong> señal digital 9.</li>
+    </ul>
 
-                <p>
-                    Este proyecto es útil para aprender a controlar movimientos
-                    mecánicos mediante programación y comprender cómo Arduino
-                    puede enviar señales a distintos componentes electrónicos.
-                </p>
+    <p>
+        Los colores pueden variar según el modelo. Antes de conectar
+        el componente, verificá las indicaciones de su fabricante.
+        Si el servo consume más corriente de la que puede entregar
+        la placa, utilizá una alimentación externa adecuada y conectá
+        las masas en común.
+    </p>
 
-                <h3>Objetivo</h3>
-
-                <p>
-                    Aprender a conectar un servomotor a Arduino y programarlo
-                    para que se mueva entre diferentes posiciones.
-                </p>
-
-                <h3>Materiales</h3>
-
-                <ul>
-                    <li>Arduino UNO</li>
-                    <li>1 Servomotor SG90</li>
-                    <li>Protoboard</li>
-                    <li>Cables Jumper</li>
-                    <li>Cable USB</li>
-                </ul>
-
-            </div>
-
-        </div>
-
-        <!-- IMÁGENES -->
-        <div class="col-12 col-lg-5">
-
-            <div class="card h-100 border-0 shadow-sm">
-
-                <div class="card-image">
-
-                    <img
-                        src="../assets/img/ServoMotor.jpg"
-                        alt="Servomotor con Arduino">
-
-                    <img
-                        src="../assets/img/servoMotor1.jpg"
-                        alt="Proyecto servomotor con Arduino">
-
-                </div>
-
-            </div>
-
-        </div>
-
+    <div class="text-center my-4">
+        <img
+            src="../assets/img/servomotor1.png"
+            alt="Imagen complementaria del proyecto de servomotor"
+            class="img-fluid rounded"
+            style="max-width: 600px;"
+        >
     </div>
 
-    <!-- CONEXIONES -->
-    <section class="steps-section mt-5">
+    <h2>Procedimiento paso a paso</h2>
 
-        <h2 class="mb-4">
-            🔌 Esquema de conexión
-        </h2>
+    <ol>
+        <li>Conectá el cable de alimentación del servomotor a 5 V, si el modelo lo permite.</li>
+        <li>Conectá el cable de tierra a GND.</li>
+        <li>Conectá el cable de señal al pin digital 9.</li>
+        <li>Abrí el IDE de Arduino en la computadora.</li>
+        <li>Copiá el código que aparece a continuación.</li>
+        <li>Seleccioná la placa y el puerto correctos y cargá el programa.</li>
+        <li>Observá cómo cambia la posición del servomotor.</li>
+    </ol>
 
-        <div class="card my-3">
+    <h2>Código de Arduino</h2>
 
-            <div class="card-body">
+    <p>
+        La biblioteca Servo permite controlar la posición del motor
+        mediante la función <code>write()</code>.
+    </p>
 
-                <ul>
-
-                    <li>
-                        <strong>Cable rojo:</strong>
-                        conectar al pin 5V de Arduino.
-                    </li>
-
-                    <li>
-                        <strong>Cable marrón o negro:</strong>
-                        conectar al pin GND de Arduino.
-                    </li>
-
-                    <li>
-                        <strong>Cable naranja o amarillo:</strong>
-                        conectar al pin digital 9 de Arduino.
-                    </li>
-
-                </ul>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- PASO A PASO -->
-    <section class="steps-section mt-5">
-
-        <h2 class="mb-4">
-            🛠️ Paso a paso
-        </h2>
-
-        <div class="row g-3">
-
-            <div class="col-12 col-md-4">
-
-                <div class="setup-step p-4">
-
-                    <h4>1. Conexiones</h4>
-
-                    <p>
-                        Conectá el cable de alimentación del servomotor
-                        al pin 5V, el cable de tierra a GND y el cable
-                        de señal al pin digital 9.
-                    </p>
-
-                </div>
-
-            </div>
-
-            <div class="col-12 col-md-4">
-
-                <div class="setup-step p-4">
-
-                    <h4>2. Programar</h4>
-
-                    <p>
-                        Abrí Arduino IDE, copiá el código del proyecto
-                        y seleccioná la placa Arduino UNO correspondiente.
-                    </p>
-
-                </div>
-
-            </div>
-
-            <div class="col-12 col-md-4">
-
-                <div class="setup-step p-4">
-
-                    <h4>3. Probar</h4>
-
-                    <p>
-                        Cargá el programa en Arduino y observá cómo el
-                        servomotor cambia de posición automáticamente.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- CÓDIGO -->
-    <section class="code-section mt-5">
-
-        <h2>
-            💻 Código Fuente
-        </h2>
-
-        <div class="card code-card">
-
-            <pre><code>#include &lt;Servo.h&gt;
+    <pre class="p-3 rounded" style="background-color: #f1f1f1; color: #222; white-space: pre-wrap;"><code>#include &lt;Servo.h&gt;
 
 Servo miServo;
 
@@ -212,7 +114,6 @@ void setup() {
 }
 
 void loop() {
-
     miServo.write(0);
     delay(1000);
 
@@ -226,36 +127,35 @@ void loop() {
     delay(1000);
 }</code></pre>
 
-        </div>
+    <h2>¿Cómo funciona el código?</h2>
 
-    </section>
+    <ul>
+        <li><code>#include &lt;Servo.h&gt;</code> incorpora la biblioteca para controlar el servomotor.</li>
+        <li><code>Servo miServo;</code> crea el objeto que representa al motor.</li>
+        <li><code>miServo.attach(9);</code> indica que la señal está conectada al pin 9.</li>
+        <li><code>miServo.write(90);</code> solicita que el motor se coloque en el ángulo indicado.</li>
+        <li><code>delay(1000);</code> espera un segundo antes de continuar.</li>
+        <li><code>loop()</code> repite la secuencia continuamente.</li>
+    </ul>
 
-    <!-- RESULTADO -->
-    <div class="result-card mt-5">
+    <h2>Resultado esperado</h2>
 
-        <h4>✅ Resultado esperado</h4>
+    <p>
+        Cuando el programa se ejecute, el servomotor intentará ubicarse
+        en 0°, luego en 90°, después en 180° y volverá a 90°.
+        Así podemos comprobar cómo Arduino controla su posición.
+    </p>
 
-        <p class="mb-0">
-            El servomotor deberá moverse desde 0° hasta 180°,
-            pasando por 90°, y luego regresar. El movimiento se
-            repetirá continuamente.
-        </p>
-
-    </div>
-
-    <!-- VOLVER -->
     <div class="text-center button-container my-4">
-
         <a href="proyectos.php" class="btn btn-outline-cyan">
             ← Volver a Proyectos
         </a>
-
     </div>
 
 </main>
 
+<?php include __DIR__ . '/../includes/chatbot.php'; ?>
 <?php include __DIR__ . '/../includes/footer.php'; ?>
 
 </body>
 </html>
-
