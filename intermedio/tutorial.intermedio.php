@@ -1,6 +1,7 @@
-<?php 
-session_start(); 
-$active_page = 'tutoriales'; 
+<?php
+require_once __DIR__ . '/../includes/base.php';
+session_start();
+$active_page = 'tutoriales';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -15,7 +16,7 @@ $active_page = 'tutoriales';
 <body class="d-flex flex-column min-vh-100 bg-light">
 
     <!-- HEADER INCLUIDO DESDE CARPETA INCLUDES -->
-    <?php include __DIR__ . '/../includes/header.php'; ?>
+    <?php include  '../includes/header.php'; ?>
 
     <!-- Contenedor dinámico cargado por JavaScript -->
     <main id="app-tutorial" class="py-4">
@@ -27,7 +28,7 @@ $active_page = 'tutoriales';
     </main>
 
     <!-- FOOTER INCLUIDO DESDE CARPETA INCLUDES -->
-    <?php include __DIR__ . '/../includes/footer.php'; ?>
+    <?php include  '../includes/footer.php'; ?>
 
     <!-- Motor dinámico JavaScript -->
     <script src="tutoriales.js"></script>

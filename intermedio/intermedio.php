@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../includes/base.php';
 session_start();
 $active_page = 'tutoriales';
 ?>
@@ -29,7 +30,7 @@ $active_page = 'tutoriales';
 
 <body> 
 
-<?php include __DIR__ . '/../includes/header.php'; ?>
+<?php include '../includes/header.php'; ?>
 
 <main>
 
@@ -205,7 +206,7 @@ $active_page = 'tutoriales';
 
 </main>
 
-<?php include __DIR__ . '/../includes/footer.php'; ?>
+<?php include '../includes/footer.php'; ?>
 
 <!-- Script limpio para la búsqueda (ignora tildes comunes) -->
 <script>
