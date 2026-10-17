@@ -13,7 +13,7 @@ $active_page = 'tutoriales';
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <?php include 'includes/header.php';?>
+  <?php include __DIR__ . '/includes/header.php';?>
 
   <main>
     <section class="text-center container section-container">
