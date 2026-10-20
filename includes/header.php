@@ -16,11 +16,11 @@ $usuario_sesion = $_SESSION['usuario'] ?? null;
 
       <div class="collapse navbar-collapse" id="mainNavbar">
         <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
-          <li class="nav-item"><a class="nav-link <?= $active_page === 'inicio' ? 'active' : '' ?>" href="<?= $base ?>../index.php">Inicio</a></li>
-          <li class="nav-item"><a class="nav-link <?= $active_page === 'tutoriales' ? 'active' : '' ?>" href="<?= $base ?>../tutoriales.php">Tutoriales</a></li>
-          <li class="nav-item"><a class="nav-link <?= $active_page === 'proyectos' ? 'active' : '' ?>" href="<?= $base ?>../proyectos.php">Proyectos</a></li>
-          <li class="nav-item"><a class="nav-link <?= $active_page === 'recursos' ? 'active' : '' ?>" href="<?= $base ?>../recursos.php">Recursos</a></li>
-          <li class="nav-item"><a class="nav-link <?= $active_page === 'nosotros' ? 'active' : '' ?>" href="<?= $base ?>../nosotros.php">Nosotros</a></li>
+          <li class="nav-item"><a class="nav-link <?= $active_page === 'inicio' ? 'active' : '' ?>" href="<?= $base ?>index.php">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link <?= $active_page === 'tutoriales' ? 'active' : '' ?>" href="<?= $base ?>tutoriales.php">Tutoriales</a></li>
+          <li class="nav-item"><a class="nav-link <?= $active_page === 'proyectos' ? 'active' : '' ?>" href="<?= $base ?>proyectos.php">Proyectos</a></li>
+          <li class="nav-item"><a class="nav-link <?= $active_page === 'recursos' ? 'active' : '' ?>" href="<?= $base ?>recursos.php">Recursos</a></li>
+          <li class="nav-item"><a class="nav-link <?= $active_page === 'nosotros' ? 'active' : '' ?>" href="<?= $base ?>nosotros.php">Nosotros</a></li>
           <?php if ($usuario_sesion): ?>
             <li class="nav-item dropdown ms-lg-2">
               <a class="nav-link dropdown-toggle user-link" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

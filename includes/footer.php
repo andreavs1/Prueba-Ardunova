@@ -18,7 +18,6 @@
       <div class="col-6 col-md-3 col-lg-3">
         <h3>Comunidad</h3>
         <ul class="footer-links">
-          <li><a href="<?= $base ?>comunidad.php">Comunidad</a></li>
           <li><a href="<?= $base ?>nosotros.php">Nosotros</a></li>
           <li><a href="<?= $base ?>login.php">Iniciar sesión</a></li>
         </ul>
