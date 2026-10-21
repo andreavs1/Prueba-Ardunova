@@ -56,7 +56,7 @@ $active_page = 'inicio';
               </div>
             </div>
             <div class="carousel-item">
-              <img src="assets/img/proyecto.png" class="d-block w-100" alt="Proyecto práctico">
+              <img src="assets/img/proyectos.jpg" class="d-block w-100" alt="Proyecto práctico">
               <div class="carousel-caption">
                 <span>Proyectos para aprender haciendo</span>
               </div>
