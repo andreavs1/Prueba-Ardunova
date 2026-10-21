@@ -50,7 +50,7 @@ $active_page = 'inicio';
               </div>
             </div>
             <div class="carousel-item">
-              <img src="assets/img/robot.png" class="d-block w-100" alt="Proyecto de robótica">
+              <img src="assets/img/walle.jpg" class="d-block w-100" alt="Proyecto de robótica">
               <div class="carousel-caption">
                 <span>Robótica y creatividad</span>
               </div>
