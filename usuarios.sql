@@ -39,3 +39,25 @@ INSERT INTO tutoriales (id_tutorial, categoria_t) VALUES
     (13, 'Intermedio'), (14, 'Intermedio'), (15, 'Intermedio'), (16, 'Intermedio'),
     (17, 'Avanzado'), (18, 'Avanzado'), (19, 'Avanzado'), (20, 'Avanzado'),
     (21, 'Avanzado'), (22, 'Avanzado'), (23, 'Avanzado'), (24, 'Avanzado');
+
+-- PROYECTOS 
+-- Proyectos (para poder referenciarlos desde la tabla de progreso)
+CREATE TABLE IF NOT EXISTS proyectos (
+    id_proyecto INT AUTO_INCREMENT PRIMARY KEY,
+    categoria_p VARCHAR(20) NOT NULL
+);
+-- Categorías de los proyecto
+INSERT INTO proyectos (id_proyecto, categoria_p) VALUES
+    (1, 'Principiante'),(2, 'Intermedio'),(3, 'Principiante'),(4, 'Intermedio'),
+    (5, 'Intermedio'),(6, 'Principiante'),(7, 'Principiante'),(8, 'Intermedio'),
+    (9, 'Avanazado'),(10, 'Avanzado'),(11, 'Avanzado'),(12, 'Intermedio');
+
+--Agregamos las columnas correspondientes a la tabla progreso.
+ ALTER TABLE progreso
+     MODIFY COLUMN id_tutorial INT NULL;
+
+ ALTER TABLE progreso
+    -MODIFY COLUMN id_tutorial INT NULL;
+
+ALTER TABLE progreso
+     ADD CONSTRAINT unique_usuario_proyecto UNIQUE (id_usuarios, id_proyecto);
