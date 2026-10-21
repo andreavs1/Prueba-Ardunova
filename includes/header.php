@@ -20,6 +20,7 @@ $usuario_sesion = $_SESSION['usuario'] ?? null;
           <li class="nav-item"><a class="nav-link <?= $active_page === 'tutoriales' ? 'active' : '' ?>" href="<?= $base ?>tutoriales.php">Tutoriales</a></li>
           <li class="nav-item"><a class="nav-link <?= $active_page === 'proyectos' ? 'active' : '' ?>" href="<?= $base ?>proyectos.php">Proyectos</a></li>
           <li class="nav-item"><a class="nav-link <?= $active_page === 'recursos' ? 'active' : '' ?>" href="<?= $base ?>recursos.php">Recursos</a></li>
+          <li class="nav-item"><a class="nav-link <?= $active_page === 'donaciones' ? 'active' : '' ?>" href="<?= $base ?>donaciones.php">Donaciones</a></li>
           <li class="nav-item"><a class="nav-link <?= $active_page === 'nosotros' ? 'active' : '' ?>" href="<?= $base ?>nosotros.php">Nosotros</a></li>
           <?php if ($usuario_sesion): ?>
             <li class="nav-item dropdown ms-lg-2">
