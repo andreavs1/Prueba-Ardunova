@@ -1,16 +1,14 @@
 [
   
 {
-  "id":1,
   "titulo": "Parpadeo de LED (Blink)",
   "nivel": "Principiante",
   "descripcion": "Aprendé a encender y apagar un LED con Arduino.",
-  "imagen": "../assets/img/lcd.jpg",
+  "imagen": "../assets/img/ledblin(1).jpg",
   "enlace": "ledblink.php"
 },
 
   {
-    "id":2,
     "titulo": "Pantalla LCD Dinámica",
     "nivel": "Intermedio",
     "descripcion": "Mostrá información y mensajes en una pantalla LCD.",
@@ -18,7 +16,6 @@
     "enlace": "lcddinamica.php"
   },
   {
-    "id":3,
     "titulo": "Semáforo Inteligente",
     "nivel": "Principiante",
     "descripcion": "Construí un semáforo con luces LED y Arduino.",
@@ -26,7 +23,6 @@
     "enlace": "SemaforoA.php"
   },
   {
-    "id":4,
     "titulo": "Sensor Ultrasónico",
     "nivel": "Intermedio",
     "descripcion": "Medí distancias utilizando un sensor ultrasónico.",
@@ -34,7 +30,6 @@
     "enlace": "sensorUltrasonico.php"
   },
   {
-    "id":5,
     "titulo": "Domótica",
     "nivel": "Intermedio",
     "descripcion": "Conocé cómo automatizar funciones de una vivienda.",
@@ -42,7 +37,6 @@
     "enlace": "domotica.php"
   },
   {
-    "id":6,
     "titulo": "LED con Botón",
     "nivel": "Principiante",
     "descripcion": "Controlá un LED mediante un pulsador.",
@@ -50,7 +44,6 @@
     "enlace": "ledboton.php"
   },
   {
-    "id":7,
     "titulo": "Potenciómetro",
     "nivel": "Principiante",
     "descripcion": "Regulá el comportamiento de un circuito con un potenciómetro.",
@@ -58,7 +51,6 @@
     "enlace": "potenciometro.php"
   },
   {
-    "id":8,
     "titulo": "Sensor de Luz (LDR)",
     "nivel": "Intermedio",
     "descripcion": "Detectá cambios de luz usando un sensor LDR.",
@@ -66,7 +58,6 @@
     "enlace": "sensorluZ.php"
   },
   {
-    "id":9,
     "titulo": "Sistema de Riego Automático",
     "nivel": "Avanzado",
     "descripcion": "Aprendé cómo automatizar el riego de las plantas.",
@@ -74,7 +65,6 @@
     "enlace": "riego.php"
   },
   {
-    "id":10,
     "titulo": "Seguidor de Línea",
     "nivel": "Avanzado",
     "descripcion": "Descubrí cómo un robot puede seguir una línea.",
@@ -82,7 +72,6 @@
     "enlace": "seguidorlinea.php"
   },
   {
-    "id":11,
     "titulo": "Robot Evita Obstáculos",
     "nivel": "Avanzado",
     "descripcion": "Creá un robot que detecte y evite obstáculos.",
@@ -90,7 +79,6 @@
     "enlace": "robotobstaculos.php"
   },
   {
-    "id":12,
     "titulo": "Servomotor",
     "nivel": "Intermedio",
     "descripcion": "Controlá el movimiento y el ángulo de un servomotor con Arduino.",
@@ -98,4 +86,3 @@
     "enlace": "servoMotor.php"
   }
 ]
-
