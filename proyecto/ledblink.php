@@ -55,8 +55,8 @@ $active_page = 'proyectos';
 
     <div class="text-center my-4">
         <img
-            src="<?= BASE_URL ?>assets/img/ledblin(1).jpg"
-            alt="Imagen utilizada actualmente en el proyecto Blink"
+            src="<?= $base ?>assets/img/ledBlink1.png"
+            alt="Proyecto de parpadeo de LED con Arduino"
             class="img-fluid rounded"
             style="max-width: 500px;"
         >
@@ -182,7 +182,7 @@ void loop() {
 
     <div class="text-center button-container my-4">
         <a
-            href="<?= BASE_URL ?>proyecto/proyectos.php"
+            href="<?= $base ?>proyecto/proyectos.php"
             class="btn btn-outline-cyan"
         >
             ← Volver a Proyectos

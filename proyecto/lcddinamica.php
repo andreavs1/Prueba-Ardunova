@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 $active_page = 'proyectos';
@@ -9,264 +8,283 @@ $active_page = 'proyectos';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Aprendé a controlar una pantalla LCD I2C con Arduino y mostrar un contador dinámico paso a paso.">
+
     <title>Pantalla LCD Dinámica - ARDUNOVA</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/style.css">
 </head>
 
 <body>
 
-<?php include __DIR__ . '/../includes/header.php'; ?>
+<?php include __DIR__ . '/includes/header.php'; ?>
 
-<main class="container section-container py-4">
+<main class="container py-5">
 
-    <span class="tag-nivel intermedio">Intermedio</span>
+    <!-- Título del proyecto -->
+    <section class="text-center mb-5">
+        <h1 class="display-5 fw-bold">Pantalla LCD Dinámica</h1>
 
-    <h1 class="section-title">Pantalla LCD Dinámica</h1>
+        <p class="lead">
+            Aprendé a conectar y programar una pantalla LCD con Arduino
+            para mostrar mensajes y datos que cambian en tiempo real.
+        </p>
 
-    <p>
-        En este proyecto vamos a aprender a utilizar una pantalla LCD
-        con comunicación I2C y Arduino. La pantalla mostrará un mensaje
-        fijo en la primera línea y un contador de segundos en la segunda.
-    </p>
-
-    <h2>¿Qué vamos a aprender?</h2>
-
-    <p>
-        Vamos a conocer cómo conectar una pantalla LCD I2C, inicializarla
-        desde Arduino, mostrar textos y actualizar información
-        automáticamente. También aprenderemos a utilizar la función
-        millis() para calcular el tiempo transcurrido desde que comenzó
-        a ejecutarse el programa.
-    </p>
-
-    <div class="text-center my-4">
         <img
-            src="<?= BASE_URL ?>assets/img/lcddinamica(1).jpg"
-            alt="Pantalla LCD Dinámica utilizada en el proyecto"
-            class="img-fluid rounded"
-            style="max-width: 500px;"
+            src="<?= BASE_URL ?>assets/img/lcd-dinamica.jpg"
+            class="img-fluid rounded shadow mt-3"
+            alt="Pantalla LCD conectada a Arduino"
+            style="max-height: 350px;"
         >
-    </div>
+    </section>
 
-    <h2>Lista de componentes</h2>
+    <!-- Introducción -->
+    <section class="mb-5">
+        <h2>¿De qué trata este proyecto?</h2>
 
-    <ul>
-        <li>Una placa Arduino UNO.</li>
-        <li>Una pantalla LCD de 16 columnas y 2 filas con adaptador I2C.</li>
-        <li>Cables jumper.</li>
-        <li>Una protoboard, si el montaje la requiere.</li>
-        <li>Un cable USB para conectar Arduino a la computadora.</li>
-    </ul>
+        <p>
+            En este proyecto vamos a utilizar una pantalla LCD de 16
+            columnas y 2 filas para mostrar información mediante Arduino.
+            La pantalla puede mostrar mensajes y valores que se actualizan
+            automáticamente, como un contador de segundos.
+        </p>
 
-    <p>
-        También necesitás el IDE de Arduino y una biblioteca compatible
-        con LiquidCrystal_I2C para controlar la pantalla.
-    </p>
+        <p>
+            Utilizaremos una pantalla LCD con módulo I2C, que permite
+            conectarla a Arduino usando solamente cuatro conexiones.
+        </p>
+    </section>
 
-    <h2>Conexión de los cables</h2>
+    <!-- Imagen del armado -->
+    <section class="text-center mb-5">
+        <h2>Materiales y armado</h2>
 
-    <p>
-        Para conectar una pantalla LCD I2C a una placa Arduino UNO,
-        utilizá las siguientes conexiones habituales:
-    </p>
+        <img
+            src="<?= BASE_URL ?>assets/img/lcddinamica1.png"
+            class="img-fluid rounded shadow my-3"
+            alt="Armado del proyecto de pantalla LCD dinámica"
+            style="max-height: 400px;"
+        >
+    </section>
 
-    <ul>
-        <li>
-            <strong>VCC:</strong>
-            conectalo a 5V, si corresponde a las especificaciones del módulo.
-        </li>
-        <li>
-            <strong>GND:</strong>
-            conectalo a GND de Arduino.
-        </li>
-        <li>
-            <strong>SDA:</strong>
-            conectalo al pin A4 de Arduino UNO.
-        </li>
-        <li>
-            <strong>SCL:</strong>
-            conectalo al pin A5 de Arduino UNO.
-        </li>
-    </ul>
+    <!-- Componentes -->
+    <section class="mb-5">
+        <h2>Componentes necesarios</h2>
 
-    <p>
-        Estas conexiones corresponden al Arduino UNO clásico.
-        Si utilizás otra placa, los pines de comunicación I2C pueden
-        ser diferentes. Verificá también la dirección I2C de tu pantalla.
-    </p>
+        <ul>
+            <li>1 placa Arduino UNO.</li>
+            <li>1 pantalla LCD de 16x2 con módulo I2C.</li>
+            <li>Cables Dupont macho-macho.</li>
+            <li>1 protoboard (opcional, según el armado).</li>
+            <li>1 cable USB para conectar Arduino a la computadora.</li>
+        </ul>
+    </section>
 
-    <h2>Procedimiento paso a paso</h2>
+    <!-- Conexiones -->
+    <section class="mb-5">
+        <h2>Conexiones de los componentes</h2>
 
-    <ol>
-        <li>Reuní la placa Arduino UNO, la pantalla LCD I2C y los cables.</li>
-        <li>Conectá VCC, GND, SDA y SCL según las indicaciones anteriores.</li>
-        <li>Conectá Arduino a la computadora mediante el cable USB.</li>
-        <li>Abrí el IDE de Arduino.</li>
-        <li>Instalá una biblioteca compatible con LiquidCrystal_I2C si todavía no la tenés.</li>
-        <li>Copiá el código que aparece a continuación.</li>
-        <li>Seleccioná Arduino UNO y el puerto correspondiente.</li>
-        <li>Verificá el programa y cargalo en la placa.</li>
-        <li>Observá el mensaje de la primera línea y el contador de la segunda.</li>
-    </ol>
+        <p>Conectá la pantalla LCD I2C a la placa Arduino UNO de la siguiente manera:</p>
 
-    <h2>Código de Arduino</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Pin de la pantalla LCD</th>
+                        <th>Pin de Arduino UNO</th>
+                        <th>Función</th>
+                    </tr>
+                </thead>
 
-    <p>
-        Este programa inicializa la pantalla, muestra un título y
-        actualiza un contador que indica los segundos aproximados
-        transcurridos desde el inicio.
-    </p>
+                <tbody>
+                    <tr>
+                        <td>VCC</td>
+                        <td>5V</td>
+                        <td>Alimentación</td>
+                    </tr>
 
-    <pre class="p-3 rounded" style="background-color: #f1f1f1; color: #222; white-space: pre-wrap;"><code>#include &lt;Wire.h&gt;
+                    <tr>
+                        <td>GND</td>
+                        <td>GND</td>
+                        <td>Tierra</td>
+                    </tr>
+
+                    <tr>
+                        <td>SDA</td>
+                        <td>A4</td>
+                        <td>Comunicación de datos</td>
+                    </tr>
+
+                    <tr>
+                        <td>SCL</td>
+                        <td>A5</td>
+                        <td>Reloj de comunicación I2C</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p class="text-muted">
+            Importante: estas conexiones corresponden al Arduino UNO clásico.
+            Verificá que tu pantalla tenga módulo I2C.
+        </p>
+    </section>
+
+    <!-- Paso a paso -->
+    <section class="mb-5">
+        <h2>Armado paso a paso</h2>
+
+        <div class="mb-4">
+            <h3>1. Preparar los materiales</h3>
+            <p>
+                Reuní la placa Arduino UNO, la pantalla LCD I2C y los cables.
+                Antes de conectar los componentes, asegurate de que Arduino
+                no esté alimentado.
+            </p>
+        </div>
+
+        <div class="mb-4">
+            <h3>2. Conectar la pantalla</h3>
+            <p>
+                Conectá VCC a 5V, GND a GND, SDA a A4 y SCL a A5.
+                Revisá las conexiones antes de continuar.
+            </p>
+        </div>
+
+        <div class="mb-4">
+            <h3>3. Preparar el programa</h3>
+            <p>
+                Abrí Arduino IDE e instalá una biblioteca compatible con
+                pantallas LCD I2C, como LiquidCrystal_I2C.
+            </p>
+        </div>
+
+        <div class="mb-4">
+            <h3>4. Cargar y probar</h3>
+            <p>
+                Copiá el código de ejemplo, seleccioná la placa y el puerto
+                correspondiente y cargá el programa. Si la pantalla no muestra
+                texto, revisá las conexiones, el contraste y la dirección I2C.
+            </p>
+        </div>
+    </section>
+
+    <!-- Código Arduino -->
+    <section class="mb-5">
+        <h2>Código Arduino</h2>
+
+        <p>
+            Este programa muestra un mensaje inicial y después actualiza
+            un contador que indica cuántos segundos pasaron desde que
+            comenzó a ejecutarse.
+        </p>
+
+        <div class="bg-dark text-light p-3 rounded">
+            <pre class="mb-0 text-light"><code>#include &lt;Wire.h&gt;
 #include &lt;LiquidCrystal_I2C.h&gt;
 
-// Configura la dirección I2C y las dimensiones de la pantalla
+// Dirección I2C y tamaño de la pantalla
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 
 void setup() {
-    // Inicializar la pantalla LCD
     lcd.init();
-
-    // Encender la luz de fondo
     lcd.backlight();
 
-    // Mostrar un mensaje en la primera línea
     lcd.setCursor(0, 0);
     lcd.print("LCD Dinamica v1");
+
+    lcd.setCursor(0, 1);
+    lcd.print("Iniciando...");
+    delay(2000);
+
+    lcd.clear();
 }
 
 void loop() {
-    // Ubicar el cursor en la segunda línea
-    lcd.setCursor(0, 1);
+    lcd.setCursor(0, 0);
+    lcd.print("LCD Dinamica");
 
-    // Mostrar el contador de segundos
+    lcd.setCursor(0, 1);
     lcd.print("Contador: ");
     lcd.print(millis() / 1000);
     lcd.print(" s   ");
 
-    // Esperar un segundo
     delay(1000);
 }</code></pre>
+        </div>
+    </section>
 
-    <h2>¿Cómo funciona el código?</h2>
+    <!-- Explicación del código -->
+    <section class="mb-5">
+        <h2>¿Cómo funciona el código?</h2>
 
-    <ul>
-        <li>
-            <code>#include &lt;Wire.h&gt;</code> incorpora la biblioteca
-            que permite utilizar la comunicación I2C.
-        </li>
-        <li>
-            <code>#include &lt;LiquidCrystal_I2C.h&gt;</code> permite
-            controlar la pantalla LCD mediante el adaptador I2C.
-        </li>
-        <li>
-            <code>LiquidCrystal_I2C lcd(0x27, 16, 2);</code> crea el
-            objeto de la pantalla, configura la dirección I2C 0x27
-            y establece sus 16 columnas y 2 filas.
-        </li>
-        <li>
-            <code>void setup()</code> contiene las instrucciones que
-            se ejecutan una sola vez al iniciar Arduino.
-        </li>
-        <li>
-            <code>lcd.init();</code> inicializa la pantalla para utilizarla.
-        </li>
-        <li>
-            <code>lcd.backlight();</code> enciende la luz de fondo.
-        </li>
-        <li>
-            <code>lcd.setCursor(0, 0);</code> coloca el cursor en la
-            primera columna de la primera fila.
-        </li>
-        <li>
-            <code>lcd.print("LCD Dinamica v1");</code> muestra el título
-            del proyecto en la primera línea.
-        </li>
-        <li>
-            <code>void loop()</code> contiene las instrucciones que
-            Arduino repite continuamente.
-        </li>
-        <li>
-            <code>lcd.setCursor(0, 1);</code> coloca el cursor al comienzo
-            de la segunda fila.
-        </li>
-        <li>
-            <code>lcd.print("Contador: ");</code> muestra el texto que
-            acompaña al número.
-        </li>
-        <li>
-            <code>millis() / 1000</code> convierte aproximadamente
-            los milisegundos transcurridos en segundos.
-        </li>
-        <li>
-            <code>lcd.print(" s   ");</code> muestra la unidad de segundos
-            y espacios adicionales que ayudan a borrar los caracteres
-            sobrantes cuando el número cambia de cantidad de dígitos.
-        </li>
-        <li>
-            <code>delay(1000);</code> espera aproximadamente un segundo
-            antes de continuar con la siguiente repetición.
-        </li>
-    </ul>
+        <ul>
+            <li><strong>Wire.h:</strong> permite la comunicación I2C.</li>
+            <li><strong>LiquidCrystal_I2C.h:</strong> permite controlar la pantalla.</li>
+            <li><strong>lcd.init():</strong> inicializa la pantalla LCD.</li>
+            <li><strong>lcd.backlight():</strong> enciende la luz de fondo.</li>
+            <li><strong>lcd.setCursor():</strong> indica dónde se escribe el texto.</li>
+            <li><strong>lcd.print():</strong> muestra mensajes y valores.</li>
+            <li><strong>millis():</strong> devuelve el tiempo transcurrido desde que empezó el programa.</li>
+            <li><strong>delay(1000):</strong> espera un segundo antes de repetir el ciclo.</li>
+        </ul>
 
-    <h2>Simulador interactivo</h2>
+        <p>
+            El contador se actualiza aproximadamente cada segundo. Los espacios
+            al final de la segunda línea ayudan a borrar caracteres que puedan
+            haber quedado de un número anterior.
+        </p>
+    </section>
 
-    <p>
-        Wokwi permite probar circuitos y programas de Arduino desde
-        el navegador antes de montar el circuito real. Podés utilizarlo
-        para observar el comportamiento de la pantalla y comprobar
-        las conexiones.
-    </p>
+    <!-- Resultado esperado -->
+    <section class="mb-5">
+        <h2>Resultado esperado</h2>
 
-    <div class="card shadow-sm border-0 rounded-4 overflow-hidden my-4">
+        <p>
+            Al iniciar, la pantalla mostrará el mensaje
+            <strong>“LCD Dinamica v1”</strong>. Después aparecerá el texto
+            “LCD Dinamica” y, en la segunda fila, un contador que aumentará
+            cada segundo.
+        </p>
+    </section>
+
+    <!-- Simulador -->
+    <section class="mb-5">
+        <h2>Probá el proyecto en Wokwi</h2>
+
+        <p>
+            Podés simular el circuito antes de armarlo físicamente.
+            Para mostrar tu proyecto, reemplazá el identificador de ejemplo
+            por el ID real de tu simulación de Wokwi.
+        </p>
+
         <div class="ratio ratio-16x9">
             <iframe
-                src="https://wokwi.com/projects/ID_DE_TU_PROYECTO_WOKWI/embed"
-                title="Simulador de Arduino Pantalla LCD Dinámica"
-                loading="lazy"
-                allow="autoplay"
-                style="border: 0;"
-            ></iframe>
+                src="https://wokwi.com/projects/ID_DE_TU_PROYECTO_WOKWI"
+                title="Simulador de pantalla LCD dinámica"
+                allowfullscreen
+                loading="lazy">
+            </iframe>
         </div>
-    </div>
 
-    <p>
-        <strong>Importante:</strong>
-        reemplazá ID_DE_TU_PROYECTO_WOKWI por el identificador real
-        de tu proyecto de Wokwi. Si todavía no tenés una simulación,
-        podés completar esta parte más adelante.
-    </p>
+        <p class="text-muted mt-2">
+            El simulador no funcionará hasta que coloques un ID válido.
+        </p>
+    </section>
 
-    <h2>Resultado esperado</h2>
-
-    <p>
-        Al ejecutar el programa, la pantalla mostrará
-        "LCD Dinamica v1" en la primera línea. En la segunda aparecerá
-        "Contador:" seguido de los segundos aproximados transcurridos
-        desde que comenzó a ejecutarse el programa.
-    </p>
-
-    <p>
-        El contador se actualizará aproximadamente cada segundo.
-        Cuando se reinicie Arduino, el conteo volverá a comenzar.
-    </p>
-
-    <div class="text-center button-container my-4">
-        <a
-            href="<?= BASE_URL ?>proyecto/proyectos.php"
-            class="btn btn-outline-cyan"
-        >
-            ← Volver a Proyectos
+    <!-- Volver a proyectos -->
+    <section class="text-center mt-5">
+        <a href="proyectos.php" class="btn btn-gradient">
+            Volver a proyectos
         </a>
-    </div>
+    </section>
 
 </main>
 
-<?php include __DIR__ . '/../includes/chatbot.php'; ?>
-<?php include __DIR__ . '/../includes/footer.php'; ?>
+<?php include __DIR__ . '/includes/footer.php'; ?>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
