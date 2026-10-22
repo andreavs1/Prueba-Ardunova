@@ -1,4 +1,12 @@
-<?php session_start(); $active_page = 'proyectos'; ?>
+<?php 
+session_start(); 
+
+if (!defined('BASE_URL')) {
+    define('BASE_URL', '../');
+}
+
+$active_page = 'proyectos'; 
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -32,7 +40,7 @@
             <div class="col-12 col-lg-5">
                 <div class="card h-100">
                     <div class="card-image">
-                        <img src="<?= BASE_URL ?>assets/img/domotica.jpg" alt="Domótica Básica">
+                        <img src="../assets/img/domotica.jpg" alt="Domótica Básica">
                     </div>
                 </div>
             </div>
@@ -131,6 +139,55 @@
             </div>
         </section>
 
+        <!-- CÓDIGO DE ARDUINO -->
+        <section class="mt-5">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2>Código de Arduino (.ino)</h2>
+                <button class="btn btn-sm btn-outline-primary" onclick="copiarCodigo()">Copiar Código</button>
+            </div>
+            <div class="card bg-dark text-light p-3 border-0 rounded-3">
+                <pre class="mb-0"><code id="codigoArduino">// Definición de pines
+const int pinPIR = 2;       // Pin de entrada del sensor PIR
+const int pinRele = 8;      // Pin de salida para controlar el Relé
+const int pinLDR = A0;      // Pin analógico de lectura de la fotorresistencia
+
+// Umbral de oscuridad (0 a 1023)
+const int umbralLuz = 400;  
+
+void setup() {
+  pinMode(pinPIR, INPUT);
+  pinMode(pinRele, OUTPUT);
+  
+  // La mayoría de los módulos relé activan en LOW
+  digitalWrite(pinRele, HIGH); // Relé apagado al inicio
+
+  Serial.begin(9600);
+  Serial.println("Sistema de Domotica Basica Inicializado.");
+}
+
+void loop() {
+  int estadoPIR = digitalRead(pinPIR);
+  int valorLuz = analogRead(pinLDR);
+
+  Serial.print("Luz: ");
+  Serial.print(valorLuz);
+  Serial.print(" | Movimiento: ");
+  Serial.println(estadoPIR == HIGH ? "DETECTADO" : "Sin movimiento");
+
+  // Si hay poca luz Y se detecta movimiento, se enciende la luz (Relé)
+  if (valorLuz < umbralLuz && estadoPIR == HIGH) {
+    digitalWrite(pinRele, LOW);  // Enciende la carga (Relé ON)
+    Serial.println("--> Luces Encendidas Automaticamente");
+    delay(5000); // Mantiene encendida la luz por 5 segundos
+  } else {
+    digitalWrite(pinRele, HIGH); // Apaga la carga (Relé OFF)
+  }
+
+  delay(500);
+}</code></pre>
+            </div>
+        </section>
+
         <!-- Descripción paso por paso -->
         <section class="mt-5">
             <h2 class="mb-4">Descripción Paso por Paso</h2>
@@ -163,12 +220,20 @@
         </section>
 
         <div class="text-center button-container my-5">
-            <a href="<?= BASE_URL ?>proyecto/proyectos.php" class="btn btn-outline-cyan">← Volver a Proyectos</a>
+            <a href="../proyecto/proyectos.php" class="btn btn-outline-cyan">← Volver a Proyectos</a>
         </div>
     </main>
 
 <?php include __DIR__ . '/../includes/footer.php'; ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function copiarCodigo() {
+            const codigo = document.getElementById('codigoArduino').innerText;
+            navigator.clipboard.writeText(codigo).then(() => {
+                alert('¡Código copiado al portapapeles!');
+            });
+        }
+    </script>
 </body>
 
 </html>

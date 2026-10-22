@@ -1,7 +1,6 @@
 <?php 
 session_start(); 
 
-// Definición de seguridad por si BASE_URL no se definió en config.php o header.php
 if (!defined('BASE_URL')) {
     define('BASE_URL', '../');
 }
@@ -134,6 +133,51 @@ $active_page = 'proyectos';
             </div>
         </section>
 
+        <!-- CÓDIGO DE ARDUINO -->
+        <section class="mt-5">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2>Código de Arduino (.ino)</h2>
+                <button class="btn btn-sm btn-outline-primary" onclick="copiarCodigo()">Copiar Código</button>
+            </div>
+            <div class="card bg-dark text-light p-3 border-0 rounded-3">
+                <pre class="mb-0"><code id="codigoArduino">#include &lt;Wire.h&gt;
+#include &lt;LiquidCrystal_I2C.h&gt;
+
+// Inicializa el LCD en la dirección 0x27 (o 0x3F) para un display 16x2
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+void setup() {
+  lcd.init();          // Inicializa el LCD
+  lcd.backlight();     // Enciende la luz de fondo
+
+  // Mensaje de bienvenida
+  lcd.setCursor(0, 0);
+  lcd.print("PROYECTO ARDUNOVA");
+  lcd.setCursor(0, 1);
+  lcd.print("LCD DINAMICA");
+  delay(2000);
+  lcd.clear();
+}
+
+void loop() {
+  // Mensaje estático en la primera línea
+  lcd.setCursor(0, 0);
+  lcd.print("   ARDUNOVA   ");
+
+  // Texto desplazable en la segunda línea
+  String texto = "  Bienvenidos al curso de Arduino y Domotica  ";
+  
+  for (int i = 0; i < texto.length() - 15; i++) {
+    lcd.setCursor(0, 1);
+    lcd.print(texto.substring(i, i + 16));
+    delay(300); // Velocidad del desplazamiento
+  }
+  
+  delay(1000);
+}</code></pre>
+            </div>
+        </section>
+
         <!-- Descripción paso por paso -->
         <section class="mt-5">
             <h2 class="mb-4">Descripción Paso por Paso</h2>
@@ -153,7 +197,7 @@ $active_page = 'proyectos';
                 <div class="col-12 col-md-6 col-lg-3">
                     <div class="setup-step p-4 border rounded h-100">
                         <h4>3. Carga e Identificación</h4>
-                        <p>Verificá la dirección I2C del display (habitualmente <code>0x27</code> o <code>0x3F</code>), compilá el código e identificalo en el sketch antes de subirlo a la placa.</p>
+                        <p>Copiá el código anterior, pegalo en el IDE de Arduino y cargalo a la placa. Verificá la dirección I2C del display (habitualmente <code>0x27</code> o <code>0x3F</code>).</p>
                     </div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-3">
@@ -172,6 +216,14 @@ $active_page = 'proyectos';
 
 <?php include __DIR__ . '/../includes/footer.php'; ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function copiarCodigo() {
+            const codigo = document.getElementById('codigoArduino').innerText;
+            navigator.clipboard.writeText(codigo).then(() => {
+                alert('¡Código copiado al portapapeles!');
+            });
+        }
+    </script>
 </body>
 
 </html>
