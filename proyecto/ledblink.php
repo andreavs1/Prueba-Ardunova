@@ -1,9 +1,7 @@
-
 <?php
 session_start();
-$active_page = 'proyectos';
+$active_page = 'donaciones';
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
