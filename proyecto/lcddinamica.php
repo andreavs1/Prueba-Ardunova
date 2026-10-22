@@ -1,4 +1,13 @@
-<?php session_start(); $active_page = 'proyectos'; ?>
+<?php 
+session_start(); 
+
+// Definición de seguridad por si BASE_URL no se definió en config.php o header.php
+if (!defined('BASE_URL')) {
+    define('BASE_URL', '../');
+}
+
+$active_page = 'proyectos'; 
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -32,7 +41,7 @@
             <div class="col-12 col-lg-5">
                 <div class="card h-100">
                     <div class="card-image">
-                        <img src="<?= BASE_URL ?>assets/img/lcd-dinamica.jpg" alt="Pantalla LCD Dinámica">
+                        <img src="../assets/img/lcd-dinamica.jpg" alt="Pantalla LCD Dinámica">
                     </div>
                 </div>
             </div>
@@ -157,7 +166,7 @@
         </section>
 
         <div class="text-center button-container my-5">
-            <a href="<?= BASE_URL ?>proyecto/proyectos.php" class="btn btn-outline-cyan">← Volver a Proyectos</a>
+            <a href="../proyecto/proyectos.php" class="btn btn-outline-cyan">← Volver a Proyectos</a>
         </div>
     </main>
 
