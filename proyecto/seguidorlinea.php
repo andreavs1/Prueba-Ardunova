@@ -273,10 +273,10 @@ void detener() {
                 </div>
             </div>
         </section>
-
-        <div class="text-center button-container my-5">
-            <a href="../proyecto/proyectos.php" class="btn btn-outline-cyan">← Volver a Proyectos</a>
-        </div>
+            <div class="text-center button-container my-5 d-flex justify-content-center gap-3 flex-wrap">
+                <a href="../proyecto/proyectos.php" class="btn btn-outline-cyan">← Volver a Proyectos</a>
+                <button id="btnCompletar" class="btn btn-success" data-proyecto-id="10"> ✓ Marcar como completado </button>
+</div>
     </main>
 
 <?php include __DIR__ . '/../includes/footer.php'; ?>
