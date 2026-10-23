@@ -23,6 +23,13 @@ $stmt_count->bind_param('i', $id_usuarios);
 $stmt_count->execute();
 $resultado_count = $stmt_count->get_result()->fetch_assoc();
 $total_tutoriales = $resultado_count['total'] ?? 0;
+
+// Contar cuántos proyectos completó este usuario en la tabla progreso
+$stmt_proyectos_count = $conn->prepare('SELECT COUNT(*) AS total FROM progreso WHERE id_usuarios = ? AND id_proyecto IS NOT NULL AND completado = 1');
+$stmt_proyectos_count->bind_param('i', $id_usuarios);
+$stmt_proyectos_count->execute();
+$total_proyectos = $stmt_proyectos_count->get_result()->fetch_assoc()['total'] ?? 0;
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -49,7 +56,8 @@ $total_tutoriales = $resultado_count['total'] ?? 0;
   </section>
 
   <section class="row g-3 mb-4">
-    <div class="col-12 col-md-6"><div class="resumen-card"><h3>Proyectos</h3><strong>0</strong><p>Proyectos realizados</p></div></div>
+   <div class="col-12 col-md-6"><div class="resumen-card"><h3>Proyectos</h3><strong><?= $total_proyectos ?></strong><p>Proyectos realizados</p></div></div> 
+  <div class="col-12 col-md-6"><div class="resumen-card"><h3>Proyectos</h3><strong>0</strong><p>Proyectos realizados</p></div></div>
     <div class="col-12 col-md-6"><div class="resumen-card"><h3>Tutoriales</h3><strong><?= $total_tutoriales ?></strong><p>Tutoriales completados</p></div></div>
   </section>
 
