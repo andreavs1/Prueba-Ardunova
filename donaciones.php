@@ -144,26 +144,28 @@ $active_page = 'donaciones';
 
                 <span class="section-kicker">Cada aporte cuenta</span>
 
-                <h2 class="mb-3">¿Querés colaborar con ARDUNOVA?</h2>
+                <h2 class="mb-3">Invitanos un Cafecito</h2>
 
                 <p class="mx-auto page-intro mb-4">
-                    Estamos trabajando para habilitar un medio de
-                    colaboración seguro. Próximamente vas a poder
-                    conocer las opciones disponibles para apoyar
-                    nuestro proyecto educativo.
+                    Podés apoyarnos invitándonos uno o varios cafecitos a través de la plataforma Cafecito App de forma rápida y segura.
                 </p>
 
-                <button
-                    type="button"
-                    class="btn btn-primary"
-                    disabled
-                >
-                    Donaciones próximamente
-                </button>
+                <!-- Opción 1: Botón personalizado con Bootstrap -->
+                <a href="https://cafecito.app/tu_usuario_cafecito" rel="noopener" target="_blank" class="btn btn-primary btn-lg">
+                    ☕ Invitarnos un Cafecito
+                </a>
+
+                <!-- Opción 2 (Opcional): Widget oficial de Cafecito -->
+                <!-- 
+                <div class="d-flex justify-content-center mt-3">
+                    <a href="https://cafecito.app/tu_usuario_cafecito" rel="noopener" target="_blank">
+                        <img srcset="https://cdn.cafecito.app/imgs/buttons/button_1.png 1x, https://cdn.cafecito.app/imgs/buttons/button_1_2x.png 2x, https://cdn.cafecito.app/imgs/buttons/button_1_3x.png 3x" src="https://cdn.cafecito.app/imgs/buttons/button_1.png" alt="Invitame un café en cafecito.app" />
+                    </a>
+                </div>
+                -->
 
                 <p class="text-muted small mt-3 mb-0">
-                    Actualmente, esta sección es informativa.
-                    Todavía no se reciben pagos desde esta página.
+                    Serás redirigido a la plataforma externa Cafecito App para realizar la contribución.
                 </p>
 
             </div>
