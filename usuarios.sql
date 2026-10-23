@@ -57,7 +57,10 @@ INSERT INTO proyectos (id_proyecto, categoria_p) VALUES
      MODIFY COLUMN id_tutorial INT NULL;
 
  ALTER TABLE progreso
-    -MODIFY COLUMN id_tutorial INT NULL;
+     MODIFY COLUMN id_tutorial INT NULL;
+
+ALTER TABLE progreso
+    ADD COLUMN id_proyecto INT NULL;
 
 ALTER TABLE progreso
      ADD CONSTRAINT unique_usuario_proyecto UNIQUE (id_usuarios, id_proyecto);
