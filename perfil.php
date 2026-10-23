@@ -57,7 +57,6 @@ $total_proyectos = $stmt_proyectos_count->get_result()->fetch_assoc()['total'] ?
 
   <section class="row g-3 mb-4">
    <div class="col-12 col-md-6"><div class="resumen-card"><h3>Proyectos</h3><strong><?= $total_proyectos ?></strong><p>Proyectos realizados</p></div></div> 
-  <div class="col-12 col-md-6"><div class="resumen-card"><h3>Proyectos</h3><strong>0</strong><p>Proyectos realizados</p></div></div>
     <div class="col-12 col-md-6"><div class="resumen-card"><h3>Tutoriales</h3><strong><?= $total_tutoriales ?></strong><p>Tutoriales completados</p></div></div>
   </section>
 
