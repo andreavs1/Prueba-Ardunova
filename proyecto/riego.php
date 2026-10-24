@@ -224,6 +224,38 @@ void loop() {
                 alert('¡Código copiado al portapapeles!');
             });
         }
+        document.addEventListener("DOMContentLoaded", () => {
+  const btnCompletar = document.getElementById("btnCompletar");
+
+  if (btnCompletar) {
+    btnCompletar.addEventListener("click", async () => {
+      // Lee el ID del atributo data-proyecto-id="9"
+      const idProyecto = btnCompletar.getAttribute("data-proyecto-id");
+
+      try {
+        const res = await fetch("guardar_progreso.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id_proyecto: idProyecto })
+        });
+
+        const resultado = await res.json();
+
+        if (resultado.ok) {
+          btnCompletar.textContent = "✓ Completado";
+          btnCompletar.classList.remove("btn-outline-success");
+          btnCompletar.classList.add("btn-success");
+          btnCompletar.disabled = true;
+        } else {
+          alert("Error: " + (resultado.mensaje || "No se pudo guardar el progreso."));
+        }
+      } catch (err) {
+        console.error("Error:", err);
+        alert("Error de conexión con el servidor.");
+      }
+    });
+  }
+});
     </script>
 </body>
 
