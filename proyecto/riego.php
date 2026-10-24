@@ -218,45 +218,57 @@ void loop() {
 <?php include __DIR__ . '/../includes/footer.php'; ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        function copiarCodigo() {
-            const codigo = document.getElementById('codigoArduino').innerText;
-            navigator.clipboard.writeText(codigo).then(() => {
-                alert('¡Código copiado al portapapeles!');
-            });
-        }
-        document.addEventListener("DOMContentLoaded", () => {
-  const btnCompletar = document.getElementById("btnCompletar");
-
-  if (btnCompletar) {
-    btnCompletar.addEventListener("click", async () => {
-      // Lee el ID del atributo data-proyecto-id="9"
-      const id_proyecto = btnCompletar.getAttribute("data-proyecto-id");
-
-      try {
-        const res = await fetch("../guardar_progreso.php", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ id_proyecto: idProyecto })
-        });
-
-        const resultado = await res.json();
-
-        if (resultado.ok) {
-          btnCompletar.textContent = "✓ Completado";
-          btnCompletar.classList.remove("btn-outline-success");
-          btnCompletar.classList.add("btn-success");
-          btnCompletar.disabled = true;
-        } else {
-          alert("Error: " + (resultado.mensaje || "No se pudo guardar el progreso."));
-        }
-      } catch (err) {
-        console.error("Error:", err);
-        alert("Error de conexión con el servidor.");
-      }
+function copiarCodigo() {
+    const codigo = document.getElementById('codigoArduino').innerText;
+    navigator.clipboard.writeText(codigo).then(() => {
+        alert('¡Código copiado al portapapeles!');
     });
-  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const btnCompletar = document.getElementById("btnCompletar");
+
+    if (!btnCompletar) {
+        console.error("No se encontró el botón con id 'btnCompletar'.");
+        return;
+    }
+
+    btnCompletar.addEventListener("click", async () => {
+        const idProyecto = btnCompletar.getAttribute("data-proyecto-id");
+        console.log("Enviando ID de proyecto:", idProyecto);
+
+        try {
+            const res = await fetch("../guardar_progreso.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ id_proyecto: idProyecto })
+            });
+
+            const textoRespuesta = await res.text();
+            console.log("Respuesta del servidor:", textoRespuesta);
+
+            let resultado;
+            try {
+                resultado = JSON.parse(textoRespuesta);
+            } catch (e) {
+                throw new Error("El servidor no devolvió un JSON válido. Respuesta: " + textoRespuesta);
+            }
+
+            if (resultado.ok) {
+                btnCompletar.textContent = "✓ Completado";
+                btnCompletar.classList.remove("btn-outline-success");
+                btnCompletar.classList.add("btn-success");
+                btnCompletar.disabled = true;
+            } else {
+                alert("Error del servidor: " + (resultado.mensaje || "Desconocido"));
+            }
+        } catch (err) {
+            console.error("Error en el fetch:", err);
+            alert("Error de conexión: " + err.message);
+        }
+    });
 });
-    </script>
+</script>
 </body>
 
 </html>
