@@ -64,3 +64,8 @@ ALTER TABLE progreso
 
 ALTER TABLE progreso
      ADD CONSTRAINT unique_usuario_proyecto UNIQUE (id_usuarios, id_proyecto);
+
+ALTER TABLE progreso
+    ADD CONSTRAINT fk_progreso_proyecto 
+    FOREIGN KEY (id_proyecto) REFERENCES proyectos(id_proyecto)
+    ON DELETE CASCADE ON UPDATE CASCADE;
