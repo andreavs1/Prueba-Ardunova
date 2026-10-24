@@ -230,10 +230,10 @@ void loop() {
   if (btnCompletar) {
     btnCompletar.addEventListener("click", async () => {
       // Lee el ID del atributo data-proyecto-id="9"
-      const idProyecto = btnCompletar.getAttribute("data-proyecto-id");
+      const id_proyecto = btnCompletar.getAttribute("data-proyecto-id");
 
       try {
-        const res = await fetch("guardar_progreso.php", {
+        const res = await fetch("../guardar_progreso.php", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ id_proyecto: idProyecto })
