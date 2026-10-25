@@ -1,12 +1,29 @@
-<?php 
-session_start(); 
+<?php
+session_start();
+include __DIR__ . '/../conexion.php'; 
 
-if (!defined('BASE_URL')) {
-    define('BASE_URL', '../');
+$id_proyecto_actual = 9; // <--- Cambiar según el ID del proyecto en proyectos.json (ej: 1, 2, 3...)
+$proyecto_completado = false;
+
+if (isset($_SESSION['usuario']) && isset($conn)) {
+    $nombre_usuario = $_SESSION['usuario'];
+    $stmt_u = $conn->prepare('SELECT id_usuarios FROM usuarios WHERE nombre = ? LIMIT 1');
+    $stmt_u->bind_param('s', $nombre_usuario);
+    $stmt_u->execute();
+    $res_u = $stmt_u->get_result()->fetch_assoc();
+    
+    if ($res_u) {
+        $id_usuarios = $res_u['id_usuarios'];
+        $stmt_prog = $conn->prepare('SELECT completado FROM progreso WHERE id_usuarios = ? AND id_proyecto = ? AND completado = 1 LIMIT 1');
+        $stmt_prog->bind_param('ii', $id_usuarios, $id_proyecto_actual);
+        $stmt_prog->execute();
+        if ($stmt_prog->get_result()->num_rows > 0) {
+            $proyecto_completado = true;
+        }
+    }
 }
-
-$active_page = 'proyectos'; 
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -211,8 +228,13 @@ void loop() {
 
        <div class="text-center button-container my-5 d-flex justify-content-center gap-3 flex-wrap">
             <a href="../proyecto/proyectos.php" class="btn btn-outline-cyan">← Volver a Proyectos</a>
-            <button id="btnCompletar" class="btn btn-success" data-proyecto-id="9"> ✓ Marcar como completado</button>
-</div>
+            <button id="btnCompletar" 
+        class="btn <?= $proyecto_completado ? 'btn-success' : 'btn-outline-success' ?>" 
+        data-proyecto-id="<?= $id_proyecto_actual ?>" 
+        <?= $proyecto_completado ? 'disabled' : '' ?>>
+    <?= $proyecto_completado ? '✓ Completado' : 'Marcar como completado' ?>
+</button>
+
     </main>
 
 <?php include __DIR__ . '/../includes/footer.php'; ?>
