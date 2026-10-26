@@ -235,11 +235,11 @@ void loop() {
             </div>
         </section>
 
-        <div class="text-center button-container my-5">
-            <a href="../proyecto/proyectos.php" class="btn btn-outline-cyan">← Volver a Proyectos</a>
-        </div>
     </main>
 
+
+    <div class="text-center button-container my-5 d-flex justify-content-center gap-3 flex-wrap">
+            <a href="../proyecto/proyectos.php" class="btn btn-outline-cyan">← Volver a Proyectos</a>
             <button id="btnCompletar" class="btn btn-success" onclick="marcarCompletado(5)">
                 ✓ Marcar como completado
             </button>
