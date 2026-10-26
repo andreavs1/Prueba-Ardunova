@@ -2,7 +2,7 @@
 session_start();
 include __DIR__ . '/../conexion.php'; 
 
-$id_proyecto_actual = 9; // <--- Cambiar según el ID del proyecto en proyectos.json (ej: 1, 2, 3...)
+$id_proyecto_actual = 9;
 $proyecto_completado = false;
 
 if (isset($_SESSION['usuario']) && isset($conn)) {
