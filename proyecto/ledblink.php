@@ -56,7 +56,7 @@ if (isset($_SESSION['usuario']) && isset($conn)) {
             <div class="col-12 col-lg-5">
                 <div class="card h-100">
                     <div class="card-image">
-                        <img src="../assets/img/lcd.jpg" alt="Componentes del proyecto LED">
+                        <img src="../assets/img/lcd.jpg" alt="Componentes del proyecto LED" class="img-fluid rounded">
                     </div>
                 </div>
             </div>
@@ -184,10 +184,16 @@ void loop() {
             </div>
         </section>
 
+        <!-- Botones de navegación y completado -->
         <div class="text-center button-container my-5 d-flex justify-content-center gap-3 flex-wrap">
             <a href="../proyecto/proyectos.php" class="btn btn-outline-cyan">← Volver a Proyectos</a>
-            <button id="btnCompletar" class="btn btn-success" data-proyecto-id="1"> ✓ Marcar como completado</button>
-</div>
+            <button id="btnCompletar" 
+                    class="btn <?= $proyecto_completado ? 'btn-success' : 'btn-outline-success' ?>" 
+                    data-proyecto-id="<?= $id_proyecto_actual ?>" 
+                    <?= $proyecto_completado ? 'disabled' : '' ?>>
+                <?= $proyecto_completado ? '✓ Completado' : 'Marcar como completado' ?>
+            </button>
+        </div>
     </main>
 
 <?php include __DIR__ . '/../includes/footer.php'; ?>
@@ -199,49 +205,50 @@ void loop() {
                 alert('¡Código copiado al portapapeles!');
             });
         }
-         document.addEventListener("DOMContentLoaded", () => {
-    const btnCompletar = document.getElementById("btnCompletar");
 
-    if (!btnCompletar) {
-        console.error("No se encontró el botón con id 'btnCompletar'.");
-        return;
-    }
+        document.addEventListener("DOMContentLoaded", () => {
+            const btnCompletar = document.getElementById("btnCompletar");
 
-    btnCompletar.addEventListener("click", async () => {
-        const idProyecto = btnCompletar.getAttribute("data-proyecto-id");
-        console.log("Enviando ID de proyecto:", idProyecto);
+            if (!btnCompletar) {
+                console.error("No se encontró el botón con id 'btnCompletar'.");
+                return;
+            }
 
-        try {
-            const res = await fetch("../guardar_progreso.php", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ id_proyecto: idProyecto })
+            btnCompletar.addEventListener("click", async () => {
+                const idProyecto = btnCompletar.getAttribute("data-proyecto-id");
+                console.log("Enviando ID de proyecto:", idProyecto);
+
+                try {
+                    const res = await fetch("../guardar_progreso.php", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ id_proyecto: idProyecto })
+                    });
+
+                    const textoRespuesta = await res.text();
+                    console.log("Respuesta del servidor:", textoRespuesta);
+
+                    let resultado;
+                    try {
+                        resultado = JSON.parse(textoRespuesta);
+                    } catch (e) {
+                        throw new Error("El servidor no devolvió un JSON válido. Respuesta: " + textoRespuesta);
+                    }
+
+                    if (resultado.ok) {
+                        btnCompletar.textContent = "✓ Completado";
+                        btnCompletar.classList.remove("btn-outline-success");
+                        btnCompletar.classList.add("btn-success");
+                        btnCompletar.disabled = true;
+                    } else {
+                        alert("Error del servidor: " + (resultado.mensaje || "Desconocido"));
+                    }
+                } catch (err) {
+                    console.error("Error en el fetch:", err);
+                    alert("Error de conexión: " + err.message);
+                }
             });
-
-            const textoRespuesta = await res.text();
-            console.log("Respuesta del servidor:", textoRespuesta);
-
-            let resultado;
-            try {
-                resultado = JSON.parse(textoRespuesta);
-            } catch (e) {
-                throw new Error("El servidor no devolvió un JSON válido. Respuesta: " + textoRespuesta);
-            }
-
-            if (resultado.ok) {
-                btnCompletar.textContent = "✓ Completado";
-                btnCompletar.classList.remove("btn-outline-success");
-                btnCompletar.classList.add("btn-success");
-                btnCompletar.disabled = true;
-            } else {
-                alert("Error del servidor: " + (resultado.mensaje || "Desconocido"));
-            }
-        } catch (err) {
-            console.error("Error en el fetch:", err);
-            alert("Error de conexión: " + err.message);
-        }
-    });
-});
+        });
     </script>
 </body>
 

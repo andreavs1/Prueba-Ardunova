@@ -289,10 +289,17 @@ void detener() {
                 </div>
             </div>
         </section>
-            <div class="text-center button-container my-5 d-flex justify-content-center gap-3 flex-wrap">
-                <a href="../proyecto/proyectos.php" class="btn btn-outline-cyan">← Volver a Proyectos</a>
-                <button id="btnCompletar" class="btn btn-success" data-proyecto-id="10"> ✓ Marcar como completado </button>
-</div>
+
+        <!-- Botones de navegación y completado -->
+        <div class="text-center button-container my-5 d-flex justify-content-center gap-3 flex-wrap">
+            <a href="../proyecto/proyectos.php" class="btn btn-outline-cyan">← Volver a Proyectos</a>
+            <button id="btnCompletar" 
+                    class="btn <?= $proyecto_completado ? 'btn-success' : 'btn-outline-success' ?>" 
+                    data-proyecto-id="<?= $id_proyecto_actual ?>" 
+                    <?= $proyecto_completado ? 'disabled' : '' ?>>
+                <?= $proyecto_completado ? '✓ Completado' : 'Marcar como completado' ?>
+            </button>
+        </div>
     </main>
 
 <?php include __DIR__ . '/../includes/footer.php'; ?>
@@ -305,49 +312,49 @@ void detener() {
             });
         }
         
-document.addEventListener("DOMContentLoaded", () => {
-    const btnCompletar = document.getElementById("btnCompletar");
+        document.addEventListener("DOMContentLoaded", () => {
+            const btnCompletar = document.getElementById("btnCompletar");
 
-    if (!btnCompletar) {
-        console.error("No se encontró el botón con id 'btnCompletar'.");
-        return;
-    }
+            if (!btnCompletar) {
+                console.error("No se encontró el botón con id 'btnCompletar'.");
+                return;
+            }
 
-    btnCompletar.addEventListener("click", async () => {
-        const idProyecto = btnCompletar.getAttribute("data-proyecto-id");
-        console.log("Enviando ID de proyecto:", idProyecto);
+            btnCompletar.addEventListener("click", async () => {
+                const idProyecto = btnCompletar.getAttribute("data-proyecto-id");
+                console.log("Enviando ID de proyecto:", idProyecto);
 
-        try {
-            const res = await fetch("../guardar_progreso.php", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ id_proyecto: idProyecto })
+                try {
+                    const res = await fetch("../guardar_progreso.php", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ id_proyecto: idProyecto })
+                    });
+
+                    const textoRespuesta = await res.text();
+                    console.log("Respuesta del servidor:", textoRespuesta);
+
+                    let resultado;
+                    try {
+                        resultado = JSON.parse(textoRespuesta);
+                    } catch (e) {
+                        throw new Error("El servidor no devolvió un JSON válido. Respuesta: " + textoRespuesta);
+                    }
+
+                    if (resultado.ok) {
+                        btnCompletar.textContent = "✓ Completado";
+                        btnCompletar.classList.remove("btn-outline-success");
+                        btnCompletar.classList.add("btn-success");
+                        btnCompletar.disabled = true;
+                    } else {
+                        alert("Error del servidor: " + (resultado.mensaje || "Desconocido"));
+                    }
+                } catch (err) {
+                    console.error("Error en el fetch:", err);
+                    alert("Error de conexión: " + err.message);
+                }
             });
-
-            const textoRespuesta = await res.text();
-            console.log("Respuesta del servidor:", textoRespuesta);
-
-            let resultado;
-            try {
-                resultado = JSON.parse(textoRespuesta);
-            } catch (e) {
-                throw new Error("El servidor no devolvió un JSON válido. Respuesta: " + textoRespuesta);
-            }
-
-            if (resultado.ok) {
-                btnCompletar.textContent = "✓ Completado";
-                btnCompletar.classList.remove("btn-outline-success");
-                btnCompletar.classList.add("btn-success");
-                btnCompletar.disabled = true;
-            } else {
-                alert("Error del servidor: " + (resultado.mensaje || "Desconocido"));
-            }
-        } catch (err) {
-            console.error("Error en el fetch:", err);
-            alert("Error de conexión: " + err.message);
-        }
-    });
-});
+        });
     </script>
 </body>
 
