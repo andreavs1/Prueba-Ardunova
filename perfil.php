@@ -5,7 +5,6 @@ include 'conexion.php';
 
 $nombre = $_SESSION['usuario'];
 
-// Consultar datos del usuario
 $stmt = $conn->prepare('SELECT id_usuarios, nombre, email FROM usuarios WHERE nombre = ? LIMIT 1');
 $stmt->bind_param('s', $nombre);
 $stmt->execute();
@@ -20,25 +19,23 @@ $total_tutoriales = 0;
 $total_proyectos = 0;
 $ids_proyectos_completados = [];
 
-// Contar tutoriales completados de forma segura
+// Contar tutoriales completados
 $stmt_count_t = $conn->prepare('SELECT COUNT(*) AS total FROM progreso WHERE id_usuarios = ? AND id_tutorial IS NOT NULL AND completado = 1');
 if ($stmt_count_t) {
     $stmt_count_t->bind_param('i', $id_usuarios);
     $stmt_count_t->execute();
-    $res_t = $stmt_count_t->get_result()->fetch_assoc();
-    $total_tutoriales = $res_t['total'] ?? 0;
+    $total_tutoriales = $stmt_count_t->get_result()->fetch_assoc()['total'] ?? 0;
 }
 
-// Contar proyectos completados de forma segura
+// Contar proyectos completados
 $stmt_count_p = $conn->prepare('SELECT COUNT(*) AS total FROM progreso WHERE id_usuarios = ? AND id_proyecto IS NOT NULL AND completado = 1');
 if ($stmt_count_p) {
     $stmt_count_p->bind_param('i', $id_usuarios);
     $stmt_count_p->execute();
-    $res_p = $stmt_count_p->get_result()->fetch_assoc();
-    $total_proyectos = $res_p['total'] ?? 0;
+    $total_proyectos = $stmt_count_p->get_result()->fetch_assoc()['total'] ?? 0;
 }
 
-// Obtener IDs de proyectos completados
+// Obtener IDs de proyectos completados por el usuario
 $stmt_proyectos_user = $conn->prepare('SELECT id_proyecto FROM progreso WHERE id_usuarios = ? AND id_proyecto IS NOT NULL AND completado = 1');
 if ($stmt_proyectos_user) {
     $stmt_proyectos_user->bind_param('i', $id_usuarios);
@@ -49,10 +46,9 @@ if ($stmt_proyectos_user) {
     }
 }
 
-// Leer proyectos.json usando ruta absoluta
+// Leer proyectos.json usando ruta absoluta para evitar errores
 $ruta_json = __DIR__ . '/proyectos.json';
 $todos_los_proyectos = [];
-
 if (file_exists($ruta_json)) {
     $proyectos_json = file_get_contents($ruta_json);
     $todos_los_proyectos = json_decode($proyectos_json, true) ?? [];
@@ -89,16 +85,6 @@ $proyectos_completados = array_filter($todos_los_proyectos, function($p) use ($i
   <section class="row g-3 mb-4">
     <div class="col-12 col-md-6"><div class="resumen-card"><h3>Proyectos</h3><strong><?= $total_proyectos ?></strong><p>Proyectos realizados</p></div></div>
     <div class="col-12 col-md-6"><div class="resumen-card"><h3>Tutoriales</h3><strong><?= $total_tutoriales ?></strong><p>Tutoriales completados</p></div></div>
-  </section>
-
-  <section class="perfil-seccion mb-4">
-    <div class="seccion-titulo d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-2">
-      <h2 class="h4 mb-0">Mi información</h2>
-    </div>
-    <div class="row g-3 mt-2">
-      <div class="col-12 col-md-6"><div class="informacion-item"><span>Nombre</span><strong><?= htmlspecialchars($usuario['nombre']) ?></strong></div></div>
-      <div class="col-12 col-md-6"><div class="informacion-item"><span>Correo electrónico</span><strong><?= htmlspecialchars($usuario['email']) ?></strong></div></div>
-    </div>
   </section>
 
   <section class="perfil-seccion mb-4">
