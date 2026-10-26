@@ -240,14 +240,14 @@ void loop() {
         </div>
     </main>
 
-<div class="text-center button-container my-5 d-flex justify-content-center gap-3 flex-wrap">
-            <a href="proyecto/proyectos.php" class="btn btn-outline-cyan">← Volver a Proyectos</a>
-            <button id="btnCompletar" 
-        class="btn <?= $proyecto_completado ? 'btn-success' : 'btn-outline-success' ?>" 
-        data-proyecto-id="<?= $id_proyecto_actual ?>" 
-        <?= $proyecto_completado ? 'disabled' : '' ?>>
-    <?= $proyecto_completado ? '✓ Completado' : 'Marcar como completado' ?>
-</button>
+
+    <div class="text-center button-container my-5 d-flex justify-content-center gap-3 flex-wrap">
+            <a href="../proyecto/proyectos.php" class="btn btn-outline-cyan">← Volver a Proyectos</a>
+            <button id="btnCompletar" class="btn btn-success" onclick="marcarCompletado(5)">
+                ✓ Marcar como completado
+            </button>
+        </div>
+
 <?php include __DIR__ . '/../includes/footer.php'; ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
