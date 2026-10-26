@@ -1,11 +1,27 @@
-<?php 
-session_start(); 
+<?php
+session_start();
+include __DIR__ . '/../conexion.php'; 
 
-if (!defined('BASE_URL')) {
-    define('BASE_URL', '../');
+$id_proyecto_actual = 7;
+$proyecto_completado = false;
+
+if (isset($_SESSION['usuario']) && isset($conn)) {
+    $nombre_usuario = $_SESSION['usuario'];
+    $stmt_u = $conn->prepare('SELECT id_usuarios FROM usuarios WHERE nombre = ? LIMIT 1');
+    $stmt_u->bind_param('s', $nombre_usuario);
+    $stmt_u->execute();
+    $res_u = $stmt_u->get_result()->fetch_assoc();
+    
+    if ($res_u) {
+        $id_usuarios = $res_u['id_usuarios'];
+        $stmt_prog = $conn->prepare('SELECT completado FROM progreso WHERE id_usuarios = ? AND id_proyecto = ? AND completado = 1 LIMIT 1');
+        $stmt_prog->bind_param('ii', $id_usuarios, $id_proyecto_actual);
+        $stmt_prog->execute();
+        if ($stmt_prog->get_result()->num_rows > 0) {
+            $proyecto_completado = true;
+        }
+    }
 }
-
-$active_page = 'proyectos'; 
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -202,6 +218,50 @@ void loop() {
                 alert('¡Código copiado al portapapeles!');
             });
         }
+        
+document.addEventListener("DOMContentLoaded", () => {
+    const btnCompletar = document.getElementById("btnCompletar");
+
+    if (!btnCompletar) {
+        console.error("No se encontró el botón con id 'btnCompletar'.");
+        return;
+    }
+
+    btnCompletar.addEventListener("click", async () => {
+        const idProyecto = btnCompletar.getAttribute("data-proyecto-id");
+        console.log("Enviando ID de proyecto:", idProyecto);
+
+        try {
+            const res = await fetch("../guardar_progreso.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ id_proyecto: idProyecto })
+            });
+
+            const textoRespuesta = await res.text();
+            console.log("Respuesta del servidor:", textoRespuesta);
+
+            let resultado;
+            try {
+                resultado = JSON.parse(textoRespuesta);
+            } catch (e) {
+                throw new Error("El servidor no devolvió un JSON válido. Respuesta: " + textoRespuesta);
+            }
+
+            if (resultado.ok) {
+                btnCompletar.textContent = "✓ Completado";
+                btnCompletar.classList.remove("btn-outline-success");
+                btnCompletar.classList.add("btn-success");
+                btnCompletar.disabled = true;
+            } else {
+                alert("Error del servidor: " + (resultado.mensaje || "Desconocido"));
+            }
+        } catch (err) {
+            console.error("Error en el fetch:", err);
+            alert("Error de conexión: " + err.message);
+        }
+    });
+});
     </script>
 </body>
 

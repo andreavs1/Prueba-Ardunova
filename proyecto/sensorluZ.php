@@ -1,9 +1,4 @@
-<?php 
-session_start(); 
 
-if (!defined('BASE_URL')) {
-    define('BASE_URL', '../');
-}
 
 $active_page = 'proyectos'; 
 ?>

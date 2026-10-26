@@ -46,7 +46,7 @@ if ($stmt_proyectos_user) {
     }
 }
 
-// Leer proyectos.json usando ruta absoluta para evitar errores
+// Leer proyectos.json usando ruta absoluta
 $ruta_json = __DIR__ . '/proyectos.json';
 $todos_los_proyectos = [];
 if (file_exists($ruta_json)) {
