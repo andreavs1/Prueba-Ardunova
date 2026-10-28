@@ -25,7 +25,7 @@ $active_page = 'recursos';
 <div class="card-body text-center">
 <h3>Guía Arduino PDF</h3>
 <p>Manual conceptual completo que detalla la arquitectura del hardware libre y conexiones eléctricas básicas.</p>
-<a class="btn btn-gradient mt-1 w-100" href="assets/img/arduino.jpg" download>Descargar PDF</a>
+<a class="btn btn-gradient mt-1 w-100" href="assets/img/guiaarduino.pdf" download>Descargar PDF</a>
 </div>
 </article></div><div class="col-12 col-sm-6 col-lg-4"><article class="card resource-card">
 <div class="card-body text-center">
