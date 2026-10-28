@@ -37,7 +37,7 @@ $active_page = 'recursos';
 <div class="card-body text-center">
 <h3>Manual de Código C++</h3>
 <p>Vademécum detallado con explicaciones sintácticas exactas de comandos estructurados avanzados.</p>
-<a class="btn btn-gradient mt-1 w-100" href="assets/img/variables.png" download>Descargar DOC</a>
+<a class="btn btn-gradient mt-1 w-100" href="assets/img/Guía en C++.pdf" download>Descargar PDF</a>
 </div>
 </article></div><div class="col-12 col-sm-6 col-lg-4"><article class="card resource-card">
 <div class="card-body text-center">
