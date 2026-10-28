@@ -198,7 +198,7 @@ void loop() {
 
         <!-- Botones de navegación y completado -->
         <div class="text-center button-container my-5 d-flex justify-content-center gap-3 flex-wrap">
-            <a href="../proyecto/proyectos.php" class="btn btn-outline-cyan">← Volver a Proyectos</a>
+            <a href="../proyectos.php" class="btn btn-outline-cyan">← Volver a Proyectos</a>
             <button id="btnCompletar" 
                     class="btn <?= $proyecto_completado ? 'btn-success' : 'btn-outline-success' ?>" 
                     data-proyecto-id="<?= $id_proyecto_actual ?>" 
