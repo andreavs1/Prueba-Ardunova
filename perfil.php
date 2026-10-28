@@ -35,7 +35,7 @@ if ($stmt_count_p) {
     $total_proyectos = $stmt_count_p->get_result()->fetch_assoc()['total'] ?? 0;
 }
 
-// Obtener IDs de proyectos completados por el usuario
+// Obtener IDs de proyectos completados por el usuario (se mantiene por si lo usas en otro lado)
 $stmt_proyectos_user = $conn->prepare('SELECT id_proyecto FROM progreso WHERE id_usuarios = ? AND id_proyecto IS NOT NULL AND completado = 1');
 if ($stmt_proyectos_user) {
     $stmt_proyectos_user->bind_param('i', $id_usuarios);
@@ -45,18 +45,6 @@ if ($stmt_proyectos_user) {
         $ids_proyectos_completados[] = (int)$row['id_proyecto'];
     }
 }
-
-// Leer proyectos.json usando ruta absoluta
-$ruta_json = __DIR__ . '/proyectos.json';
-$todos_los_proyectos = [];
-if (file_exists($ruta_json)) {
-    $proyectos_json = file_get_contents($ruta_json);
-    $todos_los_proyectos = json_decode($proyectos_json, true) ?? [];
-}
-
-$proyectos_completados = array_filter($todos_los_proyectos, function($p) use ($ids_proyectos_completados) {
-    return in_array((int)$p['id'], $ids_proyectos_completados);
-});
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -85,32 +73,6 @@ $proyectos_completados = array_filter($todos_los_proyectos, function($p) use ($i
   <section class="row g-3 mb-4">
     <div class="col-12 col-md-6"><div class="resumen-card"><h3>Proyectos</h3><strong><?= $total_proyectos ?></strong><p>Proyectos realizados</p></div></div>
     <div class="col-12 col-md-6"><div class="resumen-card"><h3>Tutoriales</h3><strong><?= $total_tutoriales ?></strong><p>Tutoriales completados</p></div></div>
-  </section>
-
-  <section class="perfil-seccion mb-4">
-    <div class="seccion-titulo d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-2 mb-3">
-      <h2 class="h4 mb-0">Historial de proyectos</h2><a href="proyectos.php">Ver proyectos</a>
-    </div>
-    
-    <?php if ($total_proyectos > 0): ?>
-      <div class="row g-3">
-        <?php foreach ($proyectos_completados as $proj): ?>
-          <div class="col-12 col-sm-6 col-lg-4">
-            <div class="card h-100 shadow-sm">
-              <img src="<?= htmlspecialchars($proj['imagen']) ?>" class="card-img-top" alt="<?= htmlspecialchars($proj['titulo']) ?>">
-              <div class="card-body">
-                <span class="tag-nivel"><?= htmlspecialchars($proj['nivel']) ?></span>
-                <h3 class="h5 mt-2"><?= htmlspecialchars($proj['titulo']) ?></h3>
-                <p class="small"><?= htmlspecialchars($proj['descripcion']) ?></p>
-                <a href="<?= htmlspecialchars($proj['enlace']) ?>" class="btn btn-sm btn-gradient">Ver proyecto</a>
-              </div>
-            </div>
-          </div>
-        <?php endforeach; ?>
-      </div>
-    <?php else: ?>
-      <div class="historial-vacio"><h3>Todavía no realizaste proyectos</h3><p>Cuando realices un proyecto, aparecerá acá.</p><a href="proyectos.php" class="btn btn-gradient">Explorar proyectos</a></div>
-    <?php endif; ?>
   </section>
 
   <section class="perfil-seccion mb-4">
