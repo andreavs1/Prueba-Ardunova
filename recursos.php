@@ -39,12 +39,7 @@ $active_page = 'recursos';
 <p>Vademécum detallado con explicaciones sintácticas exactas de comandos estructurados avanzados.</p>
 <a class="btn btn-gradient mt-1 w-100" href="assets/img/guiac.pdf" download>Descargar PDF</a>
 </div>
-</article></div><div class="col-12 col-sm-6 col-lg-4"><article class="card resource-card">
-<div class="card-body text-center">
-<h3>Esquemas de Conexión</h3>
-<p>Infografías de alta resolución detallando el patillaje y descripción técnica de componentes comunes.</p>
-<a class="btn btn-gradient mt-1 w-100" href="assets/img/partes-arduino.jpg" download>Descargar PNG</a>
-</div>
+
 </article></div></div>
 </main>
 <?php include 'includes/footer.php'; ?>
