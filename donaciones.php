@@ -151,14 +151,14 @@ $active_page = 'donaciones';
                 </p>
 
                 <!-- Opción 1: Botón personalizado con Bootstrap -->
-                <a href="https://cafecito.app/tu_usuario_cafecito" rel="noopener" target="_blank" class="btn btn-primary btn-lg">
+                <a href="https://cafecito.app/ardunova" rel="noopener" target="_blank" class="btn btn-primary btn-lg">
                     ☕ Invitarnos un Cafecito
                 </a>
 
                 <!-- Opción 2 (Opcional): Widget oficial de Cafecito -->
                 <!-- 
                 <div class="d-flex justify-content-center mt-3">
-                    <a href="https://cafecito.app/tu_usuario_cafecito" rel="noopener" target="_blank">
+                    <a href="https://cafecito.app/ardunova" rel="noopener" target="_blank">
                         <img srcset="https://cdn.cafecito.app/imgs/buttons/button_1.png 1x, https://cdn.cafecito.app/imgs/buttons/button_1_2x.png 2x, https://cdn.cafecito.app/imgs/buttons/button_1_3x.png 3x" src="https://cdn.cafecito.app/imgs/buttons/button_1.png" alt="Invitame un café en cafecito.app" />
                     </a>
                 </div>
