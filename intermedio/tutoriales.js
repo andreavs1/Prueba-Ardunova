@@ -11,15 +11,25 @@ async function loadLesson() {
     const lessonId = urlParams.get('id') || '9';
 
     try {
-        const response = await fetch('tutoriales.json');
+        // Consultamos directamente al PHP adaptado con MySQLi para intermedio
+        const response = await fetch(`obtener_tutorial_intermedio.php?id=${lessonId}`);
+        
+        // Capturamos el texto crudo para validar si PHP arroja algún error en HTML
+        const rawText = await response.text();
+
         if (!response.ok) {
-            throw new Error(`HTTP ${response.status}: No se pudo cargar tutoriales.json`);
+            throw new Error(`HTTP ${response.status}: No se pudo cargar el tutorial desde la base de datos`);
         }
 
-        const database = await response.json();
-        const data = database[lessonId];
+        let data;
+        try {
+            data = JSON.parse(rawText);
+        } catch (e) {
+            console.error("El servidor no devolvió un JSON válido:", rawText);
+            throw new Error("El archivo PHP devolvió un error de servidor o HTML en lugar de JSON. Revisá la consola.");
+        }
 
-        if (!data) {
+        if (!data || data.error) {
             app.innerHTML = `
             <div class="container my-5 text-center">
                 <div class="alert alert-warning p-4 rounded-4 shadow-sm">
@@ -373,7 +383,7 @@ async function loadLesson() {
                         return false;
                     }
 
-                    // Petición AJAX para guardar el progreso en el archivo central de la raíz
+                    // Petición AJAX para guardar el progreso
                     fetch('../guardar_progreso.php', {
                         method: 'POST',
                         headers: {

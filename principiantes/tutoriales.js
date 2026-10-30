@@ -8,20 +8,30 @@ async function loadLesson() {
     const app = document.getElementById('app-tutorial');
     if (!app) return;
 
-    // Obtener el ID de la lección desde la URL (?id=1 a ?id=8)
+    // Obtener el ID de la lección desde la URL (ej: ?id=1)
     const urlParams = new URLSearchParams(window.location.search);
     const lessonId = urlParams.get('id') || '1';
 
     try {
-        const response = await fetch('tutoriales.json');
+        // Consultamos directo al script PHP que trae los datos de MySQL
+        const response = await fetch(`obtener_tutorial.php?id=${lessonId}`);
+        
+        // Capturamos el texto crudo para verificar si PHP arrojó algún error en HTML
+        const rawText = await response.text();
+
         if (!response.ok) {
-            throw new Error(`HTTP ${response.status}: No se pudo cargar tutoriales.json`);
+            throw new Error(`HTTP ${response.status}: No se pudo cargar el tutorial desde la base de datos`);
         }
 
-        const database = await response.json();
-        const data = database[lessonId];
+        let data;
+        try {
+            data = JSON.parse(rawText);
+        } catch (e) {
+            console.error("El servidor no devolvió un JSON válido:", rawText);
+            throw new Error("El archivo PHP devolvió un error de servidor o HTML en lugar de JSON. Revisá la consola.");
+        }
 
-        if (!data) {
+        if (!data || data.error) {
             app.innerHTML = `
                 <div class="container my-5 text-center">
                     <div class="alert alert-warning p-4 rounded-4 shadow-sm">
@@ -323,7 +333,7 @@ async function loadLesson() {
                     <button id="btn-prev" class="btn btn-outline-secondary px-4 py-2 rounded-3 fw-semibold" style="font-size: 0.9rem;">
                         ← Lección Anterior
                     </button>
-                    <span class="text-muted font-monospace small">Lección ${lessonId} de 8</span>
+                    <span class="text-muted font-monospace small">Lección ${lessonId} de 24</span>
                     <button id="btn-next" class="btn btn-ardunova px-4 py-2" style="font-size: 0.9rem;" ${data.quiz ? 'disabled' : ''}>
                         Siguiente Lección →
                     </button>
@@ -382,7 +392,7 @@ async function loadLesson() {
         }
 
         if (btnNext) {
-            if (currentNum >= 8) {
+            if (currentNum >= 24) {
                 btnNext.textContent = 'Finalizar tutorial';
             }
 
@@ -409,7 +419,7 @@ async function loadLesson() {
                         throw new Error(resultado.mensaje || 'No se pudo guardar el progreso.');
                     }
 
-                    if (currentNum < 8) {
+                    if (currentNum < 24) {
                         window.location.search = `?id=${currentNum + 1}`;
                     } else {
                         window.location.href = '../perfil.php';
