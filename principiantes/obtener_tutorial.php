@@ -42,7 +42,7 @@ try {
         $quiz_opciones[] = $row;
     }
 
-    // 4. Armar la estructura exacta que espera tu JS
+    // 4. Armar la estructura exacta que espera tu JS (incluyendo Wokwi)
     $dataFormatted = [
         "badge" => $tutorial['badge'],
         "titulo" => $tutorial['titulo'],
@@ -57,6 +57,12 @@ try {
             "lenguaje" => $tutorial['codigo_lenguaje'],
             "codigo" => $tutorial['codigo_fuente']
         ],
+        "simulador_wokwi" => !empty($tutorial['wokwi_project_id']) ? [
+            "titulo" => $tutorial['wokwi_titulo'] ?? "Simulador Interactivo",
+            "project_id" => $tutorial['wokwi_project_id'],
+            "instruccion" => $tutorial['wokwi_instruccion'] ?? "",
+            "nota" => $tutorial['wokwi_nota'] ?? ""
+        ] : null,
         "quiz" => [
             "pregunta" => $tutorial['quiz_pregunta'],
             "opciones" => $quiz_opciones,
