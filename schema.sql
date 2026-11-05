@@ -357,3 +357,70 @@ INSERT INTO tutorial_funciones (id_tutorial, icono, titulo, descripcion, detalle
 
 INSERT INTO tutorial_quiz_opciones (id_tutorial, texto_opcion, es_correcta) VALUES
 (24, 'Imprimir mensajes informativos en la consola mediante Serial.println()', TRUE), (24, 'Desconectar cable USB', FALSE);
+
+
+-- PROYECTOS 
+
+
+CREATE TABLE IF NOT EXISTS proyectos (
+    id_proyecto INT AUTO_INCREMENT PRIMARY KEY,
+    categoria_p VARCHAR(20) NOT NULL,
+    titulo VARCHAR(150) NOT NULL DEFAULT '',
+    descripcion TEXT NOT NULL,
+    imagen VARCHAR(255) NOT NULL DEFAULT '',
+    enlace VARCHAR(150) NOT NULL DEFAULT ''
+);
+
+-- Carga de los 12 proyectos
+INSERT INTO proyectos
+(id_proyecto, categoria_p, titulo, descripcion, imagen, enlace)
+VALUES
+(1, 'Principiante', 'Parpadeo de LED (Blink)', 'El clásico Hola Mundo de la electrónica: aprendé a controlar un LED con Arduino.', '../assets/img/lcd.jpg', 'ledblink.php'),
+
+(2, 'Intermedio', 'Pantalla LCD Dinámica', 'Aprende a conectar y mostrar texto animado en una pantalla LCD 16x2 vía I2C.', '../assets/img/lcd-dinamica.jpg', 'lcddinamica.php'),
+
+(3, 'Intermedio', 'Semáforo Avanzado con Paso Peatonal', 'Construí un semáforo vehicular inteligente sincronizado con cruce peatonal por demanda.', '../assets/img/semaforo-arduino.png', 'semaforo.php'),
+
+(4, 'Intermedio', 'Sensor Ultrasónico de Distancia', 'Medí distancias precisas a objetos en centímetros utilizando el módulo HC-SR04.', '../assets/img/ultrasonico.jpg', 'ultrasonico.php'),
+
+(5, 'Intermedio', 'Domótica Básica', 'Automatizá luces y monitoreá presencia utilizando sensores PIR, LDR y un relé de potencia.', '../assets/img/domotica.jpg', 'domotica.php'),
+
+(6, 'Principiante', 'Control de LED con Pulsador', 'Aprendé a leer entradas digitales con una resistencia Pull-Down para encender un LED.', '../assets/img/ledBoton.jpg', 'ledboton.php'),
+
+(7, 'Principiante', 'Lectura de Potenciómetro', 'Leé entradas analógicas con un potenciómetro y modificá la velocidad de parpadeo de un LED.', '../assets/img/potenciometro.jpg', 'potenciometro.php'),
+
+(8, 'Principiante', 'Sensor de Luz (LDR)', 'Detectá variaciones de luz ambiental usando una fotorresistencia LDR y activá una luz nocturna.', '../assets/img/sensorLuz.jpg', 'sensor_luz.php'),
+
+(9, 'Intermedio', 'Sistema de Riego Automático', 'Monitoreá la humedad del suelo con un sensor FC-28 y activá el riego automático con una bomba.', '../assets/img/sistemaDeRiego.jpg', 'riego_automatico.php'),
+
+(10, 'Intermedio', 'Auto Seguidor de Línea', 'Construí un robot móvil autónomo capaz de rastrear una línea negra usando sensores IR.', '../assets/img/seguidorLinea.jpg', 'seguidor_linea.php'),
+
+(11, 'Intermedio', 'Robot Esquivador de Obstáculos', 'Creá un vehículo robótico que detecte y evite objetos de forma autónoma con ultrasonido.', '../assets/img/robotobstaculos.jpg', 'robot_obstaculos.php'),
+
+(12, 'Principiante', 'Servomotor con Arduino', 'Aprende a posicionar el eje de un servomotor SG90 en ángulos específicos de 0° a 180°.', '../assets/img/servomotor.jpg', 'servomotor.php')
+
+ON DUPLICATE KEY UPDATE
+categoria_p = VALUES(categoria_p),
+titulo = VALUES(titulo),
+descripcion = VALUES(descripcion),
+imagen = VALUES(imagen),
+enlace = VALUES(enlace);
+
+-- RELACIÓN ENTRE PROGRESO Y PROYECTOS
+
+
+ALTER TABLE progreso
+    MODIFY COLUMN id_tutorial INT NULL;
+
+ALTER TABLE progreso
+    ADD COLUMN id_proyecto INT NULL;
+
+ALTER TABLE progreso
+    ADD CONSTRAINT unique_usuario_proyecto
+    UNIQUE (id_usuarios, id_proyecto);
+
+ALTER TABLE progreso
+    ADD CONSTRAINT fk_progreso_proyecto
+    FOREIGN KEY (id_proyecto)
+    REFERENCES proyectos(id_proyecto)
+    ON DELETE CASCADE ON UPDATE CASCADE;
