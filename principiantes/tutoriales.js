@@ -418,32 +418,32 @@ const rawOptions = data.quiz?.opciones || [];
                 btnNext.disabled = true;
 
                 try {
-                    const respuesta = await fetch('../guardar_progreso.php', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded'
-                        },
-                        body: `id_tutorial=${currentNum}`
-                    });
+    const respuesta = await fetch('../guardar_progreso.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ id_tutorial: currentNum })
+    });
 
-                    const resultado = await respuesta.json();
+    const resultado = await respuesta.json();
 
-                    if (resultado.ok) {
-                        if (currentNum >= 24) {
-                            window.location.href = '../perfil.php';
-                        } else {
-                            window.location.href = `?id=${currentNum + 1}`;
-                        }
-                    } else {
-                        alert('No se pudo guardar el progreso: ' + (resultado.mensaje || ''));
-                        btnNext.disabled = false;
-                    }
+    if (resultado.ok) {
+        if (currentNum >= 24) {
+            window.location.href = '../perfil.php';
+        } else {
+            window.location.href = `?id=${currentNum + 1}`;
+        }
+    } else {
+        alert('No se pudo guardar el progreso: ' + (resultado.mensaje || ''));
+        btnNext.disabled = false;
+    }
 
-                } catch (error) {
-                    console.error('Error al guardar el progreso:', error);
-                    alert('Ocurrió un error al guardar el progreso.');
-                    btnNext.disabled = false;
-                }
+} catch (error) {
+    console.error('Error al guardar el progreso:', error);
+    alert('Ocurrió un error al guardar el progreso.');
+    btnNext.disabled = false;
+}
             });
         }
 
