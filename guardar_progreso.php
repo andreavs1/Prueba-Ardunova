@@ -1,6 +1,10 @@
- <?php
-session_start();
+<?php
+// Permitir que el navegador envíe cookies y credenciales en localhost
+header("Access-Control-Allow-Origin: http://localhost:8000");
+header("Access-Control-Allow-Credentials: true");
 header('Content-Type: application/json; charset=utf-8');
+
+session_start();
 
 ini_set('display_errors', 0);
 error_reporting(E_ALL);

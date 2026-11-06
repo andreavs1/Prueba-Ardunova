@@ -42,11 +42,11 @@ async function loadLesson() {
 
         const formatBold = (text) => text ? text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') : '';
 
-
-const rawOptions = data.quiz?.opciones || [];
+        const rawOptions = data.quiz?.opciones || [];
         const shuffledQuizOptions = Array.from(
             new Map(rawOptions.map(item => [item.texto, item])).values()
         );
+
         app.innerHTML = `
             <div class="container py-4" style="max-width: 1000px;">
                 <style>
@@ -320,7 +320,6 @@ const rawOptions = data.quiz?.opciones || [];
             </div>
         `;
 
-        // Desplegar detalles técnicos
         document.querySelectorAll('.btn-details-custom').forEach(btn => {
             btn.addEventListener('click', () => {
                 const targetId = btn.getAttribute('data-bs-target');
@@ -341,7 +340,6 @@ const rawOptions = data.quiz?.opciones || [];
             });
         });
 
-        // Consola interactiva
         const selectSim = document.getElementById('sim-input');
         const outputSim = document.getElementById('sim-output');
 
@@ -353,7 +351,6 @@ const rawOptions = data.quiz?.opciones || [];
             });
         }
 
-        // Navegación y progreso
         const currentNum = parseInt(lessonId, 10);
         const btnNext = document.getElementById('btn-next');
         const btnPrev = document.getElementById('btn-prev');
@@ -418,32 +415,33 @@ const rawOptions = data.quiz?.opciones || [];
                 btnNext.disabled = true;
 
                 try {
-    const respuesta = await fetch('../guardar_progreso.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ id_tutorial: currentNum })
-    });
+                    const respuesta = await fetch('../guardar_progreso.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        credentials: 'include', // <--- Obliga al navegador a enviar la cookie PHPSESSID
+                        body: JSON.stringify({ id_tutorial: currentNum })
+                    });
 
-    const resultado = await respuesta.json();
+                    const resultado = await respuesta.json();
 
-    if (resultado.ok) {
-        if (currentNum >= 24) {
-            window.location.href = '../perfil.php';
-        } else {
-            window.location.href = `?id=${currentNum + 1}`;
-        }
-    } else {
-        alert('No se pudo guardar el progreso: ' + (resultado.mensaje || ''));
-        btnNext.disabled = false;
-    }
+                    if (resultado.ok) {
+                        if (currentNum >= 24) {
+                            window.location.href = '../perfil.php';
+                        } else {
+                            window.location.href = `?id=${currentNum + 1}`;
+                        }
+                    } else {
+                        alert('No se pudo guardar el progreso: ' + (resultado.mensaje || ''));
+                        btnNext.disabled = false;
+                    }
 
-} catch (error) {
-    console.error('Error al guardar el progreso:', error);
-    alert('Ocurrió un error al guardar el progreso.');
-    btnNext.disabled = false;
-}
+                } catch (error) {
+                    console.error('Error al guardar el progreso:', error);
+                    alert('Ocurrió un error al guardar el progreso.');
+                    btnNext.disabled = false;
+                }
             });
         }
 
