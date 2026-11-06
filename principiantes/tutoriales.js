@@ -377,7 +377,7 @@ async function loadLesson() {
         const quizBtns = document.querySelectorAll('.quiz-btn-interactive');
         const feedback = document.getElementById('quiz-feedback');
 
-        let isQuizPassed = false;
+        let isQuizPassed = data.completado;
 
         if (btnPrev) {
             if (currentNum <= 1) {
