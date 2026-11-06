@@ -155,14 +155,6 @@ async function loadLesson() {
                         background-color: #eff6ff;
                         transform: translateX(4px);
                     }
-                    .pulse-badge {
-                        animation: pulseGlow 2s infinite;
-                    }
-                    @keyframes pulseGlow {
-                        0% { box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.4); }
-                        70% { box-shadow: 0 0 0 10px rgba(6, 182, 212, 0); }
-                        100% { box-shadow: 0 0 0 0 rgba(6, 182, 212, 0); }
-                    }
                 </style>
 
                 <header class="hero-ardunova rounded-4 p-4 p-md-5 mb-5 text-white position-relative overflow-hidden">
@@ -182,7 +174,6 @@ async function loadLesson() {
                         <p class="fs-6 text-light opacity-75 mb-0">${data.subtitulo}</p>
                     </div>
                 </header>
-
                 ${data.concepto_principal ? `
                 <section class="card card-glow shadow-sm mb-4 p-4" style="border-left: 6px solid #06b6d4 !important;">
                     <div class="d-flex align-items-start gap-3">
@@ -361,8 +352,6 @@ async function loadLesson() {
             });
         }
 
-        
-
         // Navegación y progreso
         const currentNum = parseInt(lessonId, 10);
         const btnNext = document.getElementById('btn-next');
@@ -372,12 +361,10 @@ async function loadLesson() {
 
         let isQuizPassed = data.completado === true;
 
-        // Si ya está completado, habilitamos el botón de siguiente automáticamente
         if (isQuizPassed && btnNext) {
             btnNext.disabled = false;
         }
 
-        // Lógica de respuesta del quiz
         quizBtns.forEach(button => {
             button.addEventListener('click', () => {
                 const isCorrect = button.getAttribute('data-correct') === 'true';
@@ -458,3 +445,19 @@ async function loadLesson() {
                 }
             });
         }
+
+    } catch (error) {
+        console.error("Error al cargar la lección:", error);
+        const app = document.getElementById('app-tutorial');
+        if (app) {
+            app.innerHTML = `
+                <div class="container my-5 text-center">
+                    <div class="alert alert-danger p-4 rounded-4 shadow-sm">
+                        <h5 class="fw-bold">❌ Error de carga</h5>
+                        <p class="mb-0 small">${error.message}</p>
+                        <a href="?id=1" class="btn btn-outline-dark btn-sm mt-3">Reintentar / Ir al Tutorial 1</a>
+                    </div>
+                </div>`;
+        }
+    }
+}
