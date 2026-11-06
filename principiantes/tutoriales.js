@@ -42,8 +42,11 @@ async function loadLesson() {
 
         const formatBold = (text) => text ? text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') : '';
 
-const shuffledQuizOptions= data.quiz?.opciones ||  [];
 
+const rawOptions = data.quiz?.opciones || [];
+        const shuffledQuizOptions = Array.from(
+            new Map(rawOptions.map(item => [item.texto, item])).values()
+        );
         app.innerHTML = `
             <div class="container py-4" style="max-width: 1000px;">
                 <style>
