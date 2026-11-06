@@ -42,9 +42,7 @@ async function loadLesson() {
 
         const formatBold = (text) => text ? text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') : '';
 
-        const shuffledQuizOptions = data.quiz?.opciones
-            ? [...data.quiz.opciones].sort(() => Math.random() - 0.5)
-            : [];
+const shuffledQuizOptions= data.quiz?.opciones ||  [];
 
         app.innerHTML = `
             <div class="container py-4" style="max-width: 1000px;">
