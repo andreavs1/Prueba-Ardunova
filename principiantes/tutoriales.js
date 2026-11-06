@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     loadLesson();
 });
@@ -362,6 +361,8 @@ async function loadLesson() {
             });
         }
 
+        
+
         // Navegación y progreso
         const currentNum = parseInt(lessonId, 10);
         const btnNext = document.getElementById('btn-next');
@@ -370,6 +371,38 @@ async function loadLesson() {
         const feedback = document.getElementById('quiz-feedback');
 
         let isQuizPassed = data.completado === true;
+
+        // Si ya está completado, habilitamos el botón de siguiente automáticamente
+        if (isQuizPassed && btnNext) {
+            btnNext.disabled = false;
+        }
+
+        // Lógica de respuesta del quiz
+        quizBtns.forEach(button => {
+            button.addEventListener('click', () => {
+                const isCorrect = button.getAttribute('data-correct') === 'true';
+                
+                quizBtns.forEach(btn => {
+                    btn.classList.remove('border-success', 'bg-success', 'bg-opacity-10', 'border-danger', 'bg-danger');
+                });
+
+                if (isCorrect) {
+                    button.classList.add('border-success', 'bg-success', 'bg-opacity-10');
+                    if (feedback) {
+                        feedback.className = "small fw-bold mt-2 text-success";
+                        feedback.textContent = data.quiz.mensaje_correcto || "¡Correcto!";
+                    }
+                    isQuizPassed = true;
+                    if (btnNext) btnNext.disabled = false;
+                } else {
+                    button.classList.add('border-danger', 'bg-danger', 'bg-opacity-10');
+                    if (feedback) {
+                        feedback.className = "small fw-bold mt-2 text-danger";
+                        feedback.textContent = data.quiz.mensaje_incorrecto || "Incorrecto. Intentá de nuevo.";
+                    }
+                }
+            });
+        });
 
         if (btnPrev) {
             if (currentNum <= 1) {
@@ -384,53 +417,44 @@ async function loadLesson() {
         }
 
         if (btnNext) {
-    if (currentNum >= 24) {
-        btnNext.textContent = 'Finalizar tutorial';
-    }
-
-    btnNext.addEventListener('click', async () => {
-
-        if (data.quiz && !isQuizPassed) {
-            alert('Respondé correctamente el cuestionario para avanzar.');
-            return;
-        }
-
-        btnNext.disabled = true;
-
-        try {
-            const respuesta = await fetch('../guardar_progreso.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: `id_tutorial=${currentNum}`
-            });
-
-            const resultado = await respuesta.json();
-
-            if (resultado.ok) {
-                if (currentNum >= 24) {
-                    window.location.href = '../perfil.php';
-                } else {
-                    window.location.href = `?id=${currentNum + 1}`;
-                }
-            } else {
-                alert('No se pudo guardar el progreso.');
-                btnNext.disabled = false;
+            if (currentNum >= 24) {
+                btnNext.textContent = 'Finalizar curso';
             }
 
-        } catch (error) {
-            console.error('Error al guardar el progreso:', error);
-            alert('Ocurrió un error al guardar el progreso.');
-            btnNext.disabled = false;
-        }
-    });
-}
+            btnNext.addEventListener('click', async () => {
+                if (data.quiz && !isQuizPassed) {
+                    alert('Respondé correctamente el cuestionario para avanzar.');
+                    return;
+                }
 
-if (btnPrev) {
-    btnPrev.addEventListener('click', () => {
-        if (currentNum > 1) {
-            window.location.href = `?id=${currentNum - 1}`;
+                btnNext.disabled = true;
+
+                try {
+                    const respuesta = await fetch('../guardar_progreso.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body: `id_tutorial=${currentNum}`
+                    });
+
+                    const resultado = await respuesta.json();
+
+                    if (resultado.ok) {
+                        if (currentNum >= 24) {
+                            window.location.href = '../perfil.php';
+                        } else {
+                            window.location.href = `?id=${currentNum + 1}`;
+                        }
+                    } else {
+                        alert('No se pudo guardar el progreso: ' + (resultado.mensaje || ''));
+                        btnNext.disabled = false;
+                    }
+
+                } catch (error) {
+                    console.error('Error al guardar el progreso:', error);
+                    alert('Ocurrió un error al guardar el progreso.');
+                    btnNext.disabled = false;
+                }
+            });
         }
-    });
-}
