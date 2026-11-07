@@ -358,28 +358,49 @@ async function loadLesson() {
 
         let isQuizPassed = data.completado === true;
 
-        if (isQuizPassed && btnNext) {
-            btnNext.disabled = false;
-        }
+        // Si el tutorial ya estaba completado, bloquear las respuestas.
+        if (data.completado) {
+            quizBtns.forEach(button => {
+                button.disabled = true;
 
-        quizBtns.forEach(button => {
+                if (button.getAttribute('data-correct') === 'true') {
+                    button.classList.add('border-success', 'bg-success', 'bg-opacity-10');
+                }
+            });
+
+            if (feedback) {
+                feedback.className = "small fw-bold mt-2 text-success";
+                feedback.textContent = "✓ ¡Este tutorial ya está completado!";
+            }
+
+            if (btnNext) {
+                btnNext.disabled = false;
+            }
+        }
+quizBtns.forEach(button => {
             button.addEventListener('click', () => {
+                if (data.completado) return;
+
                 const isCorrect = button.getAttribute('data-correct') === 'true';
-                
+
                 quizBtns.forEach(btn => {
                     btn.classList.remove('border-success', 'bg-success', 'bg-opacity-10', 'border-danger', 'bg-danger');
                 });
 
                 if (isCorrect) {
                     button.classList.add('border-success', 'bg-success', 'bg-opacity-10');
+
                     if (feedback) {
                         feedback.className = "small fw-bold mt-2 text-success";
                         feedback.textContent = data.quiz.mensaje_correcto || "¡Correcto!";
                     }
+
                     isQuizPassed = true;
-                    if (btnNext) btnNext.disabled = false;
+if (btnNext) btnNext.disabled = false;
+
                 } else {
                     button.classList.add('border-danger', 'bg-danger', 'bg-opacity-10');
+
                     if (feedback) {
                         feedback.className = "small fw-bold mt-2 text-danger";
                         feedback.textContent = data.quiz.mensaje_incorrecto || "Incorrecto. Intentá de nuevo.";
@@ -399,8 +420,7 @@ async function loadLesson() {
                 }
             });
         }
-
-        if (btnNext) {
+if (btnNext) {
             if (currentNum >= 24) {
                 btnNext.textContent = 'Finalizar curso';
             }
@@ -420,7 +440,7 @@ async function loadLesson() {
                             'Content-Type': 'application/json'
                         },
                         credentials: 'include',
-                        body: JSON.stringify({ id_tutorial: currentNum })
+body: JSON.stringify({ id_tutorial: currentNum })
                     });
 
                     const resultado = await respuesta.json();
@@ -440,13 +460,15 @@ async function loadLesson() {
                     console.error('Error al guardar el progreso:', error);
                     alert('Ocurrió un error al guardar el progreso.');
                     btnNext.disabled = false;
-                }
+}
             });
         }
 
     } catch (error) {
         console.error("Error al cargar la lección:", error);
+
         const app = document.getElementById('app-tutorial');
+
         if (app) {
             app.innerHTML = `
                 <div class="container my-5 text-center">
