@@ -307,14 +307,13 @@ async function loadLesson() {
                     <div id="quiz-feedback" class="small fw-bold mt-2"></div>
                 </section>
                 ` : ''}
-
                 <footer class="d-flex justify-content-between align-items-center pt-4 border-top">
-                    <button id="btn-prev" class="btn btn-outline-secondary px-4 py-2 rounded-3 fw-semibold" style="font-size: 0.9rem;">
-                        ← Lección Anterior
+                    <button id="btn-prev" class="btn btn-outline-secondary px-3 px-md-4 py-2 rounded-3 fw-semibold" style="font-size: 0.85rem;">
+                        ← <span class="d-none d-sm-inline">Lección </span>Anterior
                     </button>
-                    <span class="text-muted font-monospace small">Lección ${lessonId} de 24</span>
-                    <button id="btn-next" class="btn btn-ardunova px-4 py-2" style="font-size: 0.9rem;" ${data.quiz && !data.completado ? 'disabled' : ''}>
-                        Siguiente Lección →
+                    <span class="text-muted font-monospace small px-2">Lección ${lessonId} de 24</span>
+                    <button id="btn-next" class="btn btn-ardunova px-3 px-md-4 py-2" style="font-size: 0.85rem;" ${data.quiz && !data.completado ? 'disabled' : ''}>
+                        <span class="d-none d-sm-inline">Siguiente </span>Lección →
                     </button>
                 </footer>
             </div>
@@ -420,7 +419,7 @@ async function loadLesson() {
                         headers: {
                             'Content-Type': 'application/json'
                         },
-                        credentials: 'include', // <--- Obliga al navegador a enviar la cookie PHPSESSID
+                        credentials: 'include',
                         body: JSON.stringify({ id_tutorial: currentNum })
                     });
 

@@ -46,6 +46,14 @@ $porcentaje_total = round(($total_tutoriales / $total_tutoriales_sistema) * 100)
 // Nivel Principiante (Tutoriales 1 al 8)
 $principiante_completados = count(array_intersect($tutoriales_completados_array, range(1, 8)));
 $porcentaje_principiante = round(($principiante_completados / 8) * 100);
+
+// Nivel Intermedio (Tutoriales 9 al 16)
+$intermedio_completados = count(array_intersect($tutoriales_completados_array, range(9, 16)));
+$porcentaje_intermedio = round(($intermedio_completados / 8) * 100);
+
+// Nivel Avanzado (Tutoriales 17 al 24)
+$avanzado_completados = count(array_intersect($tutoriales_completados_array, range(17, 24)));
+$porcentaje_avanzado = round(($avanzado_completados / 8) * 100);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -98,6 +106,7 @@ $porcentaje_principiante = round(($principiante_completados / 8) * 100);
       <h2 class="h4 mb-0">Tu Progreso por Niveles</h2>
     </div>
     <div class="row g-3">
+      <!-- Nivel Principiante -->
       <div class="col-md-12">
         <div class="p-3 border rounded-3 bg-light">
           <div class="d-flex justify-content-between align-items-center mb-1">
@@ -107,6 +116,34 @@ $porcentaje_principiante = round(($principiante_completados / 8) * 100);
           <p class="small text-muted mb-2">Tutoriales del 1 al 8 (<?= $principiante_completados ?> de 8 completados)</p>
           <div class="progress" style="height: 10px;">
             <div class="progress-bar bg-info" role="progressbar" style="width: <?= $porcentaje_principiante ?>%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nivel Intermedio -->
+      <div class="col-md-12">
+        <div class="p-3 border rounded-3 bg-light">
+          <div class="d-flex justify-content-between align-items-center mb-1">
+            <h5 class="mb-0 fw-bold text-dark">🟡 Nivel Intermedio</h5>
+            <span class="badge bg-warning text-dark"><?= $porcentaje_intermedio ?>%</span>
+          </div>
+          <p class="small text-muted mb-2">Tutoriales del 9 al 16 (<?= $intermedio_completados ?> de 8 completados)</p>
+          <div class="progress" style="height: 10px;">
+            <div class="progress-bar bg-warning" role="progressbar" style="width: <?= $porcentaje_intermedio ?>%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nivel Avanzado -->
+      <div class="col-md-12">
+        <div class="p-3 border rounded-3 bg-light">
+          <div class="d-flex justify-content-between align-items-center mb-1">
+            <h5 class="mb-0 fw-bold text-dark">🔴 Nivel Avanzado</h5>
+            <span class="badge bg-danger text-white"><?= $porcentaje_avanzado ?>%</span>
+          </div>
+          <p class="small text-muted mb-2">Tutoriales del 17 al 24 (<?= $avanzado_completados ?> de 8 completados)</p>
+          <div class="progress" style="height: 10px;">
+            <div class="progress-bar bg-danger" role="progressbar" style="width: <?= $porcentaje_avanzado ?>%;"></div>
           </div>
         </div>
       </div>
