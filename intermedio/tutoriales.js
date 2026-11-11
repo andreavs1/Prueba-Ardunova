@@ -356,7 +356,25 @@ async function loadLesson() {
         const feedback = document.getElementById('quiz-feedback');
 
         let isQuizPassed = data.completado === true;
+// Si el tutorial ya estaba completado, bloquear las respuestas.
+if (data.completado) {
+    quizBtns.forEach(button => {
+        button.disabled = true;
 
+        if (button.getAttribute('data-correct') === 'true') {
+            button.classList.add('border-success', 'bg-success', 'bg-opacity-10');
+        }
+    });
+
+    if (feedback) {
+        feedback.className = "small fw-bold mt-2 text-success";
+        feedback.textContent = "✓ ¡Este tutorial ya está completado!";
+    }
+
+    if (btnNext) {
+        btnNext.disabled = false;
+    }
+}
         if (isQuizPassed && btnNext) {
             btnNext.disabled = false;
         }
@@ -421,7 +439,7 @@ async function loadLesson() {
             quizBtns.forEach(button => {
                 button.addEventListener('click', () => {
                     const isCorrect = button.getAttribute('data-correct') === 'true';
-
+if (data.completado) return;
                     quizBtns.forEach(btn => {
                         btn.style.backgroundColor = "#f8fafc";
                         btn.style.borderColor = "#e2e8f0";
