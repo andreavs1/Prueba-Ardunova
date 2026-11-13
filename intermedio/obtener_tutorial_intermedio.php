@@ -66,7 +66,7 @@ try {
 
     // 4. Armar la estructura exacta que espera tu JS de intermedio
     $dataFormatted = [
-        "completado => $completado,
+        "completado" => $completado,
         "badge" => $tutorial['badge'],
         "titulo" => $tutorial['titulo'],
         "subtitulo" => $tutorial['subtitulo'],
