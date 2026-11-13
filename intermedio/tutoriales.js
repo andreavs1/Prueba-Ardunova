@@ -442,7 +442,7 @@ async function loadLesson() {
                 button.addEventListener('click', () => {
                     if(isQuizPassed) return;
                     const isCorrect = button.getAttribute('data-correct') === 'true';
-if (data.completado) return;
+
                     quizBtns.forEach(btn => {
                         btn.style.backgroundColor = "#f8fafc";
                         btn.style.borderColor = "#e2e8f0";
