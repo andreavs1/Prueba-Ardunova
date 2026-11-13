@@ -1,4 +1,5 @@
 <?php
+session_start();
 header('Content-Type: application/json; charset=utf-8');
 include '../conexion.php'; // Conexión MySQLi con $conn
 
@@ -17,6 +18,27 @@ try {
         http_response_code(404);
         echo json_encode(["error" => "Tutorial no encontrado"]);
         exit;
+    }
+
+   // Consultar si el usuario completó el tutorial
+        $completado = false;
+
+    if (isset($_SESSION['id_usuarios'])) {
+
+        $id_usuario = $_SESSION['id_usuarios'];
+
+    $sqlProgreso = "SELECT completado FROM progreso
+                        WHERE id_usuarios = ? AND id_tutorial = ?";
+
+    $stmtProgreso = $conn->prepare($sqlProgreso);
+    $stmtProgreso->bind_param("ii", $id_usuario, $id_tutorial);
+    $stmtProgreso->execute();
+
+    $resultadoProgreso = $stmtProgreso->get_result();
+
+    if ($fila = $resultadoProgreso->fetch_assoc()) {
+    $completado = (bool)$fila['completado'];
+    }
     }
 
     // 2. Obtener funciones clave asociadas
@@ -44,6 +66,7 @@ try {
 
     // 4. Armar la estructura exacta que espera tu JS de intermedio
     $dataFormatted = [
+        "completado => $completado,
         "badge" => $tutorial['badge'],
         "titulo" => $tutorial['titulo'],
         "subtitulo" => $tutorial['subtitulo'],
