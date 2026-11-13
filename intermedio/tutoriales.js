@@ -355,14 +355,13 @@ async function loadLesson() {
         const quizBtns = document.querySelectorAll('.quiz-btn-interactive');
         const feedback = document.getElementById('quiz-feedback');
 
-     let isQuizPassed = data.completado == true || data.completado == 1;
-
-    if (isQuizPassed) {
+     let isQuizPassed = data.completado == true;
+// si el tutorial ya esta ccompletado,, bloquear las respuestas. 
+    if (data.completado) {
     quizBtns.forEach(button => {
     button.disabled = true;
 
-    if (button.getAttribute('data-correct') === 'true' ||
-    button.getAttribute('data-correct') === '1') {
+    if (button.getAttribute('data-correct') === 'true') {
     button.classList.add('border-success', 'bg-success', 'bg-opacity-10');
     }
     });
@@ -440,7 +439,7 @@ async function loadLesson() {
         if (quizBtns.length > 0 && feedback && data.quiz) {
             quizBtns.forEach(button => {
                 button.addEventListener('click', () => {
-                    if(isQuizPassed) return;
+                    if(data.completado) return;
                     const isCorrect = button.getAttribute('data-correct') === 'true';
 
                     quizBtns.forEach(btn => {
