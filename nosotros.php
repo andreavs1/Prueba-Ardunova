@@ -24,7 +24,6 @@ $active_page = 'nosotros';
   </p>
   </section>
 
-  <!-- Misión, Visión y Valores -->
   <section class="mb-5">
     <div class="row g-4 justify-content-center">
       <div class="col-12 col-md-6 col-lg-4">
@@ -56,7 +55,6 @@ $active_page = 'nosotros';
     </div>
   </section>
 
-  <!-- Nuestra Historia -->
   <section class="mb-5">
     <h2 class="text-center mb-4">Nuestra Historia</h2>
     <div class="row g-4">
@@ -87,11 +85,9 @@ $active_page = 'nosotros';
     </div>
   </section>
 
-  <!-- Equipo / Integrantes (3 Arriba, 2 Abajo) -->
   <section class="mb-5">
     <h2 class="text-center mb-4">Equipo de Trabajo</h2>
     
-    <!-- Primera fila: 3 integrantes -->
     <div class="row g-4 justify-content-center mb-4">
       <div class="col-12 col-sm-6 col-md-4">
         <article class="card text-center h-100">
@@ -130,7 +126,6 @@ $active_page = 'nosotros';
       </div>
     </div>
 
-    <!-- Segunda fila: 2 integrantes centrados -->
     <div class="row g-4 justify-content-center">
       <div class="col-12 col-sm-6 col-md-4">
         <article class="card text-center h-100">
