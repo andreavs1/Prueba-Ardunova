@@ -21,8 +21,7 @@ $active_page = 'donaciones';
 <?php include 'includes/header.php'; ?>
 
 <main class="container section-container py-4">
-
-    <!-- Encabezado -->
+    
     <section class="page-heading text-center mb-5">
         <span class="section-kicker">Sumate a nuestra misión</span>
 
@@ -37,7 +36,6 @@ $active_page = 'donaciones';
         </p>
     </section>
 
-    <!-- Por qué colaborar -->
     <section class="mb-5">
         <h2 class="text-center mb-4">¿Por qué colaborar con ARDUNOVA?</h2>
 
@@ -94,7 +92,6 @@ $active_page = 'donaciones';
         </div>
     </section>
 
-    <!-- Destino de las donaciones -->
     <section class="mb-5">
         <h2 class="text-center mb-4">¿A qué se destinarían los aportes?</h2>
 
@@ -137,7 +134,6 @@ $active_page = 'donaciones';
         </p>
     </section>
 
-    <!-- Cómo colaborar -->
     <section class="mb-5">
         <article class="card">
             <div class="card-body text-center p-4">
@@ -150,19 +146,9 @@ $active_page = 'donaciones';
                     Podés apoyarnos invitándonos uno o varios cafecitos a través de la plataforma Cafecito App de forma rápida y segura.
                 </p>
 
-                <!-- Opción 1: Botón personalizado con Bootstrap -->
                 <a href="https://cafecito.app/ardunova" rel="noopener" target="_blank" class="btn btn-primary btn-lg">
                     ☕ Invitarnos un Cafecito
                 </a>
-
-                <!-- Opción 2 (Opcional): Widget oficial de Cafecito -->
-                <!-- 
-                <div class="d-flex justify-content-center mt-3">
-                    <a href="https://cafecito.app/ardunova" rel="noopener" target="_blank">
-                        <img srcset="https://cdn.cafecito.app/imgs/buttons/button_1.png 1x, https://cdn.cafecito.app/imgs/buttons/button_1_2x.png 2x, https://cdn.cafecito.app/imgs/buttons/button_1_3x.png 3x" src="https://cdn.cafecito.app/imgs/buttons/button_1.png" alt="Invitame un café en cafecito.app" />
-                    </a>
-                </div>
-                -->
 
                 <p class="text-muted small mt-3 mb-0">
                     Serás redirigido a la plataforma externa Cafecito App para realizar la contribución.
